@@ -2,24 +2,38 @@
 using System.Collections;
 
 public class OutlinePulser : MonoBehaviour {
-
+	
 	AudioSource audio;
 	Renderer renderer;
-
-
-	int qSamples = 1024;  		// array size
+	public float volume = 4000f;
+	public float minFactor;
+	public float maxFactor;
+	
+	int qSamples = 2048;  		// array size
 	float refValue = 0.1f; 		// RMS value for 0 dB
 	float rmsValue;   			// sound level - RMS
 	float dbValue;    			// sound level - dB
-	float volume = 5000; 		// set how much the scale will vary
+	float minInRange = 0.005f;
 	
 	private float[] samples; 	// audio samples
-		
+	private float[] spectrum; 	// audio samples
+	
 	void Start () {
 		audio = GetComponent<AudioSource> ();
 		renderer = GetComponent<Renderer> ();
 		renderer.material.shader = Shader.Find ("UCLA Game Lab/Wireframe/Single-Sided");
 		samples = new float[qSamples];
+		spectrum = new float[qSamples];
+	}
+	
+	bool isInRange() {
+		audio.GetSpectrumData (spectrum, 0, FFTWindow.BlackmanHarris); // Window type can affect quality and speed
+		for (int i = Mathf.FloorToInt(minFactor*qSamples); i < Mathf.CeilToInt(maxFactor*qSamples); ++i) {
+			if (spectrum[i] > minInRange){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	void GetVolume(){
@@ -36,7 +50,10 @@ public class OutlinePulser : MonoBehaviour {
 	
 	void Update () {
 		GetVolume();
-		print (renderer.material.GetFloat("_Thickness"));
-		renderer.material.SetFloat ("_Thickness", volume * rmsValue);
+		if (isInRange ()) {
+			renderer.material.SetFloat ("_Thickness", rmsValue*volume);
+		} else {
+			renderer.material.SetFloat ("_Thickness", Mathf.Max (renderer.material.GetFloat("_Thickness")/1.5f, 1));
+		}
 	}
 }
