@@ -33,6 +33,7 @@
 		float2 _RippleDistance[MAX_RIPPLES];
 		float _RippleWidth;
 		float _NumConcentricRipples;
+		int _RippleCount;
 
 		// returns 0 if the objectPosition is less than rippleDistance away from contactPosition, -1 otherwise
 		int insideRipple(float3 objectPosition, float3 contactPosition, float rippleDistance) {

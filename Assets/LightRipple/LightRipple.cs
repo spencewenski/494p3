@@ -18,6 +18,7 @@ public class LightRipple : MonoBehaviour {
     const int maxRipples = 10;
     private List<Ripple> ripples = new List<Ripple>();
     private int nextRipple = 0;
+	private int rippleCount = 0;
 
     private Material material;
 
@@ -44,6 +45,7 @@ public class LightRipple : MonoBehaviour {
         private bool updateFactor(float maxRippleDistance, float tweenFactor) {
             currentRippleDistance += (maxRippleDistance - currentRippleDistance) * tweenFactor;
             if ((maxRippleDistance - currentRippleDistance) < 0.001) {
+				rippling = false;
                 return false;
             }
             return true;
@@ -117,6 +119,9 @@ public class LightRipple : MonoBehaviour {
         }
         material.SetVector("_ContactPosition" + nextRipple, collisionPosition);
         nextRipple = ++nextRipple % maxRipples;
+		rippleCount = Mathf.Min(rippleCount + 1, maxRipples);
+        material.SetInt("_RippleCount", rippleCount);
+		print(rippleCount);
     }
 
     void OnCollisionEnter(Collision collider) {
