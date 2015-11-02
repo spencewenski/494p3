@@ -16,6 +16,7 @@
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
+
 		sampler2D _MainTex;
 
 		struct Input {
@@ -27,23 +28,30 @@
 		half _Metallic;
 		fixed4 _Color;
 
-		float3 _ContactPosition[3];
-		float2 _RippleDistance[3];
+		#define MAX_RIPPLES 10
+		float3 _ContactPosition[MAX_RIPPLES];
+		float2 _RippleDistance[MAX_RIPPLES];
+		float _RippleWidth;
+		float _NumConcentricRipples;
 
 		// returns 0 if the objectPosition is less than rippleDistance away from contactPosition, -1 otherwise
 		int insideRipple(float3 objectPosition, float3 contactPosition, float rippleDistance) {
 			float d = distance(contactPosition, objectPosition);
-			if (d > rippleDistance) {
-				return -1;
+			for (int i = 0; i < _NumConcentricRipples * 2; ++i) {
+				if (fmod(float(i), 2) == 0 && d > rippleDistance) {
+					return -1;
+				}
+				else if (fmod(float(i), 2) == 1 && d > rippleDistance) {
+					return 0;
+				}
+				rippleDistance -= _RippleWidth;
 			}
 			return 0;
 		}
 
 		void ripple(float3 worldPos) {
-			float3 objectPos = mul(_World2Object, float4(worldPos, 1));
-
-			for (int i = 0; i < 3; i++) {
-				if (insideRipple(objectPos, _ContactPosition[i], _RippleDistance[i].x) == 0) {
+			for (int i = 0; i < MAX_RIPPLES; i++) {
+				if (insideRipple(worldPos, _ContactPosition[i], _RippleDistance[i].x) == 0) {
 					return;
 				}
 			}

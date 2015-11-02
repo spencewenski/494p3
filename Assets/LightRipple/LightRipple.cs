@@ -6,11 +6,16 @@ public class LightRipple : MonoBehaviour {
 
     public enum DistanceTweenFunction_e { TIME, FACTOR }
     public DistanceTweenFunction_e distanceTweenFunction;
+    public float rippleTimeout = 1f;
     public float maxRippleDistance = 1f;
     public float tweenFactor = 0.075f;
     public float rippleSpeed = 2;
+    public float rippleWidth = 1;
+    public int numConcentricRipples = 2;
 
-    const int maxRipples = 3;
+    private float rippleTimeoutRemaining; // time between two ripples
+
+    const int maxRipples = 10;
     private List<Ripple> ripples = new List<Ripple>();
     private int nextRipple = 0;
 
@@ -73,13 +78,20 @@ public class LightRipple : MonoBehaviour {
         }
     }
 
-    
-    // Use this for initialization
-    void Start () {
+    void Awake() {
         for (int i = 0; i < maxRipples; ++i) {
             ripples.Add(new Ripple(distanceTweenFunction));
         }
         material = GetComponent<Renderer>().material;
+
+        material.SetFloat("_RippleWidth", rippleWidth);
+        material.SetFloat("_NumConcentricRipples", numConcentricRipples);
+    }
+
+    
+    // Use this for initialization
+    void Start () {
+        
     }
 
     private bool updateShaderParams() {
@@ -96,6 +108,7 @@ public class LightRipple : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         updateShaderParams();
+        rippleTimeoutRemaining = Utility.updateTimeRemaining(rippleTimeoutRemaining);
     }
 
     private void startRipple(Vector3 collisionPosition) {
@@ -103,11 +116,16 @@ public class LightRipple : MonoBehaviour {
             return;
         }
         material.SetVector("_ContactPosition" + nextRipple, collisionPosition);
-        nextRipple = (nextRipple + 1) % maxRipples;
+        nextRipple = ++nextRipple % maxRipples;
     }
 
     void OnCollisionEnter(Collision collider) {
-        Vector3 collisionPosition = GetComponent<Renderer>().worldToLocalMatrix.MultiplyPoint(collider.contacts[0].point);
+        if (rippleTimeoutRemaining > 0f) {
+            return;
+        }
+        rippleTimeoutRemaining = rippleTimeout;
+
+        Vector3 collisionPosition = collider.contacts[0].point;
         startRipple(collisionPosition);
     }
 }
