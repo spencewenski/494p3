@@ -103,7 +103,7 @@ public class LightRipple : MonoBehaviour {
             return;
         }
         material.SetVector("_ContactPosition" + nextRipple, collisionPosition);
-        nextRipple = nextRipple + 1 % maxRipples;
+        nextRipple = (nextRipple + 1) % maxRipples;
     }
 
     void OnCollisionEnter(Collision collider) {
