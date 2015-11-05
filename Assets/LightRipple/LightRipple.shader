@@ -8,7 +8,7 @@
 	SubShader{
 		Tags { "RenderType"="Opaque" }
 		LOD 200
-		Cull Off
+		//Cull Off
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
@@ -28,31 +28,41 @@
 		half _Metallic;
 		fixed4 _Color;
 
-		#define MAX_RIPPLES 10
-		float3 _ContactPosition[MAX_RIPPLES];
-		float2 _RippleDistance[MAX_RIPPLES];
-		float _RippleWidth;
-		float _NumConcentricRipples;
-		int _RippleCount;
+		// 'constants'
+		float _MaxRadius_c;
+		float _RippleWidth_c;
+		float _RippleSpacing_c;
+		float _NumConcentricRipples_c;
+		float _RippleAlpha_c;
 
-		// returns 0 if the objectPosition is less than rippleDistance away from contactPosition, -1 otherwise
-		int insideRipple(float3 objectPosition, float3 contactPosition, float rippleDistance) {
-			float d = distance(contactPosition, objectPosition);
-			for (int i = 0; i < _NumConcentricRipples * 2; ++i) {
-				if (fmod(float(i), 2) == 0 && d > rippleDistance) {
+		// ripple data
+		#define MAX_RIPPLES 10
+		int _RippleCount;
+		float3 _RippleCenter[MAX_RIPPLES];
+		float2 _CurrentMaxRadius[MAX_RIPPLES];
+
+		// returns 0 if the objectPosition is inside a ripple, -1 otherwise
+		int insideRipple(float3 objectPosition, float3 rippleCenter, float rippleDistance) {
+			float d = distance(rippleCenter, objectPosition);
+			if (d > _MaxRadius_c) {
+				return -1;
+			}
+			for (int i = 0; i < _NumConcentricRipples_c * 2; ++i) {
+				int modulo = int(fmod(float(i), 2));
+				if (modulo == 0 && d > rippleDistance) {
 					return -1;
 				}
-				else if (fmod(float(i), 2) == 1 && d > rippleDistance) {
+				else if (modulo == 1 && d > rippleDistance) {
 					return 0;
 				}
-				rippleDistance -= _RippleWidth;
+				rippleDistance -= modulo == 0 ? _RippleWidth_c : _RippleSpacing_c;
 			}
-			return 0;
+			return -1;
 		}
 
 		void ripple(float3 worldPos) {
-			for (int i = 0; i < MAX_RIPPLES; i++) {
-				if (insideRipple(worldPos, _ContactPosition[i], _RippleDistance[i].x) == 0) {
+			for (int i = 0; i < _RippleCount; i++) {
+				if (insideRipple(worldPos, _RippleCenter[i], _CurrentMaxRadius[i].x) == 0) {
 					return;
 				}
 			}

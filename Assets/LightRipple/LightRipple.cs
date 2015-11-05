@@ -4,16 +4,19 @@ using System.Collections.Generic;
 
 public class LightRipple : MonoBehaviour {
 
-    public enum DistanceTweenFunction_e { TIME, FACTOR }
-    public DistanceTweenFunction_e distanceTweenFunction;
-    public float rippleTimeout = 1f;
-    public float maxRippleDistance = 1f;
-    public float tweenFactor = 0.075f;
+    // ripple speed
     public float rippleSpeed = 2;
-    public float rippleWidth = 1;
-    public int numConcentricRipples = 2;
 
-    private float rippleTimeoutRemaining; // time between two ripples
+    // time between two ripples
+    public float rippleTimeout = 1f;
+    private float rippleTimeoutRemaining; // current time between two ripples remaining
+
+    // ripple appearance
+    public float rippleWidth = 1f;
+    public float rippleSpacing = 2f;
+    public float maxRadius = 1f;
+    public int numConcentricRipples = 2;
+    public float rippleAlpha;
 
     const int maxRipples = 10;
     private List<Ripple> ripples = new List<Ripple>();
@@ -23,71 +26,61 @@ public class LightRipple : MonoBehaviour {
     private Material material;
 
     class Ripple {
-        private float currentRippleDistance = 0f;
-        private float rippleTime = 0f;
+        private float currentMaxRadius = 0f;
         private bool rippling = false;
-        private DistanceTweenFunction_e distanceTweenFunction;
 
-        public Ripple(DistanceTweenFunction_e distanceTweenFunction_) {
-            distanceTweenFunction = distanceTweenFunction_;
-        }
-
-        public bool Start(Vector3 collisionPosition) {
+        public bool Start() {
             if (rippling) {
                 return false;
             }
-            rippleTime = 0f;
-            currentRippleDistance = 0f;
+            currentMaxRadius = 0f;
             rippling = true;
             return true;
         }
 
-        private bool updateFactor(float maxRippleDistance, float tweenFactor) {
-            currentRippleDistance += (maxRippleDistance - currentRippleDistance) * tweenFactor;
-            if ((maxRippleDistance - currentRippleDistance) < 0.001) {
-				rippling = false;
-                return false;
-            }
-            return true;
-        }
-
-        private bool updateTime(float maxRippleDistance, float rippleSpeed) {
-            currentRippleDistance = rippleSpeed * rippleTime;
-            if (currentRippleDistance > maxRippleDistance) {
-                rippling = false;
-                return false;
-            }
-            rippleTime += Time.deltaTime;
-            return true;
-        }
-
-        public bool Update(float maxRippleDistance, float tweenFactor, float rippleSpeed) {
+        public bool Update(float maxRippleDistance, float rippleSpeed) {
             if (!rippling) {
                 return false;
             }
-            switch (distanceTweenFunction) {
-                case DistanceTweenFunction_e.FACTOR:
-                    return updateFactor(maxRippleDistance, tweenFactor);
-                case DistanceTweenFunction_e.TIME:
-                    return updateTime(maxRippleDistance, rippleSpeed);
-                default:
-                    return false;
-            }
+            currentMaxRadius += rippleSpeed * Time.deltaTime;
+            return true;
+
         }
 
-        public float getCurrentRippleDistance() {
-            return currentRippleDistance;
+        private float getCurrentMinRadius(float rippleWidth, float rippleSpacing, int numConcentricRipples) {
+            float minRadius = currentMaxRadius - (numConcentricRipples * rippleWidth) - ((numConcentricRipples - 1) * rippleSpacing);
+            return Mathf.Max(minRadius, 0f);
+        }
+
+        // sets rippling to false if the last ripple has moved outside the maxRadius
+        public void updateIsRippling(float maxRadius, float rippleWidth, float rippleSpacing,
+                int numConcentricRipples) {
+            if (!rippling) {
+                return;
+            }
+            rippling = getCurrentMinRadius(rippleWidth, rippleSpacing, numConcentricRipples) <= maxRadius;
+        }
+
+        public float getCurrentMaxRadius() {
+            return currentMaxRadius;
+        }
+
+        public bool isRippling() {
+            return rippling;
         }
     }
 
     void Awake() {
         for (int i = 0; i < maxRipples; ++i) {
-            ripples.Add(new Ripple(distanceTweenFunction));
+            ripples.Add(new Ripple());
         }
         material = GetComponent<Renderer>().material;
 
-        material.SetFloat("_RippleWidth", rippleWidth);
-        material.SetFloat("_NumConcentricRipples", numConcentricRipples);
+        material.SetFloat("_MaxRadius_c", maxRadius);
+        material.SetFloat("_RippleWidth_c", rippleWidth);
+        material.SetFloat("_RippleSpacing_c", rippleSpacing);
+        material.SetFloat("_NumConcentricRipples_c", numConcentricRipples);
+        material.SetFloat("_RippleAlpha_c", rippleAlpha);
     }
 
     
@@ -97,12 +90,11 @@ public class LightRipple : MonoBehaviour {
     }
 
     private bool updateShaderParams() {
-        for (int i = 0; i < maxRipples; ++i) {
-            if (!ripples[i].Update(maxRippleDistance, tweenFactor, rippleSpeed)) {
-                continue;
-            }
-            material.SetVector("_RippleDistance" + i, new Vector2(ripples[i].getCurrentRippleDistance(), 0f));
-            //material.SetFloat("_RippleDistance" + i, ripples[i].getCurrentRippleDistance());
+        for (int i = 0; i < rippleCount; ++i) {
+            ripples[i].Update(maxRadius, rippleSpeed);
+            ripples[i].updateIsRippling(maxRadius, rippleWidth, rippleSpacing, numConcentricRipples);
+
+            material.SetVector("_CurrentMaxRadius" + i, new Vector2(ripples[i].getCurrentMaxRadius(), 0f));
         }
         return true;
     }
@@ -114,11 +106,11 @@ public class LightRipple : MonoBehaviour {
     }
 
     private void startRipple(Vector3 collisionPosition) {
-        if (!ripples[nextRipple].Start(collisionPosition)) {
+        if (!ripples[nextRipple].Start()) {
             return;
         }
-        material.SetVector("_ContactPosition" + nextRipple, collisionPosition);
-        nextRipple = ++nextRipple % maxRipples;
+        material.SetVector("_RippleCenter" + nextRipple, collisionPosition);
+        nextRipple = (nextRipple + 1) % maxRipples;
 		rippleCount = Mathf.Min(rippleCount + 1, maxRipples);
         material.SetInt("_RippleCount", rippleCount);
 		print(rippleCount);
