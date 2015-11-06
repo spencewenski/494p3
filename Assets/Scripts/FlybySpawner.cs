@@ -14,6 +14,7 @@ public class FlybySpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		Object created = Instantiate(template,
 		                                new Vector3 (transform.position.x, transform.position.y, transform.position.z),
 		                                Quaternion.identity);
