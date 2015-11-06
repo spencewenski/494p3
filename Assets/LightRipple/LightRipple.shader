@@ -1,18 +1,19 @@
 ﻿Shader "Custom/LightRipple" {
 	Properties{
-		_Color("Color", Color) = (1,1,1,1)
+		_RippleColor("Color", Color) = (1,1,1,1)
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness("Smoothness", Range(0,1)) = 0.5
 		_Metallic("Metallic", Range(0,1)) = 0.0
 	}
 	SubShader{
-		Tags { "RenderType"="Opaque" }
+		Tags { "Queue"="Transparent" "RenderType"="Transparent" }
 		LOD 200
+		Blend SrcAlpha OneMinusSrcAlpha     // Alpha blending
 		//Cull Off
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
-		#pragma surface surf Standard fullforwardshadows
+		#pragma surface surf Standard fullforwardshadows alpha
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
@@ -26,7 +27,7 @@
 
 		half _Glossiness;
 		half _Metallic;
-		fixed4 _Color;
+		fixed4 _RippleColor;
 
 		// 'constants'
 		float _MaxRadius_c;
@@ -60,27 +61,34 @@
 			return -1;
 		}
 
-		void ripple(float3 worldPos) {
+		int ripple(float3 worldPos) {
+			int insideCount = 0;
 			for (int i = 0; i < _RippleCount; i++) {
 				if (insideRipple(worldPos, _RippleCenter[i], _CurrentMaxRadius[i].x) == 0) {
-					return;
+					++insideCount;
 				}
 			}
-			clip(-1);
+			return insideCount;
+			//clip(-1);
 		}
 
 		void surf(Input IN, inout SurfaceOutputStandard o) {
-			ripple(IN.worldPos);
+			int insideCount = ripple(IN.worldPos);
+			if (insideCount == 0) {
+				clip(-1);
+				return;
+			}
 			// Albedo comes from a texture tinted by color
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _RippleColor;
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
-			o.Alpha = c.a;
+			o.Alpha = clamp(0, 1, _RippleAlpha_c * insideCount);
 		}
 		ENDCG
 	}
-	FallBack "Diffuse"
+	//FallBack "Diffuse"
+	Fallback "Transparent/VertexLit"
 }
 

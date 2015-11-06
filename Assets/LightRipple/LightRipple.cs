@@ -16,7 +16,8 @@ public class LightRipple : MonoBehaviour {
     public float rippleSpacing = 2f;
     public float maxRadius = 1f;
     public int numConcentricRipples = 2;
-    public float rippleAlpha;
+    public float rippleAlpha = 1f;
+    public Color rippleColor = Color.white;
 
     const int maxRipples = 10;
     private List<Ripple> ripples = new List<Ripple>();
@@ -81,6 +82,7 @@ public class LightRipple : MonoBehaviour {
         material.SetFloat("_RippleSpacing_c", rippleSpacing);
         material.SetFloat("_NumConcentricRipples_c", numConcentricRipples);
         material.SetFloat("_RippleAlpha_c", rippleAlpha);
+        material.SetVector("_RippleColor", rippleColor);
     }
 
     
@@ -113,7 +115,6 @@ public class LightRipple : MonoBehaviour {
         nextRipple = (nextRipple + 1) % maxRipples;
 		rippleCount = Mathf.Min(rippleCount + 1, maxRipples);
         material.SetInt("_RippleCount", rippleCount);
-		print(rippleCount);
     }
 
     void OnCollisionEnter(Collision collider) {
