@@ -2,22 +2,31 @@
 using System.Collections;
 
 public class OutlinePulser : MonoBehaviour {
-	
+
+	public float volume = 1f;
+
+	// Choose default range
+	public bool setToBass = false;
+	public bool setToMid = false;
+	public bool setToHigh = false;
+
+	// Define custom range
+	public float minFrequency = 0f; // Minimum frequency to pulse to on scale from [0, 1]
+	public float maxFrequency = 1f; // Maximum frequency to pulse to on scale from [0, 1]
+	public float minRms = 0.001f;	// Minimum rms amplitude to pulse to
+
+	public float accentThreshold = 0.15f; 		// If rms > threshold then accent color appears
+	public float removeAccentThreshold = 0.05f; // If rms < threshold then accent goes away
+	public Color outlineColor = Color.white;
+	public Color accentColor = Color.yellow;
+
 	AudioSource aud;
 	Renderer rend;
-	public float volume = 4000f;
-	public float minFactor;
-	public float maxFactor;
-	public float minThreshold = 0.001f;
-	public float colorThreshold = 0.15f;
-	public float whiteThreshold = 0.05f;
-	public Color loudColor = Color.yellow;
 
 	int qSamples = 2048;  		// array size
 	float refValue = 0.1f; 		// RMS value for 0 dB
 	float rmsValue;   			// sound level - RMS
 	float dbValue;    			// sound level - dB
-
 	
 	private float[] samples; 	// audio samples
 	private float[] spectrum; 	// audio samples
@@ -26,18 +35,29 @@ public class OutlinePulser : MonoBehaviour {
 		aud = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
 		rend = GetComponent<Renderer> ();
 		rend.material.shader = Shader.Find ("Outlined/Silhouette Only");
-		//rend.material.shader = Shader.Find ("UCLA Game Lab/Wireframe/Single-Sided");
 		samples = new float[qSamples];
 		spectrum = new float[qSamples];
-		// rend.material.SetFloat ("_Thickness", 0);
 		rend.material.SetFloat("_Outline", 0);
-		rend.material.SetColor ("_OutlineColor", Color.white);
+		rend.material.SetColor ("_OutlineColor", outlineColor);
+		if (setToBass) {
+			minFrequency = 0f;
+			maxFrequency = 0.005f;
+			minRms = 0.03f;
+		} else if (setToMid) {
+			minFrequency = 0.005f;
+			maxFrequency = 0.015f;
+			minRms = 0.003f;
+		} else if (setToHigh) {
+			minFrequency = 0.015f;
+			maxFrequency = 0.02f;
+			minRms = 0.001f;
+		}
 	}
 	
 	bool isInRange() {
 		aud.GetSpectrumData (spectrum, 0, FFTWindow.BlackmanHarris); // Window type can affect quality and speed
-		for (int i = Mathf.FloorToInt(minFactor*qSamples); i < Mathf.CeilToInt(maxFactor*qSamples); ++i) {
-			if (spectrum[i] > minThreshold){
+		for (int i = Mathf.FloorToInt(minFrequency*qSamples); i < Mathf.CeilToInt(maxFrequency*qSamples); ++i) {
+			if (spectrum[i] > minRms){
 				return true;
 			}
 		}
@@ -61,21 +81,19 @@ public class OutlinePulser : MonoBehaviour {
 		if (isInRange ()) {
 			rend.material.SetFloat ("_Outline", rmsValue*volume);
 			Color curColor = rend.material.GetColor("_OutlineColor");
-			if (rmsValue > colorThreshold && curColor == Color.white)
-					rend.material.SetColor ("_OutlineColor", loudColor);
+			if (rmsValue > accentThreshold && curColor == Color.white)
+				rend.material.SetColor ("_OutlineColor", accentColor);
 			if (curColor != Color.white) {
 				Color saturate = curColor;
 				saturate.b += 0.005f;
 				rend.material.SetColor ("_OutlineColor", saturate);
 			}
-			if (rmsValue < whiteThreshold)
+			if (rmsValue < removeAccentThreshold) {
 					rend.material.SetColor ("_OutlineColor", Color.white);
-				
-			//rend.material.SetFloat ("_Thickness", rmsValue*volume);
+			}
 		} else {
 			rend.material.SetFloat ("_Outline", Mathf.Max (rend.material.GetFloat("_Outline")/1.5f, 0));
 			rend.material.SetColor ("_OutlineColor", Color.white);
-			//rend.material.SetFloat ("_Thickness", Mathf.Max (rend.material.GetFloat("_Thickness")/1.5f, 0));
 		}
 	}
 }
