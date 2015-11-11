@@ -10,8 +10,11 @@ public class OutlinePulser : MonoBehaviour {
 	public bool setToMid = false;
 	public bool setToHigh = false;
 
-	// Define custom range
-	public float minFrequency = 0f; // Minimum frequency to pulse to on scale from [0, 1]
+    public enum FrequencyRange_e { BASS, MID, HIGH };
+    //public FrequencyRange_e frequencyRange;
+
+    // Define custom range
+    public float minFrequency = 0f; // Minimum frequency to pulse to on scale from [0, 1]
 	public float maxFrequency = 1f; // Maximum frequency to pulse to on scale from [0, 1]
 	public float minRms = 0.001f;	// Minimum rms amplitude to pulse to
 
@@ -32,8 +35,12 @@ public class OutlinePulser : MonoBehaviour {
 	private float[] spectrum; 	// audio samples
 	
 	void Start () {
-		aud = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
-		rend = GetComponent<Renderer> ();
+        //aud = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+        GameObject audioSource = GameObject.FindGameObjectWithTag("Audio");
+        if (audioSource != null) {
+            aud = audioSource.GetComponent<AudioSource>();
+        }
+        rend = GetComponent<Renderer> ();
 		rend.material.shader = Shader.Find ("Outlined/Silhouette Only");
 		samples = new float[qSamples];
 		spectrum = new float[qSamples];
@@ -77,6 +84,9 @@ public class OutlinePulser : MonoBehaviour {
 	}
 	
 	void Update () {
+        if (aud == null) {
+            return;
+        }
 		GetVolume();
 		if (isInRange ()) {
 			rend.material.SetFloat ("_Outline", rmsValue*volume);
@@ -96,4 +106,29 @@ public class OutlinePulser : MonoBehaviour {
 			rend.material.SetColor ("_OutlineColor", Color.white);
 		}
 	}
+    
+    public void setAudioSource(AudioSource audioSource_, FrequencyRange_e frequencyRange_, Color accentColor_) {
+        aud = audioSource_;
+        accentColor = accentColor_;
+        setFrequency(frequencyRange_);
+    }
+
+    private void setFrequency(FrequencyRange_e frequencyRange_) {
+        setToBass = setToMid = setToHigh = false;
+        switch (frequencyRange_) {
+            case FrequencyRange_e.BASS:
+                setToBass = true;
+                break;
+            case FrequencyRange_e.MID:
+                setToMid = true;
+                break;
+            case FrequencyRange_e.HIGH:
+                setToHigh = true;
+                break;
+            default:
+                setToBass = setToMid = setToHigh = false;
+                break;
+        }
+    }
+
 }
