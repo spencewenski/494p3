@@ -23,7 +23,7 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Mouse0)) {
+	    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.LeftShift)) {
             shoot();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -38,14 +38,18 @@ public class Shoot : MonoBehaviour {
 	}
 
     private void shoot() {
+        if (projectileIndex >= prefabProjectiles.Length) {
+            print("Shoot.shoot(): invalid index");
+            return;
+        }
         GameObject projectile = Instantiate(prefabProjectiles[projectileIndex]) as GameObject;
         Vector3 projectilePosition = transform.position;
         projectilePosition += mainCamera.transform.forward.normalized;
         projectilePosition += mainCamera.transform.up.normalized;
-        projectilePosition += mainCamera.transform.right.normalized;
+        //projectilePosition += mainCamera.transform.right.normalized;
         projectile.transform.position = projectilePosition;
         Vector3 velocity = Vector3.zero;
-        velocity += transform.forward;
+        //velocity += transform.forward;
         velocity += mainCamera.transform.forward;
         velocity = velocity.normalized * speedMult;
         projectile.GetComponent<Rigidbody>().velocity = velocity;
