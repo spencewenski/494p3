@@ -4,11 +4,14 @@ using System.Collections;
 public class Shoot : MonoBehaviour {
 
     public GameObject[] prefabProjectiles;
-    public float speedMult = 10f;
-    //public float shootAngle = 30f;
+    //public float speed = 10f;
+    public float chargeFactor = 1f;
+    public float maxChargeTime = 2f;
 
     public bool ______________________;
 
+    public bool charging = false;
+    public float chargeTime;
     public Camera mainCamera;
     public int projectileIndex;
 
@@ -23,8 +26,14 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.LeftShift)) {
+	    if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftShift)) {
+            startCharging();
+        } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftShift) || chargeTime > maxChargeTime)) {
             shoot();
+            stopCharging();
+        }
+        if (charging) {
+            chargeTime += Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             projectileIndex = 0;
@@ -37,6 +46,16 @@ public class Shoot : MonoBehaviour {
         }
 	}
 
+    private void startCharging() {
+        charging = true;
+        chargeTime = 0f;
+    }
+
+    private void stopCharging() {
+        charging = false;
+        chargeTime = 0f;
+    }
+
     private void shoot() {
         if (projectileIndex >= prefabProjectiles.Length) {
             print("Shoot.shoot(): invalid index");
@@ -44,14 +63,12 @@ public class Shoot : MonoBehaviour {
         }
         GameObject projectile = Instantiate(prefabProjectiles[projectileIndex]) as GameObject;
         Vector3 projectilePosition = transform.position;
+        // projectile position
         projectilePosition += mainCamera.transform.forward.normalized;
         projectilePosition += mainCamera.transform.up.normalized;
-        //projectilePosition += mainCamera.transform.right.normalized;
         projectile.transform.position = projectilePosition;
-        Vector3 velocity = Vector3.zero;
-        //velocity += transform.forward;
-        velocity += mainCamera.transform.forward;
-        velocity = velocity.normalized * speedMult;
-        projectile.GetComponent<Rigidbody>().velocity = velocity;
+        // projectile velocity
+        float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
+        projectile.GetComponent<ProjectilePush>().setVelocity(mainCamera.transform.forward, speedFactor);
     }
 }
