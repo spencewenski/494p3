@@ -28,7 +28,6 @@ public class ProjectilePush : MonoBehaviour {
 
     public void setVelocity(Vector3 direction, float speedFactor) {
         rigidBody.velocity = direction.normalized * speed * speedFactor;
-        print(speedFactor * speed);
     }
 
     public Vector3 getVelocity() {
