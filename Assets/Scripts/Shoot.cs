@@ -4,7 +4,6 @@ using System.Collections;
 public class Shoot : MonoBehaviour {
 
     public GameObject[] prefabProjectiles;
-    //public float speed = 10f;
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
 
@@ -35,6 +34,16 @@ public class Shoot : MonoBehaviour {
         if (charging) {
             chargeTime += Time.deltaTime;
         }
+        // switch gun with scroll wheel
+        if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+            projectileIndex = (projectileIndex + 1) % prefabProjectiles.Length;
+        } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+            projectileIndex--;
+            if (projectileIndex < 0) {
+                projectileIndex = prefabProjectiles.Length - 1;
+            }
+        }
+        // switch gun with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             projectileIndex = 0;
         }
@@ -44,7 +53,13 @@ public class Shoot : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             projectileIndex = 2;
         }
-	}
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            projectileIndex = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            projectileIndex = 4;
+        }
+    }
 
     private void startCharging() {
         charging = true;

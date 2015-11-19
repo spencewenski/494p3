@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CubePushed : MonoBehaviour {
+public class CubePush : Cube {
 
     // NONE: the cube can't be pushed
     // BASIC: projectile's (damped) velocity is added to the cube's velocity
@@ -17,13 +17,14 @@ public class CubePushed : MonoBehaviour {
     public float fixedPushDamp = 1;
     public Vector3 fixedPushDirection;
 
-
     public bool _____________;
 
     public Rigidbody rigidBody;
 
     void Awake() {
         rigidBody = GetComponent<Rigidbody>();
+        // SET CUBE EFFECT IN YOUR AWAKE FUNCTION
+        effect = Cube.CubeEffect_e.PUSH;
 
         if (pushType == PushType_e.FIXED || pushType == PushType_e.AXIS_ALIGNED) {
             rigidBody.freezeRotation = true;
@@ -40,7 +41,10 @@ public class CubePushed : MonoBehaviour {
 	
 	}
 
-    void OnTriggerEnter(Collider collision) {
+    // OVERWRITE THE Cube.doEffectChild METHOD
+    //
+    // actually do the effect
+    public override void doEffectChild(Collider collision) {
         if (collision.tag != "Projectile") {
             return;
         }
