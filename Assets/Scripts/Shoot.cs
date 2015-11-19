@@ -84,6 +84,6 @@ public class Shoot : MonoBehaviour {
         projectile.transform.position = projectilePosition;
         // projectile velocity
         float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
-        projectile.GetComponent<ProjectilePush>().setVelocity(mainCamera.transform.forward, speedFactor);
+        projectile.GetComponent<Projectile>().setVelocity(mainCamera.transform.forward, speedFactor);
     }
 }

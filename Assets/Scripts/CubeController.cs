@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CubeController : MonoBehaviour {
-
     public bool ____________________;
 
     public Dictionary<Cube.CubeEffect_e, Cube> cubeEffects;
@@ -15,6 +14,7 @@ public class CubeController : MonoBehaviour {
         cubeEffects = new Dictionary<Cube.CubeEffect_e, Cube>();
         // ADD EFFECT CLASSES HERE
         cubeEffects.Add(Cube.CubeEffect_e.PUSH, GetComponent<CubePush>());
+		cubeEffects.Add(Cube.CubeEffect_e.OUTLINE, GetComponent<CubeOutline>());
     }
 
 	// Use this for initialization
