@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CubeController : MonoBehaviour {
+
+    public List<Cube.CubeEffect_e> invalidEffects;
+
     public bool ____________________;
 
     public Dictionary<Cube.CubeEffect_e, Cube> cubeEffects;
@@ -11,14 +14,17 @@ public class CubeController : MonoBehaviour {
     public bool isColliding = false;
 
     void Awake() {
+        if (invalidEffects == null) {
+            invalidEffects = new List<Cube.CubeEffect_e>();
+        }
         cubeEffects = new Dictionary<Cube.CubeEffect_e, Cube>();
         // ADD EFFECT CLASSES HERE
-        cubeEffects.Add(Cube.CubeEffect_e.PUSH, GetComponent<CubePush>());
 		cubeEffects.Add(Cube.CubeEffect_e.OUTLINE, GetComponent<CubeOutline>());
+        cubeEffects.Add(Cube.CubeEffect_e.PUSH, GetComponent<CubePush>());
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -59,16 +65,22 @@ public class CubeController : MonoBehaviour {
         if (projectileEffect.effect == currentEffect) {
             return getCurrentEffect();
         }
+        if (invalidEffects.Contains(projectileEffect.effect)) {
+            return null;
+        }
+        // set current effect to be inactive
         Cube cubeEffect = getCurrentEffect();
         if (cubeEffect != null) {
             cubeEffect.setActive(false);
         }
+        // set new effect to be active
         currentEffect = projectileEffect.effect;
         cubeEffect = getCurrentEffect();
         if (cubeEffect == null) {
             return null;
         }
         cubeEffect.setActive(true);
+        print("updateCurrentEffect");
         return cubeEffect;
     }
 

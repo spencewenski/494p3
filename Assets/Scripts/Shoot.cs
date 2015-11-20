@@ -16,6 +16,7 @@ public class Shoot : MonoBehaviour {
 
     void Awake() {
         mainCamera = Camera.main;
+        projectileIndex = 0;
     }
 
     // Use this for initialization

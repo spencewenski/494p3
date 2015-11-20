@@ -25,6 +25,15 @@ public class Cube : MonoBehaviour {
     }
 
     public void setActive(bool active_) {
+        print("Cube.setActive");
         active = active_;
+        setActiveChild(active);
+    }
+
+    // OVERWRITE THIS FUNCTION IN YOUR CUBE EFFECT CLASS
+    //
+    // set state required for each effect
+    public virtual void setActiveChild(bool active) {
+        // overwritten by children
     }
 }

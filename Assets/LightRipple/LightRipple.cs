@@ -24,26 +24,31 @@ public class LightRipple : MonoBehaviour {
     private int nextRipple = 0;
 	private int rippleCount = 0;
 
+    private Vector3 previousPosition;
+
     private Material material;
 
     class Ripple {
+        private Vector3 rippleCenter;
         private float currentMaxRadius = 0f;
         private bool rippling = false;
 
-        public bool Start() {
+        public bool Start(Vector3 rippleCenter_) {
             if (rippling) {
                 return false;
             }
+            rippleCenter = rippleCenter_;
             currentMaxRadius = 0f;
             rippling = true;
             return true;
         }
 
-        public bool Update(float maxRippleDistance, float rippleSpeed) {
+        public bool Update(float maxRippleDistance, float rippleSpeed, Vector3 deltaPosition) {
             if (!rippling) {
                 return false;
             }
             currentMaxRadius += rippleSpeed * Time.deltaTime;
+            rippleCenter += deltaPosition;
             return true;
 
         }
@@ -69,6 +74,10 @@ public class LightRipple : MonoBehaviour {
         public bool isRippling() {
             return rippling;
         }
+
+        public Vector3 getRippleCenter() {
+            return rippleCenter;
+        }
     }
 
     void Awake() {
@@ -76,6 +85,7 @@ public class LightRipple : MonoBehaviour {
             ripples.Add(new Ripple());
         }
         material = GetComponent<Renderer>().material;
+        previousPosition = transform.position;
 
         material.SetFloat("_MaxRadius_c", maxRadius);
         material.SetFloat("_RippleWidth_c", rippleWidth);
@@ -92,11 +102,17 @@ public class LightRipple : MonoBehaviour {
     }
 
     private bool updateShaderParams() {
+        Vector3 deltaPosition = transform.position - previousPosition;
+        previousPosition = transform.position;
         for (int i = 0; i < rippleCount; ++i) {
-            ripples[i].Update(maxRadius, rippleSpeed);
+            if (!ripples[i].isRippling()) {
+                continue;
+            }
+            ripples[i].Update(maxRadius, rippleSpeed, deltaPosition);
             ripples[i].updateIsRippling(maxRadius, rippleWidth, rippleSpacing, numConcentricRipples);
 
             material.SetVector("_CurrentMaxRadius" + i, new Vector2(ripples[i].getCurrentMaxRadius(), 0f));
+            material.SetVector("_RippleCenter" + i, ripples[i].getRippleCenter());
         }
         return true;
     }
@@ -108,22 +124,21 @@ public class LightRipple : MonoBehaviour {
     }
 
     private void startRipple(Vector3 collisionPosition) {
-        if (!ripples[nextRipple].Start()) {
+        if (!ripples[nextRipple].Start(collisionPosition)) {
             return;
         }
-        material.SetVector("_RippleCenter" + nextRipple, collisionPosition);
+        material.SetVector("_RippleCenter" + nextRipple, ripples[nextRipple].getRippleCenter());
         nextRipple = (nextRipple + 1) % maxRipples;
 		rippleCount = Mathf.Min(rippleCount + 1, maxRipples);
         material.SetInt("_RippleCount", rippleCount);
     }
 
-    void OnCollisionEnter(Collision collider) {
+    void OnTriggerEnter(Collider other) {
         if (rippleTimeoutRemaining > 0f) {
             return;
         }
         rippleTimeoutRemaining = rippleTimeout;
-
-        Vector3 collisionPosition = collider.contacts[0].point;
+        Vector3 collisionPosition = other.transform.position;
         startRipple(collisionPosition);
     }
 }
