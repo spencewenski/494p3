@@ -3,33 +3,39 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-    public GameObject audioSourcePrefab;
-    public OutlinePulser.FrequencyRange_e frequencyRange;
-    public Color accentColor;
+    // effect that this projectile applies
+    public Cube.CubeEffect_e effect;
+    public float speed = 20f;
 
-    public bool __________________;
+    public bool ___________________;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Rigidbody rigidBody;
 
-    void OnCollisionEnter(Collision collision) {
-        if (audioSourcePrefab == null) {
-            Destroy(gameObject);
+    // overwrite if you require special behavior
+    public virtual void setVelocity(Vector3 direction, float speedFactor) {
+        if (rigidBody == null) {
+            rigidBody = GetComponent<Rigidbody>();
+        }
+        rigidBody.velocity = direction.normalized * speed * speedFactor;
+    }
+
+    public Vector3 getVelocity() {
+        if (rigidBody == null) {
+            rigidBody = GetComponent<Rigidbody>();
+        }
+        return rigidBody.velocity;
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "CheckpointSystem") {
             return;
         }
-        OutlinePulser outlinePulser = collision.gameObject.GetComponent<OutlinePulser>();
-        GameObject audioSource = Instantiate(audioSourcePrefab, transform.position, Quaternion.identity) as GameObject;
-        if (outlinePulser != null) {
-            outlinePulser.setAudioSource(audioSource.GetComponent<AudioSource>(), frequencyRange, accentColor);
-        }
+        OnTriggerEnterChild(other);
         Destroy(gameObject);
-
     }
+
+    public virtual void OnTriggerEnterChild(Collider other) {
+        // overridden by child
+    }
+
 }
