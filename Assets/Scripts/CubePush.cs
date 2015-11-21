@@ -12,6 +12,7 @@ public class CubePush : Cube {
     public enum PushType_e { NONE, BASIC, AXIS_ALIGNED, FIXED };
     public PushType_e pushType;
 
+    public bool useGravity = true;
     public float pushDamp = 1;
     public float axisAlignedDamp = 1;
     public float fixedPushDamp = 1;
@@ -33,7 +34,7 @@ public class CubePush : Cube {
 
     public override void setActiveChild(bool active) {
         rigidBody.isKinematic = !active;
-        rigidBody.useGravity = active;
+        rigidBody.useGravity = active && useGravity;
     }
 
     // Use this for initialization

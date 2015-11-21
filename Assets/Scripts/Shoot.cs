@@ -26,9 +26,9 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftShift)) {
+	    if (Input.GetMouseButtonDown(0)/* || Input.GetKeyDown(KeyCode.LeftShift)*/) {
             startCharging();
-        } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftShift) || chargeTime > maxChargeTime)) {
+        } else if (charging && (Input.GetMouseButtonUp(0) /*|| Input.GetKeyUp(KeyCode.LeftShift)*/ || chargeTime > maxChargeTime)) {
             shoot();
             stopCharging();
         }
