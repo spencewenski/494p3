@@ -26,4 +26,16 @@ public class Projectile : MonoBehaviour {
         return rigidBody.velocity;
     }
 
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "CheckpointSystem") {
+            return;
+        }
+        OnTriggerEnterChild(other);
+        Destroy(gameObject);
+    }
+
+    public virtual void OnTriggerEnterChild(Collider other) {
+        // overridden by child
+    }
+
 }

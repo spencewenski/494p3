@@ -9,8 +9,4 @@ public class ProjectilePush : Projectile {
         effect = Cube.CubeEffect_e.PUSH;
     }
 
-    void OnTriggerEnter(Collider collision) {
-        Destroy(gameObject);
-    }
-
 }

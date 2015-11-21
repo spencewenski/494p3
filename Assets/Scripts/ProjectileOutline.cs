@@ -8,10 +8,6 @@ public class ProjectileOutline : Projectile {
 		// SET EFFECT IN YOUR AWAKE FUNCTION
 		effect = Cube.CubeEffect_e.OUTLINE;
 	}
-	
-	void OnTriggerEnter(Collider collision) {
-		Destroy(gameObject);
-	}
-	
+
 }
 
