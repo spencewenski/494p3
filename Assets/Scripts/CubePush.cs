@@ -32,9 +32,9 @@ public class CubePush : Cube {
         }
     }
 
-    public override void setActiveChild(bool active) {
-        rigidBody.isKinematic = !active;
-        rigidBody.useGravity = active && useGravity;
+    public override void setActiveChild(bool active_) {
+        rigidBody.isKinematic = !active_;
+        rigidBody.useGravity = active_ && useGravity;
     }
 
     // Use this for initialization
