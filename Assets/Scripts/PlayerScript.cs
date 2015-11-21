@@ -5,11 +5,15 @@ public class PlayerScript : MonoBehaviour {
     private Rigidbody rigid;
     private float mouseSensitivity = 5.0f;
     private float speed = 5f;
-    private float jumpSpeed = 7f;
+    private float jumpSpeed = 4f;
     private Collider collider;
     private float distToGround;
     private Transform cane;
     private Transform camTrans;
+    private float bounceX = 0f;
+    private float bounceZ = 0f;
+    private float bounceStrength = 20f;
+    private float bounceDecreaseRate = .97f;
     // Use this for initialization
     void Start () {
         rigid = GetComponent<Rigidbody>();
@@ -20,28 +24,52 @@ public class PlayerScript : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Vector3 vel = rigid.velocity;
-        vel.x = 0;
-        vel.z = 0;
+        //manual friction for bouncing
+        if (Mathf.Abs(bounceX) > 1)
+        {
+            bounceX *= bounceDecreaseRate;
+        }
+        else
+        {
+            bounceX = 0;
+        }
+        
+        if (Mathf.Abs(bounceZ) > 1)
+        {
+            bounceZ *= bounceDecreaseRate;
+        }
+        else
+        {
+            bounceZ = 0;
+        }
+        vel.x = bounceX;
+        vel.z = bounceZ;
+        
+
+        //left
         if (Input.GetKey(KeyCode.A))
         {
             Vector3 left = -speed * transform.right;
             vel.x += left.x;
             vel.z += left.z;
         }
+        //right
         if (Input.GetKey(KeyCode.D))
         {
             Vector3 right = speed * transform.right;
             vel.x += right.x;
             vel.z += right.z;
         }
+        //forward
         if (Input.GetKey(KeyCode.W))
         {
             Vector3 forward = speed * transform.forward;
             vel.x += forward.x;
             vel.z += forward.z;
         }
+        //backward
         if (Input.GetKey(KeyCode.S))
         {
             Vector3 backward = -speed * transform.forward;
@@ -50,7 +78,7 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
-            vel.y = jumpSpeed;
+            vel.y += jumpSpeed;
         }
         rigid.velocity = vel;
 
@@ -65,7 +93,6 @@ public class PlayerScript : MonoBehaviour {
             camRot.x = 300;
         camTrans.localRotation = Quaternion.Euler(camRot);
         
-        //cane.RotateAround(transform.position, Vector3.right, -mouseY);
     }   
     bool IsGrounded()
     {
@@ -76,5 +103,20 @@ public class PlayerScript : MonoBehaviour {
 
         //(Physics.CapsuleCast(collider..position, transform.position, .5f, -Vector3.up, out bouncehit, distToGround + 0.1f));
 
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "trampoline")
+        {
+            //foreach (ContactPoint contact in collision.contacts)
+            //{
+            //    Debug.DrawLine(contact.point, contact.point + contact.normal, Color.green, 2, false);
+            //}
+            Vector3 normal = collision.contacts[0].normal * bounceStrength;
+            bounceX = normal.x;
+            bounceZ = normal.z;
+            rigid.velocity = new Vector3(normal.x, normal.y*.5f, normal.z);
+        }
     }
 }
