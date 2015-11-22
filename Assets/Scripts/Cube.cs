@@ -4,7 +4,7 @@ using System.Collections;
 public class Cube : MonoBehaviour {
 
     // different types of cube effects
-    public enum CubeEffect_e { NONE, OUTLINE, PUSH, TRAMPOLINE, SPEED, ANTI_GRAVITY };
+    public enum CubeEffect_e { NONE, OUTLINE, PUSH, TRAMP, SPEED, ANTI_GRAVITY };
     public CubeEffect_e effect;
 
     public bool active;
