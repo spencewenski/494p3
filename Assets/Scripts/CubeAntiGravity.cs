@@ -16,11 +16,11 @@ public class CubeAntiGravity : Cube {
 
     public override void setActiveChild(bool active_) {
         rigidBody.isKinematic = !active_;
-        gravityReversed = !active_;
+        //gravityReversed = !active_;
     }
 
     void FixedUpdate() {
-        if (gravityReversed) {
+        if (active  && gravityReversed) {
             rigidBody.AddForce(-Physics.gravity);
         }
     }
