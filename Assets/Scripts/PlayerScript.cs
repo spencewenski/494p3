@@ -5,7 +5,7 @@ public class PlayerScript : MonoBehaviour {
     private Rigidbody rigid;
     private float mouseSensitivity = 5.0f;
     private float speed = 5f;
-    private float jumpSpeed = 4f;
+    private float jumpSpeed = 7f;
     private Collider collider;
     private float distToGround;
     private Transform cane;
@@ -35,7 +35,6 @@ public class PlayerScript : MonoBehaviour {
         {
             bounceX = 0;
         }
-        
         if (Mathf.Abs(bounceZ) > 1)
         {
             bounceZ *= bounceDecreaseRate;
@@ -78,6 +77,9 @@ public class PlayerScript : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
+            vel.y -= jumpSpeed;
+            if (vel.y < 0)
+                vel.y = 0;
             vel.y += jumpSpeed;
         }
         rigid.velocity = vel;
@@ -87,8 +89,8 @@ public class PlayerScript : MonoBehaviour {
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         camTrans.Rotate(-mouseY, 0, 0);
         Vector3 camRot = camTrans.localRotation.eulerAngles;
-        if (camRot.x > 23  && camRot.x < 200)
-            camRot.x = 23;
+        if (camRot.x > 20  && camRot.x < 200)
+            camRot.x = 20;
         else if (camRot.x < 300 && camRot.x > 60)
             camRot.x = 300;
         camTrans.localRotation = Quaternion.Euler(camRot);
@@ -96,10 +98,10 @@ public class PlayerScript : MonoBehaviour {
     }   
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.3f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.3f) ||
-            Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, distToGround + 0.3f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, distToGround + 0.3f);
+        return Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.1f) ||
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.1f) ||
+            Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, distToGround + 0.1f) ||
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, distToGround + 0.1f);
 
         //(Physics.CapsuleCast(collider..position, transform.position, .5f, -Vector3.up, out bouncehit, distToGround + 0.1f));
 
