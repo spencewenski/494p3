@@ -19,8 +19,6 @@ public class CubeTramp : Cube {
     public override void doEffectChild(Collider collision)
     {
         outline.OutlinePulseOn = true;
-        outline.outlineColor = Color.red;
-        outline.accentColor = Color.magenta;
         tag = "trampoline";
     }
 }

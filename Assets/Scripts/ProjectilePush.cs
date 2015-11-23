@@ -8,7 +8,7 @@ public class ProjectilePush : Projectile {
         // SET EFFECT IN YOUR AWAKE FUNCTION
         effect = Cube.CubeEffect_e.PUSH;
 		outlineColor = Color.red;
-		accentColor = Color.magenta;
+		accentColor = (Color.red + Color.black) / 2;
     }
 
 }

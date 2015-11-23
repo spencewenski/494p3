@@ -10,8 +10,6 @@ public class CubeOutline : Cube {
 
 	public override void doEffectChild(Collider collision) {
 		outline.OutlinePulseOn = true;
-		outline.outlineColor = Color.white;
-		outline.accentColor = Color.white;
         tag = "Untagged";
 	}
 }

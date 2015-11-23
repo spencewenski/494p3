@@ -19,8 +19,6 @@ public class CubeSpeed : Cube
     public override void doEffectChild(Collider collision)
     {
         outline.OutlinePulseOn = true;
-        outline.outlineColor = new Color(255, 204, 0);
-        outline.accentColor = Color.yellow;
         tag = "speed";
     }
 }
