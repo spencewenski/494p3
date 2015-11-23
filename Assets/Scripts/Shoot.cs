@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Shoot : MonoBehaviour {
 
-    public List<GameObject> prefabProjectiles;
+	public List<GameObject> prefabProjectiles = new List<GameObject>();
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
 
@@ -13,10 +13,9 @@ public class Shoot : MonoBehaviour {
     public bool charging = false;
     public float chargeTime;
     public Camera mainCamera;
-    public int projectileIndex;
+	public int projectileIndex;
 
     void Awake() {
-		prefabProjectiles = new List<GameObject>();
         mainCamera = Camera.main;
         projectileIndex = 0;
     }
