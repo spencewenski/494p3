@@ -18,5 +18,6 @@ public class KillPlane : MonoBehaviour {
             return;
         }
         other.transform.position = Checkpoint.lastCheckpoint.spawnPoint.position;
+        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }
