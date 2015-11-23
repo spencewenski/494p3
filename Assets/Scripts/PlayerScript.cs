@@ -15,7 +15,9 @@ public class PlayerScript : MonoBehaviour {
     private float bounceStrength = 20f;
     private float bounceDecreaseRate = .97f;
     private int speedBlockContacts = 0;
-    private bool shouldKeepMomentum = false;
+    private int trampBlockContacts = 0;
+    private bool wasLastGrounded = false;
+    private bool wasLastSpeeded = false;
 
     // Use this for initialization
     void Start () {
@@ -51,9 +53,17 @@ public class PlayerScript : MonoBehaviour {
 
         bool isGrounded = IsGrounded();
 
-        shouldKeepMomentum = !isGrounded;
+        if (isGrounded && !wasLastGrounded && trampBlockContacts == 0)
+        {
+            print("contact with ground");
+            wasLastSpeeded = false;
+        }
+        if (speedBlockContacts > 0)
+        {
+            wasLastSpeeded = true;
+        }
 
-        float currSpeed = speedBlockContacts > 0 || shouldKeepMomentum ? speed * 2 : speed;
+        float currSpeed = speedBlockContacts > 0 || wasLastSpeeded ? speed * 2 : speed;
 
         //left
         if (Input.GetKey(KeyCode.A))
@@ -102,8 +112,9 @@ public class PlayerScript : MonoBehaviour {
         else if (camRot.x < 300 && camRot.x > 60)
             camRot.x = 300;
         camTrans.localRotation = Quaternion.Euler(camRot);
-        
+        wasLastGrounded = isGrounded;
     }   
+
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.1f) ||
@@ -131,6 +142,8 @@ public class PlayerScript : MonoBehaviour {
                 bounceZ = normal.z;
             }
             rigid.velocity = new Vector3(bounceX, normal.y * .55f, bounceZ);
+            trampBlockContacts++;
+            print("tramp = " + trampBlockContacts);
         }
         if (collision.collider.tag == "speed")
         {
@@ -140,6 +153,11 @@ public class PlayerScript : MonoBehaviour {
     
     void OnCollisionExit(Collision collision)
     {
+        if (collision.collider.tag == "trampoline" && trampBlockContacts > 0)
+        {
+            trampBlockContacts--;
+            print("untramp = " + trampBlockContacts);
+        }
         if (collision.collider.tag == "speed" && speedBlockContacts > 0)
         {
             speedBlockContacts--;
