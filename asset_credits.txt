@@ -1,0 +1,16 @@
+- music:
+  - Pretty Lights - Forever Lost
+  - Pretty Lights - I Can See It In Your Face
+  - Ephixa - Trance Chords
+  - The Mae Shi - Run To Your Grave
+  - RichaadEB - Bonetrousle - Cover of Toby Fox
+  - Laurie Anderson - O Superman
+
+- outline shader:
+  - http://wiki.unity3d.com/index.php?title=Silhouette-Outlined_Diffuse
+
+- player controller:
+  - Unity standard FPS controller
+
+- fonts
+  - http://www.dafont.com/vermin-vision.font
