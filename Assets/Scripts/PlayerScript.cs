@@ -28,6 +28,9 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (Input.GetKeyDown (KeyCode.F12)) {
+			Application.LoadLevel(Application.loadedLevel);
+		}
         Vector3 vel = rigid.velocity;
         //manual friction for bouncing
         if (Mathf.Abs(bounceX) > 1)
