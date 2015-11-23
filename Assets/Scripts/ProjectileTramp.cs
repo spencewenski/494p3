@@ -8,7 +8,7 @@ public class ProjectileTramp : Projectile {
         rigidBody = GetComponent<Rigidbody>();
         // SET EFFECT IN YOUR AWAKE FUNCTION
         effect = Cube.CubeEffect_e.TRAMP;
-		outlineColor = Color.green;
-		accentColor = (Color.green + Color.white)/2;
+		outlineColor = (Color.green + Color.black)/2;
+		accentColor = Color.green;
     }
 }
