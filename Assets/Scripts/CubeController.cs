@@ -23,6 +23,7 @@ public class CubeController : MonoBehaviour {
         cubeEffects.Add(Cube.CubeEffect_e.PUSH, GetComponent<CubePush>());
         cubeEffects.Add(Cube.CubeEffect_e.SPEED, GetComponent<CubeSpeed>());
         cubeEffects.Add(Cube.CubeEffect_e.ANTI_GRAVITY, GetComponent<CubeAntiGravity>());
+        cubeEffects.Add(Cube.CubeEffect_e.TRAMP, GetComponent<CubeTramp>());
     }
 
     // Use this for initialization
