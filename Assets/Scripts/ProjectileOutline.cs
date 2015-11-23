@@ -7,6 +7,8 @@ public class ProjectileOutline : Projectile {
 		rigidBody = GetComponent<Rigidbody>();
 		// SET EFFECT IN YOUR AWAKE FUNCTION
 		effect = Cube.CubeEffect_e.OUTLINE;
+		outlineColor = Color.white;
+		accentColor = Color.white;
 	}
 
 }

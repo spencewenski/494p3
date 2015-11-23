@@ -7,6 +7,8 @@ public class ProjectilePush : Projectile {
         rigidBody = GetComponent<Rigidbody>();
         // SET EFFECT IN YOUR AWAKE FUNCTION
         effect = Cube.CubeEffect_e.PUSH;
+		outlineColor = Color.red;
+		accentColor = Color.magenta;
     }
 
 }
