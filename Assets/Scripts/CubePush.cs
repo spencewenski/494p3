@@ -22,7 +22,7 @@ public class CubePush : Cube {
 
     public Rigidbody rigidBody;
 
-    void Awake() {
+    public override void AwakeChild() {
         rigidBody = GetComponent<Rigidbody>();
         // SET CUBE EFFECT IN YOUR AWAKE FUNCTION
         effect = Cube.CubeEffect_e.PUSH;

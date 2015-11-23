@@ -9,7 +9,7 @@ public class CubeAntiGravity : Cube {
 
     public Rigidbody rigidBody;
 
-    void Awake() {
+    public override void AwakeChild() {
         rigidBody = GetComponent<Rigidbody>();
         effect = CubeEffect_e.ANTI_GRAVITY;
     }

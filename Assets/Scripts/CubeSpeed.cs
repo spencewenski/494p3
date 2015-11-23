@@ -5,7 +5,7 @@ public class CubeSpeed : Cube
 {
     OutlinePulser outline;
 
-    void Awake()
+    public override void AwakeChild()
     {
         // SET CUBE EFFECT IN YOUR AWAKE FUNCTION
         effect = Cube.CubeEffect_e.SPEED;

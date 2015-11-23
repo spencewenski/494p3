@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour {
     // effect that this projectile applies
     public Cube.CubeEffect_e effect;
     public float speed = 20f;
+	public Color outlineColor;
+	public Color accentColor;
 
     public bool ___________________;
 

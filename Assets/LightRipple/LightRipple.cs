@@ -143,7 +143,6 @@ public class LightRipple : MonoBehaviour {
         }
         rippleTimeoutRemaining = rippleTimeout;
         Vector3 collisionPosition = other.transform.position;
-		setRippleColor (other.gameObject.GetComponent<Renderer> ().material.color);
         startRipple(collisionPosition);
     }
 }
