@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Shoot : MonoBehaviour {
 
-    public GameObject[] prefabProjectiles;
+    public List<GameObject> prefabProjectiles;
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
 
@@ -15,6 +16,7 @@ public class Shoot : MonoBehaviour {
     public int projectileIndex;
 
     void Awake() {
+		prefabProjectiles = new List<GameObject>();
         mainCamera = Camera.main;
         projectileIndex = 0;
     }
@@ -37,11 +39,11 @@ public class Shoot : MonoBehaviour {
         }
         // switch gun with scroll wheel
         if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-            projectileIndex = (projectileIndex + 1) % prefabProjectiles.Length;
+            projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
         } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
             projectileIndex--;
             if (projectileIndex < 0) {
-                projectileIndex = prefabProjectiles.Length - 1;
+                projectileIndex = prefabProjectiles.Count - 1;
             }
         }
         // switch gun with number keys
@@ -73,7 +75,7 @@ public class Shoot : MonoBehaviour {
     }
 
     private void shoot() {
-        if (projectileIndex >= prefabProjectiles.Length) {
+        if (projectileIndex >= prefabProjectiles.Count) {
             print("Shoot.shoot(): invalid index");
             return;
         }
