@@ -137,12 +137,19 @@ public class LightRipple : MonoBehaviour {
         material.SetInt("_RippleCount", rippleCount);
     }
 
+	void OnCollisionEnter(Collision other) {
+		collisionHandler(other.contacts[0]);
+	}
+
     void OnTriggerEnter(Collider other) {
-        if (rippleTimeoutRemaining > 0f) {
-            return;
-        }
-        rippleTimeoutRemaining = rippleTimeout;
-        Vector3 collisionPosition = other.transform.position;
-        startRipple(collisionPosition);
+		collisionHandler(other.transform.position);
     }
+
+	private void collisionHandler(Vector3 collisionPosition) {
+		if (rippleTimeoutRemaining > 0f) {
+			return;
+		}
+        rippleTimeoutRemaining = rippleTimeout;
+        startRipple(collisionPosition);
+	}
 }
