@@ -141,8 +141,7 @@ public class PlayerScript : MonoBehaviour {
             }
         }
     }
-
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "trampoline")
         {
@@ -150,7 +149,6 @@ public class PlayerScript : MonoBehaviour {
             //{
             //    Debug.DrawLine(contact.point, contact.point + contact.normal, Color.green, 2, false);
             //}
-
             Vector3 normal = collision.contacts[0].normal * bounceStrength;
             if (Mathf.Abs(collision.contacts[0].normal.y) != 1)
             {
@@ -158,6 +156,7 @@ public class PlayerScript : MonoBehaviour {
                 bounceZ = normal.z;
             }
             rigid.velocity = new Vector3(bounceX, normal.y * .55f, bounceZ);
+
         }
     }
 }
