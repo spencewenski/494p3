@@ -14,10 +14,8 @@ public class PlayerScript : MonoBehaviour {
     private float bounceZ = 0f;
     private float bounceStrength = 20f;
     private float bounceDecreaseRate = .97f;
-    private int speedBlockContacts = 0;
-    private int trampBlockContacts = 0;
-    private bool wasLastGrounded = false;
-    private bool wasLastSpeeded = false;
+    private bool hasSpeed = false;
+    private bool hasTramp = false;
 
     // Use this for initialization
     void Start () {
@@ -50,20 +48,10 @@ public class PlayerScript : MonoBehaviour {
         }
         vel.x = bounceX;
         vel.z = bounceZ;
-
+        
         bool isGrounded = IsGrounded();
 
-        if (isGrounded && !wasLastGrounded && trampBlockContacts == 0)
-        {
-            print("contact with ground");
-            wasLastSpeeded = false;
-        }
-        if (speedBlockContacts > 0)
-        {
-            wasLastSpeeded = true;
-        }
-
-        float currSpeed = speedBlockContacts > 0 || wasLastSpeeded ? speed * 2 : speed;
+        float currSpeed = hasSpeed ? speed * 2 : speed;
 
         //left
         if (Input.GetKey(KeyCode.A))
@@ -112,18 +100,46 @@ public class PlayerScript : MonoBehaviour {
         else if (camRot.x < 300 && camRot.x > 60)
             camRot.x = 300;
         camTrans.localRotation = Quaternion.Euler(camRot);
-        wasLastGrounded = isGrounded;
     }   
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.1f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, distToGround + 0.1f) ||
-            Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, distToGround + 0.1f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, distToGround + 0.1f);
+        RaycastHit rayHit1 = new RaycastHit(), rayHit2 = new RaycastHit(), rayHit3 = new RaycastHit(), rayHit4 = new RaycastHit();
+
+        bool isGrounded = Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, out rayHit1, distToGround + 0.1f) ||
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, out rayHit2, distToGround + 0.1f) ||
+            Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, out rayHit3, distToGround + 0.1f) ||
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, out rayHit4, distToGround + 0.1f);
+
+        if (isGrounded)
+        {
+            setWasLastSpeededWithRayHit(rayHit1);
+            setWasLastSpeededWithRayHit(rayHit2);
+            setWasLastSpeededWithRayHit(rayHit3);
+            setWasLastSpeededWithRayHit(rayHit4);
+        }
 
         //(Physics.CapsuleCast(collider..position, transform.position, .5f, -Vector3.up, out bouncehit, distToGround + 0.1f));
 
+        return isGrounded;
+    }
+
+    void setWasLastSpeededWithRayHit(RaycastHit rayHit)
+    {
+        if (rayHit.collider != null)
+        {
+            if (rayHit.collider.gameObject.tag == "speed")
+            {
+                hasSpeed = true;
+            } else if (rayHit.collider.gameObject.tag == "trampoline")
+            {
+                hasTramp = true;
+            } else
+            {
+                hasSpeed = false;
+                hasTramp = false;
+            }
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -142,25 +158,6 @@ public class PlayerScript : MonoBehaviour {
                 bounceZ = normal.z;
             }
             rigid.velocity = new Vector3(bounceX, normal.y * .55f, bounceZ);
-            trampBlockContacts++;
-            print("tramp = " + trampBlockContacts);
-        }
-        if (collision.collider.tag == "speed")
-        {
-            speedBlockContacts++;
-        }
-    }
-    
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.tag == "trampoline" && trampBlockContacts > 0)
-        {
-            trampBlockContacts--;
-            print("untramp = " + trampBlockContacts);
-        }
-        if (collision.collider.tag == "speed" && speedBlockContacts > 0)
-        {
-            speedBlockContacts--;
         }
     }
 }
