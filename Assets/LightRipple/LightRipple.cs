@@ -138,10 +138,14 @@ public class LightRipple : MonoBehaviour {
     }
 
 	void OnCollisionEnter(Collision other) {
+		if (other.gameObject.tag == "CheckpointSystem")
+			return;
 		collisionHandler(other.contacts[0].point);
 	}
 
-    void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other) {	
+		if (other.gameObject.tag == "CheckpointSystem")
+			return;
 		collisionHandler(other.transform.position);
     }
 
