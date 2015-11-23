@@ -95,9 +95,9 @@ public class PlayerScript : MonoBehaviour {
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         camTrans.Rotate(-mouseY, 0, 0);
         Vector3 camRot = camTrans.localRotation.eulerAngles;
-        if (camRot.x > 50  && camRot.x < 200)
-            camRot.x = 50;
-        else if (camRot.x < 300 && camRot.x > 60)
+        if (camRot.x > 60  && camRot.x < 200)
+            camRot.x = 60;
+        else if (camRot.x < 300 && camRot.x > 90)
             camRot.x = 300;
         camTrans.localRotation = Quaternion.Euler(camRot);
     }   
