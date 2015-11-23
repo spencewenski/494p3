@@ -130,7 +130,7 @@ public class PlayerScript : MonoBehaviour {
                 bounceX = normal.x;
                 bounceZ = normal.z;
             }
-            rigid.velocity = new Vector3(bounceX, normal.y*.5f, bounceZ);
+            rigid.velocity = new Vector3(bounceX, normal.y * .55f, bounceZ);
         }
         if (collision.collider.tag == "speed")
         {
