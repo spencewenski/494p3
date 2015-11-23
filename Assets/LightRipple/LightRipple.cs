@@ -138,7 +138,7 @@ public class LightRipple : MonoBehaviour {
     }
 
 	void OnCollisionEnter(Collision other) {
-		collisionHandler(other.contacts[0]);
+		collisionHandler(other.contacts[0].point);
 	}
 
     void OnTriggerEnter(Collider other) {
