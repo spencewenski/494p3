@@ -12,5 +12,6 @@ public class CubeOutline : Cube {
 		outline.OutlinePulseOn = true;
 		outline.outlineColor = Color.white;
 		outline.accentColor = Color.red;
+        tag = "Untagged";
 	}
 }
