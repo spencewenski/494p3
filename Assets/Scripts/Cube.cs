@@ -29,8 +29,7 @@ public class Cube : MonoBehaviour {
             return;
         }
 		Projectile projectile = other.GetComponent<Projectile>();
-		outlinePulser.outlineColor = projectile.outlineColor;
-		outlinePulser.accentColor = projectile.accentColor;
+		outlinePulser.setOutlineAccentColor (projectile.outlineColor, projectile.accentColor);
 		lightRipple.setRippleColor(projectile.outlineColor);
         doEffectChild(other);
     }

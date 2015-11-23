@@ -112,7 +112,13 @@ public class OutlinePulser : MonoBehaviour {
 			rend.material.SetColor ("_OutlineColor", outlineColor);
 		}
 	}
-	
+
+	public void setOutlineAccentColor(Color outl, Color acc){
+		outlineColor = outl;
+		accentColor = acc;
+		rend.material.SetColor ("_OutlineColor", outlineColor);
+	}
+
 	public void setAudioSource(AudioSource audioSource_, FrequencyRange_e frequencyRange_, Color accentColor_) {
 		aud = audioSource_;
 		accentColor = accentColor_;
