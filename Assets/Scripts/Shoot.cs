@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour {
 	public List<GameObject> prefabProjectiles = new List<GameObject>();
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
+    public float projectileHeight = 0.5f;
 
     public bool ______________________;
 
@@ -79,10 +80,12 @@ public class Shoot : MonoBehaviour {
             return;
         }
         GameObject projectile = Instantiate(prefabProjectiles[projectileIndex]) as GameObject;
-        Vector3 projectilePosition = transform.position;
+        Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>());
+        //Vector3 projectilePosition = transform.position;
+        Vector3 projectilePosition = mainCamera.transform.position;
         // projectile position
-        projectilePosition += mainCamera.transform.forward.normalized;
-        projectilePosition += mainCamera.transform.up.normalized;
+        //projectilePosition += mainCamera.transform.forward.normalized;
+        projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
         projectile.transform.position = projectilePosition;
         // projectile velocity
         float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
