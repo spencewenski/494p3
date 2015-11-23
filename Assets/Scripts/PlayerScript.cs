@@ -146,20 +146,18 @@ public class PlayerScript : MonoBehaviour {
     }
     void OnCollisionStay(Collision collision)
     {
-        if (collision.collider.tag == "trampoline")
+        if (collision.gameObject.tag == "trampoline")
         {
             //foreach (ContactPoint contact in collision.contacts)
             //{
             //    Debug.DrawLine(contact.point, contact.point + contact.normal, Color.green, 2, false);
             //}
             Vector3 normal = collision.contacts[0].normal * bounceStrength;
-            if (Mathf.Abs(collision.contacts[0].normal.y) != 1)
-            {
+            if (Mathf.Abs(collision.contacts[0].normal.y) != 1) {
                 bounceX = normal.x;
                 bounceZ = normal.z;
             }
             rigid.velocity = new Vector3(bounceX, normal.y * .55f, bounceZ);
-
         }
     }
 }
