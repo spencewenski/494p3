@@ -7,10 +7,12 @@ public class CubeAntiGravity : Cube {
 
     public bool _______________;
 
+	OutlinePulser outline;
     public Rigidbody rigidBody;
 
     public override void AwakeChild() {
         rigidBody = GetComponent<Rigidbody>();
+		outline = gameObject.GetComponentInChildren<OutlinePulser> ();
         effect = CubeEffect_e.ANTI_GRAVITY;
     }
 
@@ -28,6 +30,8 @@ public class CubeAntiGravity : Cube {
     public override void doEffectChild(Collider other) {
         gravityReversed = !gravityReversed;
         rigidBody.useGravity = !gravityReversed;
+        outline.OutlinePulseOn = true;
+		
     }
 
 }
