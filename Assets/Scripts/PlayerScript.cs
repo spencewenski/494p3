@@ -14,6 +14,9 @@ public class PlayerScript : MonoBehaviour {
     private float bounceZ = 0f;
     private float bounceStrength = 20f;
     private float bounceDecreaseRate = .97f;
+    private int speedBlockContacts = 0;
+    private bool shouldKeepMomentum = false;
+
     // Use this for initialization
     void Start () {
         rigid = GetComponent<Rigidbody>();
@@ -46,37 +49,42 @@ public class PlayerScript : MonoBehaviour {
         }
         vel.x = bounceX;
         vel.z = bounceZ;
-        
+
+        bool isGrounded = IsGrounded();
+
+        shouldKeepMomentum = !isGrounded;
+
+        float currSpeed = speedBlockContacts > 0 || shouldKeepMomentum ? speed * 2 : speed;
 
         //left
         if (Input.GetKey(KeyCode.A))
         {
-            Vector3 left = -speed * transform.right;
+            Vector3 left = -currSpeed * transform.right;
             vel.x += left.x;
             vel.z += left.z;
         }
         //right
         if (Input.GetKey(KeyCode.D))
         {
-            Vector3 right = speed * transform.right;
+            Vector3 right = currSpeed * transform.right;
             vel.x += right.x;
             vel.z += right.z;
         }
         //forward
         if (Input.GetKey(KeyCode.W))
         {
-            Vector3 forward = speed * transform.forward;
+            Vector3 forward = currSpeed * transform.forward;
             vel.x += forward.x;
             vel.z += forward.z;
         }
         //backward
         if (Input.GetKey(KeyCode.S))
         {
-            Vector3 backward = -speed * transform.forward;
+            Vector3 backward = -currSpeed * transform.forward;
             vel.x += backward.x;
             vel.z += backward.z;
         }
-        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             vel.y += jumpSpeed;
         }
@@ -117,6 +125,18 @@ public class PlayerScript : MonoBehaviour {
             bounceX = normal.x;
             bounceZ = normal.z;
             rigid.velocity = new Vector3(normal.x, normal.y*.5f, normal.z);
+        }
+        if (collision.collider.tag == "speed")
+        {
+            speedBlockContacts++;
+        }
+    }
+    
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "speed" && speedBlockContacts > 0)
+        {
+            speedBlockContacts--;
         }
     }
 }

@@ -21,6 +21,7 @@ public class CubeController : MonoBehaviour {
         // ADD EFFECT CLASSES HERE
 		cubeEffects.Add(Cube.CubeEffect_e.OUTLINE, GetComponent<CubeOutline>());
         cubeEffects.Add(Cube.CubeEffect_e.PUSH, GetComponent<CubePush>());
+        cubeEffects.Add(Cube.CubeEffect_e.SPEED, GetComponent<CubeSpeed>());
         cubeEffects.Add(Cube.CubeEffect_e.ANTI_GRAVITY, GetComponent<CubeAntiGravity>());
     }
 
@@ -81,7 +82,7 @@ public class CubeController : MonoBehaviour {
             return null;
         }
         cubeEffect.setActive(true);
-        print("updateCurrentEffect");
+        //print("updateCurrentEffect");
         return cubeEffect;
     }
 
