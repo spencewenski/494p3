@@ -38,7 +38,7 @@ public class LightRipple : MonoBehaviour {
                 return false;
             }
             rippleCenter = rippleCenter_;
-            currentMaxRadius = 0f;
+            currentMaxRadius = 1f;
             rippling = true;
             return true;
         }
