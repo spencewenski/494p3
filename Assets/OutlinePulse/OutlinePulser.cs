@@ -97,11 +97,13 @@ public class OutlinePulser : MonoBehaviour {
 			Color curColor = rend.material.GetColor("_OutlineColor");
 			if (rmsValue > accentThreshold && curColor == outlineColor)
 				rend.material.SetColor ("_OutlineColor", accentColor);
-			if (curColor != Color.white) {
+
+			/*if (curColor != Color.white) {
 				Color saturate = curColor;
 				saturate.b += 0.005f;
 				rend.material.SetColor ("_OutlineColor", saturate);
 			}
+			*/
 			if (rmsValue < removeAccentThreshold) {
 				rend.material.SetColor ("_OutlineColor", outlineColor);
 			}
