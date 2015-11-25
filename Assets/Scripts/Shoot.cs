@@ -48,20 +48,27 @@ public class Shoot : MonoBehaviour {
         }
         // switch gun with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            projectileIndex = 0;
+            projectileIndex = validProjectileIndex(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            projectileIndex = 1;
+            projectileIndex = validProjectileIndex(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            projectileIndex = 2;
+            projectileIndex = validProjectileIndex(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            projectileIndex = 3;
+            projectileIndex = validProjectileIndex(3);
         }
         if (Input.GetKeyDown(KeyCode.Alpha5)) {
-            projectileIndex = 4;
+            projectileIndex = validProjectileIndex(4);
         }
+    }
+
+    private int validProjectileIndex(int index) {
+        if (prefabProjectiles.Count == 0) {
+            return 0;
+        }
+        return Mathf.Min(index, prefabProjectiles.Count - 1);
     }
 
     private void startCharging() {
