@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_SceneStart_SF.unity
+    path: Assets/_SceneStart.unity
   - enabled: 1
     path: Assets/_SceneOutlineLevel_JL.unity
   - enabled: 1
