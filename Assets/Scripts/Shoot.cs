@@ -39,12 +39,12 @@ public class Shoot : MonoBehaviour {
         }
         // switch gun with scroll wheel
         if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-            projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
+			projectileIndex--;
+			if (projectileIndex < 0) {
+				projectileIndex = prefabProjectiles.Count - 1;
+			}
         } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-            projectileIndex--;
-            if (projectileIndex < 0) {
-                projectileIndex = prefabProjectiles.Count - 1;
-            }
+            projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
         }
         // switch gun with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
