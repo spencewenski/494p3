@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
     private Rigidbody rigid;
     private float mouseSensitivity = 5.0f;
-    private float speed = 5f;
+    private float speed = 7f;
     private float jumpSpeed = 7f;
     private Collider collider;
     private float distToGround;
@@ -102,6 +102,7 @@ public class PlayerScript : MonoBehaviour {
             camRot.x = 60;
         else if (camRot.x < 300 && camRot.x > 90)
             camRot.x = 300;
+        camRot.z = 0;
         camTrans.localRotation = Quaternion.Euler(camRot);
     }   
 
