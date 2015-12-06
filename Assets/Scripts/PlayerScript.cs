@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour {
     private float bounceDecreaseRate = .97f;
     private bool hasSpeed = false;
     private bool hasTramp = false;
+    private LayerMask caneMask;
 
     // Use this for initialization
     void Start () {
@@ -24,6 +25,7 @@ public class PlayerScript : MonoBehaviour {
         distToGround = collider.bounds.extents.y;
         cane = this.gameObject.transform.GetChild(0);
         camTrans = Camera.main.transform;
+        caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
     }
 	
 	// Update is called once per frame
@@ -108,19 +110,22 @@ public class PlayerScript : MonoBehaviour {
 
     bool IsGrounded()
     {
-        RaycastHit rayHit1 = new RaycastHit(), rayHit2 = new RaycastHit(), rayHit3 = new RaycastHit(), rayHit4 = new RaycastHit();
+        RaycastHit rayHit1 = new RaycastHit(), rayHit2 = new RaycastHit(), rayHit3 = new RaycastHit(), rayHit4 = new RaycastHit(),
+            rayHit5 = new RaycastHit();
 
-        bool isGrounded = Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, out rayHit1, distToGround + 0.1f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, out rayHit2, distToGround + 0.1f) ||
-            Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, out rayHit3, distToGround + 0.1f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, out rayHit4, distToGround + 0.1f);
-
+        bool isGrounded = Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, out rayHit1, distToGround + 0.1f, caneMask) ||
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, out rayHit2, distToGround + 0.1f, caneMask) ||
+            Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, out rayHit3, distToGround + 0.1f, caneMask) ||
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, out rayHit4, distToGround + 0.1f, caneMask);
+           // Physics.Raycast(transform.position + new Vector3(-0.5f, -.3f, -1f) + transform.forward * .5f, -Vector3.up, out rayHit5, 2f, caneMask);
+        
         if (isGrounded)
         {
             setWasLastSpeededWithRayHit(rayHit1);
             setWasLastSpeededWithRayHit(rayHit2);
             setWasLastSpeededWithRayHit(rayHit3);
             setWasLastSpeededWithRayHit(rayHit4);
+            setWasLastSpeededWithRayHit(rayHit5);
         }
 
         //(Physics.CapsuleCast(collider..position, transform.position, .5f, -Vector3.up, out bouncehit, distToGround + 0.1f));

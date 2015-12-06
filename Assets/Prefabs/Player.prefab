@@ -30,7 +30,7 @@ GameObject:
   - 33: {fileID: 3331388}
   - 136: {fileID: 13610090}
   - 23: {fileID: 2328346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cane
   m_TagString: cane
   m_Icon: {fileID: 0}
@@ -79,8 +79,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145440}
-  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 0, y: 2.04999995, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .5, z: 3}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children:
   - {fileID: 418734}
@@ -150,7 +150,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -174,7 +176,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -275,9 +279,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabProjectiles:
   - {fileID: 133214, guid: 192641b7aeb791a42836d7d517914bc1, type: 2}
-  - {fileID: 117058, guid: ba52494826521a44f9b1b1baed75ec9c, type: 2}
-  - {fileID: 117058, guid: d753023437760f9409f299d208bcfdc7, type: 2}
-  - {fileID: 117058, guid: 6c5132efbe21209469edbe74659d312c, type: 2}
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
