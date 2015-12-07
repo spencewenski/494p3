@@ -15,13 +15,20 @@ public class Projectile : MonoBehaviour {
 
     void Awake() {
         rigidBody = GetComponent<Rigidbody>();
-        EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
-        outlineColor = def.outlineColor;
-        accentColor = def.accentColor;
     }
 
     void Start() {
         Destroy(gameObject, 5f);
+    }
+
+    public void setEffect(Cube.CubeEffect_e effect_) {
+        effect = effect_;
+        EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
+        outlineColor = def.outlineColor;
+        accentColor = def.accentColor;
+        // set color
+        Material mat = GetComponent<Renderer>().material;
+        mat.color = def.outlineColor;
     }
 
     // overwrite if you require special behavior

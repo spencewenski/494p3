@@ -13,15 +13,15 @@ public class HUDGuns : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        foreach (GameObject prefabProjectile in Shoot.S.prefabProjectiles) {
-            addGun(prefabProjectile);
+        foreach (Cube.CubeEffect_e effect in Shoot.S.effects) {
+            addGun(effect);
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Shoot.S.prefabProjectiles.Count > cubeEffectText.Count) {
-            addGun(Shoot.S.prefabProjectiles[Shoot.S.prefabProjectiles.Count - 1]);
+        if (Shoot.S.effects.Count > cubeEffectText.Count) {
+            addGun(Shoot.S.effects[Shoot.S.effects.Count - 1]);
         }
 
         foreach (KeyValuePair<Cube.CubeEffect_e, Text> entry in cubeEffectText) {
@@ -33,15 +33,14 @@ public class HUDGuns : MonoBehaviour {
         }
     }
 
-    private void addGun(GameObject prefabProjectile) {
-        Projectile projectile = prefabProjectile.GetComponent<Projectile>();
-        EffectDefinition def = Shoot.getCubeEffectDefinition(projectile.effect);
+    private void addGun(Cube.CubeEffect_e effect) {
+        EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
         GameObject textGO = Instantiate(effectTextPrefab);
         textGO.transform.SetParent(transform, false);
         Text text = textGO.GetComponent<Text>();
         if (text != null) {
             text.text = def.text;
-            cubeEffectText[projectile.effect] = text;
+            cubeEffectText[effect] = text;
         }
     }
 }

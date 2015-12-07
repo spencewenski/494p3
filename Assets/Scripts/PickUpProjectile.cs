@@ -3,14 +3,15 @@ using System.Collections;
 
 public class PickUpProjectile : MonoBehaviour {
 
-	public GameObject prefabProjectile;
+    //public GameObject prefabProjectile;
+    public Cube.CubeEffect_e effect;
 
 	public bool _________________;
 
 	public bool colliding = false;
 
     void Start() {
-        EffectDefinition def = Shoot.getCubeEffectDefinition(prefabProjectile.GetComponent<Projectile>().effect);
+        EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
         Light light = GetComponent<Light>();
         if (light != null) {
             light.color = def.outlineColor;
@@ -27,8 +28,7 @@ public class PickUpProjectile : MonoBehaviour {
 			return;
 		}
 		colliding = true;
-		Shoot shoot = other.GetComponent<Shoot>();
-		shoot.prefabProjectiles.Add(prefabProjectile);
+		Shoot.S.addEffect(effect);
 		Destroy(gameObject);
 	}
 }

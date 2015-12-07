@@ -8,7 +8,9 @@ public class Shoot : MonoBehaviour {
 
     public List<EffectDefinition> cubeEffectDefinitions;
 
-    public List<GameObject> prefabProjectiles = new List<GameObject>();
+    //public List<GameObject> prefabProjectiles = new List<GameObject>();
+    public GameObject prefabProjectile;
+    public List<Cube.CubeEffect_e> effects = new List<Cube.CubeEffect_e>();
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
     public float projectileHeight = 0.5f;
@@ -35,6 +37,13 @@ public class Shoot : MonoBehaviour {
             return EFFECT_DEFS[effect];
         }
         return new EffectDefinition();
+    }
+
+    public void addEffect(Cube.CubeEffect_e effect) {
+        if (effects.Contains(effect)) {
+            return;
+        }
+        effects.Add(effect);
     }
 
     // Use this for initialization
@@ -84,23 +93,23 @@ public class Shoot : MonoBehaviour {
 	}
 
     private void switchToNextGun() {
-        projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
+        projectileIndex = (projectileIndex + 1) % effects.Count;
 		projectileIndex = validProjectileIndex(projectileIndex);
     }
 
     private void switchToPreviousGun() {
         projectileIndex--;
         if (projectileIndex < 0) {
-            projectileIndex = prefabProjectiles.Count - 1;
+            projectileIndex = effects.Count - 1;
         }
 		projectileIndex = validProjectileIndex(projectileIndex);
     }
 
     private int validProjectileIndex(int index) {
-        if (prefabProjectiles.Count == 0) {
+        if (effects.Count == 0) {
             return 0;
         }
-        if (index >= prefabProjectiles.Count || index < 0) {
+        if (index >= effects.Count || index < 0) {
             return projectileIndex;
         }
         return index;
@@ -117,27 +126,30 @@ public class Shoot : MonoBehaviour {
     }
 
     private void shoot() {
-        if (projectileIndex >= prefabProjectiles.Count) {
+        if (projectileIndex >= effects.Count) {
             print("Shoot.shoot(): invalid index");
             return;
         }
-        GameObject projectile = Instantiate(prefabProjectiles[projectileIndex]) as GameObject;
-        Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>());
+        //GameObject projectileGO = Instantiate(prefabProjectiles[projectileIndex]) as GameObject;
+        GameObject projectileGO = Instantiate(prefabProjectile) as GameObject;
+        Physics.IgnoreCollision(projectileGO.GetComponent<Collider>(), GetComponent<Collider>());
         //Vector3 projectilePosition = transform.position;
         Vector3 projectilePosition = mainCamera.transform.position;
         // projectile position
         //projectilePosition += mainCamera.transform.forward.normalized;
         projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
-        projectile.transform.position = projectilePosition;
+        projectileGO.transform.position = projectilePosition;
         // projectile velocity
         float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
-        projectile.GetComponent<Projectile>().setVelocity(mainCamera.transform.forward, speedFactor);
+        Projectile projectile = projectileGO.GetComponent<Projectile>();
+        projectile.setEffect(currentEffect());
+        projectile.setVelocity(mainCamera.transform.forward, speedFactor);
     }
 
     public Cube.CubeEffect_e currentEffect() {
-        if (prefabProjectiles.Count == 0) {
+        if (effects.Count == 0) {
             return Cube.CubeEffect_e.NONE;
         }
-        return prefabProjectiles[projectileIndex].GetComponent<Projectile>().effect;
+        return effects[projectileIndex];
     }
 }
