@@ -12,7 +12,7 @@ GameObject:
   - 135: {fileID: 13520544}
   - 23: {fileID: 2372950}
   - 54: {fileID: 5400104}
-  - 114: {fileID: 11417518}
+  - 114: {fileID: 11415894}
   m_Layer: 0
   m_Name: ProjectileOutline
   m_TagString: Projectile
@@ -78,7 +78,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &11417518
+--- !u!114 &11415894
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 133214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb9853f2fbc0d14e9757fd5d34229d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d1762f5095159143a225df378eb6682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effect: 1
@@ -118,6 +118,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 539d781a25595004394099bb17799d68, type: 2}
+    - target: {fileID: 0}
+      propertyPath: effect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133214}

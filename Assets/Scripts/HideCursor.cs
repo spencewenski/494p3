@@ -4,7 +4,9 @@ using System.Collections;
 public class HideCursor : MonoBehaviour {
 
 	void Awake() {
-		Cursor.visible = false;
+#if (!UNITY_EDITOR)
+        Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+#endif
 	}
 }

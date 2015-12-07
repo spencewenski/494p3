@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour {
     private bool hasTramp = false;
     private LayerMask caneMask;
 
+
     // Use this for initialization
     void Start () {
         rigid = GetComponent<Rigidbody>();
@@ -31,7 +32,6 @@ public class PlayerScript : MonoBehaviour {
         
     }
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 		if (Input.GetKeyDown (KeyCode.F12)) {
 			Application.LoadLevel(Application.loadedLevel);
@@ -109,7 +109,13 @@ public class PlayerScript : MonoBehaviour {
             camRot.x = 300;
         camRot.z = 0;
         camTrans.localRotation = Quaternion.Euler(camRot);
-    }   
+    }
+
+    void Update() {
+        // update color
+        Renderer rend = caneTip.gameObject.GetComponent<Renderer>();
+        rend.material.SetColor("_Color", Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor);
+    }
 
     bool IsGrounded()
     {

@@ -12,7 +12,7 @@ GameObject:
   - 135: {fileID: 13511774}
   - 23: {fileID: 2384418}
   - 54: {fileID: 5459612}
-  - 114: {fileID: 11463874}
+  - 114: {fileID: 11416036}
   m_Layer: 0
   m_Name: ProjectileAntiGravity
   m_TagString: Projectile
@@ -78,7 +78,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &11463874
+--- !u!114 &11416036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,10 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 117058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c229d40f816e145a59850e34d95fb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d1762f5095159143a225df378eb6682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: 0
+  effect: 5
   speed: 50
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   accentColor: {r: 0, g: 0, b: 0, a: 0}
@@ -146,6 +146,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5ee1378ae642b6c43a7fc5ab2dd8cbd8, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117058}

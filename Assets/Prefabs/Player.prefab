@@ -341,8 +341,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d0faa51f5a90c4b8c723d21dba84a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabProjectiles:
-  - {fileID: 133214, guid: 192641b7aeb791a42836d7d517914bc1, type: 2}
+  cubeEffectDefinitions:
+  - effect: 1
+    text: Outline
+    outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    accentColor: {r: 1, g: 1, b: 1, a: 1}
+  - effect: 2
+    text: Push
+    outlineColor: {r: 1, g: 0, b: 0, a: 1}
+    accentColor: {r: .658620715, g: 0, b: 0, a: 1}
+  - effect: 3
+    text: Trampoline
+    outlineColor: {r: 0, g: 1, b: 0, a: 1}
+    accentColor: {r: 0, g: .603448272, b: 0, a: 1}
+  - effect: 4
+    text: Speed
+    outlineColor: {r: 0, g: .615999997, b: 1, a: 1}
+    accentColor: {r: 0, g: 0, b: 1, a: 1}
+  - effect: 5
+    text: Anti-Gravity
+    outlineColor: {r: 1, g: 1, b: 0, a: 1}
+    accentColor: {r: 1, g: .703000009, b: 0, a: 1}
+  prefabProjectiles: []
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
@@ -409,6 +429,14 @@ Prefab:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: prefabProjectiles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
@@ -436,6 +464,194 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: projectileHeight
       value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: prefabProjectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 133214, guid: 192641b7aeb791a42836d7d517914bc1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].effect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].text
+      value: Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].outlineColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].outlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].accentColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].accentColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].accentColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].accentColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].effect
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].text
+      value: Push
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].outlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].outlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].outlineColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].outlineColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].accentColor.r
+      value: .658620715
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].accentColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].accentColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].accentColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].effect
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].text
+      value: Trampoline
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].outlineColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].outlineColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].outlineColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].accentColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].accentColor.g
+      value: .603448272
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].effect
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].text
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].outlineColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].outlineColor.g
+      value: .615999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].outlineColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].accentColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].accentColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].effect
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].text
+      value: Anti-Gravity
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].outlineColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].outlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].outlineColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].accentColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].accentColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].accentColor.g
+      value: .703000009
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].accentColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
