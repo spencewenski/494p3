@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class OutlinePulser : MonoBehaviour {
-	
+
+    public Shader shader;
 	public float volume = 1f;
 	public bool OutlinePulseOn = false;
 	
@@ -43,7 +44,7 @@ public class OutlinePulser : MonoBehaviour {
 			aud = audioSource.GetComponent<AudioSource>();
 		}
 		rend = GetComponent<Renderer> ();
-		rend.material.shader = Shader.Find ("Outlined/Silhouette Only");
+        rend.material.shader = shader;
 		samples = new float[qSamples];
 		spectrum = new float[qSamples];
 		rend.material.SetFloat("_Outline", 0);
