@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour {
     private Collider collider;
     private float distToGround;
     private Transform cane;
+    private Transform caneEnd;
     private Transform caneTip;
     private Transform camTrans;
     private float bounceX = 0f;
@@ -27,6 +28,7 @@ public class PlayerScript : MonoBehaviour {
         camTrans = Camera.main.transform;
         cane = camTrans.transform.GetChild(0);
         caneTip = cane.GetChild(0);
+        caneEnd = cane.GetChild(1);
         caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
         
     }
@@ -120,7 +122,8 @@ public class PlayerScript : MonoBehaviour {
             Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, out rayHit2, distToGround + 0.1f, caneMask) ||
             Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, out rayHit3, distToGround + 0.1f, caneMask) ||
             Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, out rayHit4, distToGround + 0.1f, caneMask) ||
-            Physics.Raycast(caneTip.position, -Vector3.up, out rayHit5, 1f, caneMask);
+            Physics.Raycast(caneEnd.position, -Vector3.up, out rayHit5, .5f, caneMask) ||
+            Physics.Raycast(caneTip.position, -Vector3.up, out rayHit5, .5f, caneMask);
         
         if (isGrounded)
         {
