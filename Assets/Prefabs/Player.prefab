@@ -78,6 +78,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &182874
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 402056}
+  m_Layer: 8
+  m_Name: caneEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &402056
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -.981999993, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419618}
+  m_RootOrder: 1
 --- !u!4 &418734
 Transform:
   m_ObjectHideFlags: 1
@@ -102,6 +129,7 @@ Transform:
   m_LocalScale: {x: .200000003, y: .669429123, z: .200000018}
   m_Children:
   - {fileID: 496980}
+  - {fileID: 402056}
   m_Father: {fileID: 418734}
   m_RootOrder: 0
 --- !u!4 &443780
@@ -124,8 +152,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -.712000012, z: .0320000015}
-  m_LocalScale: {x: 1.10000002, y: .300000012, z: 1.10000002}
+  m_LocalPosition: {x: 0, y: -.423999995, z: .0299999993}
+  m_LocalScale: {x: 1.10000002, y: .574245811, z: 1.10000002}
   m_Children: []
   m_Father: {fileID: 419618}
   m_RootOrder: 0
@@ -362,7 +390,8 @@ MonoBehaviour:
     text: Anti-Gravity
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
-  prefabProjectiles: []
+  prefabProjectiles:
+  - {fileID: 133214, guid: 192641b7aeb791a42836d7d517914bc1, type: 2}
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
