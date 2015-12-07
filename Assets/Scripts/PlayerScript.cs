@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour {
     private Collider collider;
     private float distToGround;
     private Transform cane;
+    private Transform caneTip;
     private Transform camTrans;
     private float bounceX = 0f;
     private float bounceZ = 0f;
@@ -23,9 +24,11 @@ public class PlayerScript : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         distToGround = collider.bounds.extents.y;
-        cane = this.gameObject.transform.GetChild(0);
         camTrans = Camera.main.transform;
+        cane = camTrans.transform.GetChild(0);
+        caneTip = cane.GetChild(0);
         caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
+        
     }
 	
 	// Update is called once per frame
@@ -116,8 +119,8 @@ public class PlayerScript : MonoBehaviour {
         bool isGrounded = Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0.5f), -Vector3.up, out rayHit1, distToGround + 0.1f, caneMask) ||
             Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0.5f), -Vector3.up, out rayHit2, distToGround + 0.1f, caneMask) ||
             Physics.Raycast(transform.position + new Vector3(0.5f, 0, -0.5f), -Vector3.up, out rayHit3, distToGround + 0.1f, caneMask) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, out rayHit4, distToGround + 0.1f, caneMask);
-           // Physics.Raycast(transform.position + new Vector3(-0.5f, -.3f, -1f) + transform.forward * .5f, -Vector3.up, out rayHit5, 2f, caneMask);
+            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, -0.5f), -Vector3.up, out rayHit4, distToGround + 0.1f, caneMask) ||
+            Physics.Raycast(caneTip.position, -Vector3.up, out rayHit5, 1f, caneMask);
         
         if (isGrounded)
         {
