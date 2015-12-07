@@ -20,6 +20,10 @@ public class Projectile : MonoBehaviour {
         accentColor = def.accentColor;
     }
 
+    void Start() {
+        Destroy(gameObject, 5f);
+    }
+
     // overwrite if you require special behavior
     public virtual void setVelocity(Vector3 direction, float speedFactor) {
         if (rigidBody == null) {
