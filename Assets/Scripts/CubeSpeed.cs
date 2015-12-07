@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CubeSpeed : Cube
 {
-    OutlinePulser outline;
 
     public override void AwakeChild()
     {
@@ -11,14 +10,12 @@ public class CubeSpeed : Cube
         effect = Cube.CubeEffect_e.SPEED;
     }
 
-    void Start()
-    {
-        outline = gameObject.GetComponentInChildren<OutlinePulser>();
-    }
+    public override void setActiveChild(bool active_) {
+        if (active_) {
+            tag = "speed";
+        } else {
+            tag = "Untagged";
+        }
 
-    public override void doEffectChild(Collider collision)
-    {
-        outline.OutlinePulseOn = true;
-        tag = "speed";
     }
 }

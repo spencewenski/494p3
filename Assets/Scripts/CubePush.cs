@@ -20,7 +20,7 @@ public class CubePush : Cube {
 
     public bool _____________;
 
-	OutlinePulser outline;
+	//OutlinePulser outline;
     public Rigidbody rigidBody;
 
     public override void AwakeChild() {
@@ -40,7 +40,6 @@ public class CubePush : Cube {
 
     // Use this for initialization
     void Start () {
-        outline = gameObject.GetComponentInChildren<OutlinePulser>();
 	}
 	
 	// Update is called once per frame
@@ -60,7 +59,7 @@ public class CubePush : Cube {
         if (projectile == null) {
             return;
         }
-        outline.OutlinePulseOn = true;
+        //outline.OutlinePulseOn = true;
         push(collision.transform.position, projectile.getVelocity());
     }
 

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CubeTramp : Cube {
 
-    OutlinePulser outline;
 
     public override void AwakeChild()
     {
@@ -11,14 +10,12 @@ public class CubeTramp : Cube {
         effect = Cube.CubeEffect_e.TRAMP;
     }
 
-    void Start()
-    {
-        outline = gameObject.GetComponentInChildren<OutlinePulser>();
-    }
+    public override void setActiveChild(bool active_) {
+        if (active_) {
+            tag = "trampoline";
+        } else {
+            tag = "Untagged";
+        }
 
-    public override void doEffectChild(Collider collision)
-    {
-        outline.OutlinePulseOn = true;
-        tag = "trampoline";
     }
 }

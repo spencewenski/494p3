@@ -49,9 +49,10 @@ public class Cube : MonoBehaviour {
 
     public void setActive(bool active_) {
         active = active_;
-        // set color
+        // set color and turn on outline
         if (active) {
             EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
+            outlinePulser.OutlinePulseOn = true;
             outlinePulser.setOutlineAccentColor(def.outlineColor, def.accentColor);
             lightRipple.setRippleColor(def.outlineColor);
         }
