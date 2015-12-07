@@ -4,7 +4,7 @@ using System.Collections;
 public class OutlinePulser : MonoBehaviour {
 
     public Shader shader;
-	public float volume = 1f;
+    public float volume = 1f;
 	public bool OutlinePulseOn = false;
 	
 	// Choose default range
@@ -45,7 +45,7 @@ public class OutlinePulser : MonoBehaviour {
 		}
 		rend = GetComponent<Renderer> ();
         rend.material.shader = shader;
-		samples = new float[qSamples];
+        samples = new float[qSamples];
 		spectrum = new float[qSamples];
 		rend.material.SetFloat("_Outline", 0);
 		rend.material.SetColor ("_OutlineColor", outlineColor);

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e739620974c6494eb7355c873c8a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
   volume: .5
   OutlinePulseOn: 1
   setToBass: 0
@@ -145,6 +146,10 @@ Prefab:
       propertyPath: setToMid
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shader
+      value: 
+      objectReference: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180738}
