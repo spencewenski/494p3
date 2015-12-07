@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.40999997, y: 4.44999981, z: .119999997}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,9 +50,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -64,7 +62,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180738}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6535766
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -88,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdfcf691b1c747d19a6d45f1f5b783c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabProjectile: {fileID: 117058, guid: d753023437760f9409f299d208bcfdc7, type: 2}
+  prefabProjectile: {fileID: 133214, guid: 192641b7aeb791a42836d7d517914bc1, type: 2}
   _________________: 0
   colliding: 0
 --- !u!114 &11495006
@@ -102,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e739620974c6494eb7355c873c8a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: .5
+  volume: 1
   OutlinePulseOn: 1
   setToBass: 0
   setToMid: 1
@@ -112,8 +110,8 @@ MonoBehaviour:
   minRms: .00100000005
   accentThreshold: .150000006
   removeAccentThreshold: .0500000007
-  outlineColor: {r: 0, g: 1, b: 0, a: 1}
-  accentColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  accentColor: {r: 1, g: .921568632, b: .0156862754, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
