@@ -52,35 +52,40 @@ public class Shoot : MonoBehaviour {
         if (charging) {
             chargeTime += Time.deltaTime;
         }
-        // switch gun with scroll wheel
-        if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-            switchToPreviousGun();
-        } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-            switchToNextGun();
-        }
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            switchToNextGun();
-        }
-        // switch gun with number keys
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            projectileIndex = validProjectileIndex(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            projectileIndex = validProjectileIndex(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            projectileIndex = validProjectileIndex(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            projectileIndex = validProjectileIndex(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) {
-            projectileIndex = validProjectileIndex(4);
-        }
+        switchGun();
     }
+
+	private void switchGun() {
+		// switch gun with scroll wheel
+		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+			switchToPreviousGun();
+		} else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+			switchToNextGun();
+		}
+		if (Input.GetKeyDown(KeyCode.Tab)) {
+			switchToNextGun();
+		}
+		// switch gun with number keys
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+			projectileIndex = validProjectileIndex(0);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			projectileIndex = validProjectileIndex(1);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			projectileIndex = validProjectileIndex(2);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			projectileIndex = validProjectileIndex(3);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha5)) {
+			projectileIndex = validProjectileIndex(4);
+		}
+	}
 
     private void switchToNextGun() {
         projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
+		projectileIndex = validProjectileIndex(projectileIndex);
     }
 
     private void switchToPreviousGun() {
@@ -88,6 +93,7 @@ public class Shoot : MonoBehaviour {
         if (projectileIndex < 0) {
             projectileIndex = prefabProjectiles.Count - 1;
         }
+		projectileIndex = validProjectileIndex(projectileIndex);
     }
 
     private int validProjectileIndex(int index) {
