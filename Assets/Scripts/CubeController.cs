@@ -52,7 +52,7 @@ public class CubeController : MonoBehaviour {
         }
 
         // update active effect
-        Cube cubeEffect = updateCurrentEffect(other);
+        Cube cubeEffect = updateCurrentEffect(other.GetComponent<Projectile>());
         // do effect
         if (cubeEffect == null) {
             return;
@@ -60,15 +60,19 @@ public class CubeController : MonoBehaviour {
         cubeEffect.doEffect(other);
     }
 
+    private Cube updateCurrentEffect(Projectile projectile)
+    {
+        return updateCurrentEffect(projectile.effect);
+    }
+
     // update the currentEffect
     //
     // returns the Cube object for the currentEffect
-    private Cube updateCurrentEffect(Collider other) {
-        Projectile projectileEffect = other.GetComponent<Projectile>();
-        if (projectileEffect.effect == currentEffect) {
+    public Cube updateCurrentEffect(Cube.CubeEffect_e desiredCubeEffect) {
+        if (desiredCubeEffect == currentEffect) {
             return getCurrentEffect();
         }
-        if (invalidEffects.Contains(projectileEffect.effect)) {
+        if (invalidEffects.Contains(desiredCubeEffect)) {
             return null;
         }
         // set current effect to be inactive
@@ -77,7 +81,7 @@ public class CubeController : MonoBehaviour {
             cubeEffect.setActive(false);
         }
         // set new effect to be active
-        currentEffect = projectileEffect.effect;
+        currentEffect = desiredCubeEffect;
         cubeEffect = getCurrentEffect();
         if (cubeEffect == null) {
             return null;

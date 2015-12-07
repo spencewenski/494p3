@@ -135,6 +135,12 @@ public class LightRipple : MonoBehaviour {
         nextRipple = (nextRipple + 1) % maxRipples;
 		rippleCount = Mathf.Min(rippleCount + 1, maxRipples);
         material.SetInt("_RippleCount", rippleCount);
+
+        CubeController cubeController = gameObject.GetComponent<CubeController>();
+        if (cubeController != null && cubeController.currentEffect == Cube.CubeEffect_e.NONE)
+        {
+            cubeController.updateCurrentEffect(Cube.CubeEffect_e.OUTLINE);
+        }
     }
 
 	void OnCollisionEnter(Collision other) {
