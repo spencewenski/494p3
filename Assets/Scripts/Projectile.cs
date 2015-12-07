@@ -5,13 +5,20 @@ public class Projectile : MonoBehaviour {
 
     // effect that this projectile applies
     public Cube.CubeEffect_e effect;
-    public float speed = 20f;
-	public Color outlineColor;
-	public Color accentColor;
-
+    public float speed = 50f;
+	
     public bool ___________________;
 
+    public Color outlineColor;
+    public Color accentColor;
     public Rigidbody rigidBody;
+
+    void Awake() {
+        rigidBody = GetComponent<Rigidbody>();
+        EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
+        outlineColor = def.outlineColor;
+        accentColor = def.accentColor;
+    }
 
     // overwrite if you require special behavior
     public virtual void setVelocity(Vector3 direction, float speedFactor) {

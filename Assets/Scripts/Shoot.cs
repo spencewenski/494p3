@@ -3,8 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Shoot : MonoBehaviour {
+    public static Shoot S;
+    public static Dictionary<Cube.CubeEffect_e, EffectDefinition> EFFECT_DEFS;
 
-	public List<GameObject> prefabProjectiles = new List<GameObject>();
+    public List<EffectDefinition> cubeEffectDefinitions;
+
+    public List<GameObject> prefabProjectiles = new List<GameObject>();
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
     public float projectileHeight = 0.5f;
@@ -16,18 +20,26 @@ public class Shoot : MonoBehaviour {
     public Camera mainCamera;
 	public int projectileIndex;
 
-    private Transform caneTip;
-
     void Awake() {
+        S = this;
+        EFFECT_DEFS = new Dictionary<Cube.CubeEffect_e, EffectDefinition>();
+        foreach (EffectDefinition def in cubeEffectDefinitions) {
+            EFFECT_DEFS[def.effect] = def;
+        }
         mainCamera = Camera.main;
         projectileIndex = 0;
-        caneTip = mainCamera.transform.GetChild(0).GetChild(0);
+    }
+
+    public static EffectDefinition getCubeEffectDefinition(Cube.CubeEffect_e effect) {
+        if (EFFECT_DEFS.ContainsKey(effect)) {
+            return EFFECT_DEFS[effect];
+        }
+        return new EffectDefinition();
     }
 
     // Use this for initialization
-    void Start () {
-
-	}
+    void Start() {
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -42,12 +54,12 @@ public class Shoot : MonoBehaviour {
         }
         // switch gun with scroll wheel
         if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-			projectileIndex--;
-			if (projectileIndex < 0) {
-				projectileIndex = prefabProjectiles.Count - 1;
-			}
+            switchToPreviousGun();
         } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-            projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
+            switchToNextGun();
+        }
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            switchToNextGun();
         }
         // switch gun with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -66,38 +78,26 @@ public class Shoot : MonoBehaviour {
             projectileIndex = validProjectileIndex(4);
         }
     }
-    private void setCaneColor(Color color)
-    {
-        Renderer rend = caneTip.gameObject.GetComponent<Renderer>();
-        rend.material.SetColor("_Color", color);
+
+    private void switchToNextGun() {
+        projectileIndex = (projectileIndex + 1) % prefabProjectiles.Count;
     }
+
+    private void switchToPreviousGun() {
+        projectileIndex--;
+        if (projectileIndex < 0) {
+            projectileIndex = prefabProjectiles.Count - 1;
+        }
+    }
+
     private int validProjectileIndex(int index) {
         if (prefabProjectiles.Count == 0) {
             return 0;
         }
-        int selected = Mathf.Min(index, prefabProjectiles.Count - 1);
-        switch(selected)
-        {
-            case 0:
-                setCaneColor(Color.white);
-                break;
-            case 1:
-                setCaneColor(Color.red);
-                break;
-            case 2:
-                setCaneColor(Color.green);
-                break;
-            case 3:
-                setCaneColor(Color.blue);
-                break;
-            case 4:
-                setCaneColor(Color.yellow);
-                break;
-            default:
-                setCaneColor(Color.white);
-                break;
-        }   
-        return selected;
+        if (index >= prefabProjectiles.Count || index < 0) {
+            return projectileIndex;
+        }
+        return index;
     }
 
     private void startCharging() {
@@ -126,5 +126,12 @@ public class Shoot : MonoBehaviour {
         // projectile velocity
         float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
         projectile.GetComponent<Projectile>().setVelocity(mainCamera.transform.forward, speedFactor);
+    }
+
+    public Cube.CubeEffect_e currentEffect() {
+        if (prefabProjectiles.Count == 0) {
+            return Cube.CubeEffect_e.NONE;
+        }
+        return prefabProjectiles[projectileIndex].GetComponent<Projectile>().effect;
     }
 }

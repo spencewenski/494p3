@@ -12,7 +12,7 @@ GameObject:
   - 135: {fileID: 13511774}
   - 23: {fileID: 2384418}
   - 54: {fileID: 5459612}
-  - 114: {fileID: 11462460}
+  - 114: {fileID: 11496412}
   m_Layer: 0
   m_Name: ProjectilePush
   m_TagString: Projectile
@@ -78,7 +78,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &11462460
+--- !u!114 &11496412
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,10 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 117058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a7607e41506ba4cb37804828d1cf8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d1762f5095159143a225df378eb6682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: 1
+  effect: 2
   speed: 50
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   accentColor: {r: 0, g: 0, b: 0, a: 0}
@@ -140,7 +140,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: effect
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]

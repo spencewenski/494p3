@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class EffectDefinition {
+    public Cube.CubeEffect_e effect;
+    public string text;
+    public Color outlineColor;
+    public Color accentColor;
+}
+
 public class Cube : MonoBehaviour {
 
     // different types of cube effects
@@ -29,8 +37,6 @@ public class Cube : MonoBehaviour {
             return;
         }
 		Projectile projectile = other.GetComponent<Projectile>();
-		outlinePulser.setOutlineAccentColor (projectile.outlineColor, projectile.accentColor);
-		lightRipple.setRippleColor(projectile.outlineColor);
         doEffectChild(other);
     }
 
@@ -43,6 +49,12 @@ public class Cube : MonoBehaviour {
 
     public void setActive(bool active_) {
         active = active_;
+        // set color
+        if (active) {
+            EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
+            outlinePulser.setOutlineAccentColor(def.outlineColor, def.accentColor);
+            lightRipple.setRippleColor(def.outlineColor);
+        }
         setActiveChild(active);
     }
 

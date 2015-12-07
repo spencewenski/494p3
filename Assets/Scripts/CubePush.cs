@@ -56,12 +56,12 @@ public class CubePush : Cube {
         if (collision.tag != "Projectile") {
             return;
         }
-        ProjectilePush projectilePush = collision.gameObject.GetComponent<ProjectilePush>();
-        if (projectilePush == null) {
+        Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+        if (projectile == null) {
             return;
         }
         outline.OutlinePulseOn = true;
-        push(collision.transform.position, projectilePush.getVelocity());
+        push(collision.transform.position, projectile.getVelocity());
     }
 
     private void push(Vector3 collisionPosition, Vector3 velocity) {
