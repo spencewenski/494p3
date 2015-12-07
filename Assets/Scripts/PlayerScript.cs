@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour {
     private bool hasSpeed = false;
     private bool hasTramp = false;
     private LayerMask caneMask;
+    private Renderer tipRenderer;
 
 
     // Use this for initialization
@@ -31,7 +32,7 @@ public class PlayerScript : MonoBehaviour {
         caneTip = cane.GetChild(0);
         caneEnd = cane.GetChild(1);
         caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
-        
+        tipRenderer = caneTip.GetComponent<Renderer>();
     }
 	
 	void FixedUpdate () {
@@ -113,10 +114,10 @@ public class PlayerScript : MonoBehaviour {
         camTrans.localRotation = Quaternion.Euler(camRot);
     }
 
+
     void Update() {
         // update color
-        Renderer rend = caneTip.gameObject.GetComponent<Renderer>();
-        rend.material.SetColor("_Color", Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor);
+        tipRenderer.material.color = Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor;
     }
 
     bool IsGrounded()

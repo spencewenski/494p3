@@ -9,13 +9,11 @@ EditorBuildSettings:
     path: Assets/_SceneStart.unity
   - enabled: 1
     path: Assets/_SceneOutlineLevel.unity
-  - enabled: 0
-    path: Assets/_ScenePushGun_JL.unity
+  - enabled: 1
+    path: Assets/_ScenePushGun.unity
   - enabled: 1
     path: Assets/_SceneTrampoline.unity
   - enabled: 1
     path: Assets/_SceneSpeedLevel.unity
   - enabled: 1
     path: Assets/_SceneAntiGravityGun.unity
-  - enabled: 1
-    path: Assets/_ScenePushGun.unity
