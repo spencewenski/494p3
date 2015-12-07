@@ -1907,6 +1907,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 11486404, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
+      propertyPath: effects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486404, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
       propertyPath: prefabProjectiles.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1954,6 +1958,14 @@ Prefab:
       propertyPath: prefabProjectiles.Array.data[2]
       value: 
       objectReference: {fileID: 117058, guid: d753023437760f9409f299d208bcfdc7, type: 2}
+    - target: {fileID: 11486404, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
+      propertyPath: effects.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486404, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
+      propertyPath: effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
   m_IsPrefabParent: 0
@@ -2097,6 +2109,10 @@ Prefab:
     - target: {fileID: 11495006, guid: 25d1dfbe3db614597932d2c09e0d006d, type: 2}
       propertyPath: outlineColor.b
       value: .131034613
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445884, guid: 25d1dfbe3db614597932d2c09e0d006d, type: 2}
+      propertyPath: effect
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25d1dfbe3db614597932d2c09e0d006d, type: 2}

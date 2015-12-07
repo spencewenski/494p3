@@ -3396,6 +3396,10 @@ Prefab:
       propertyPath: accentColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11445884, guid: 25d1dfbe3db614597932d2c09e0d006d, type: 2}
+      propertyPath: effect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25d1dfbe3db614597932d2c09e0d006d, type: 2}
   m_IsPrefabParent: 0
