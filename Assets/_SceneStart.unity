@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f822edb4d1d91942bdaa8d5448f1310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: _SceneOutlineLevel_JL
+  firstLevel: _SceneOutlineLevel
 --- !u!1001 &189171007
 Prefab:
   m_ObjectHideFlags: 0

@@ -342,11 +342,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - _SceneOutlineLevel_JL
-  - _ScenePushGun_JL
+  - _SceneOutlineLevel
+  - _ScenePushGun
   - _SceneTrampoline
-  - _SceneSpeedLevel_SB
-  - _SceneAntiGravityGun_SF
+  - _SceneSpeedLevel
+  - _SceneAntiGravityGun
 --- !u!114 &11481820
 MonoBehaviour:
   m_ObjectHideFlags: 1
