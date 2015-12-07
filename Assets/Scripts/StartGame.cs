@@ -12,9 +12,10 @@ public class StartGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.KeypadEnter)) {
-			Destroy(GameObject.Find("Canvas"));
-			Application.LoadLevel(firstLevel);
-		}
+        if (Input.anyKeyDown) {
+            Destroy(GameObject.Find("Canvas"));
+            Application.LoadLevel(firstLevel);
+
+        }
 	}
 }
