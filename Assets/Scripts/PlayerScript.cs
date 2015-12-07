@@ -169,4 +169,5 @@ public class PlayerScript : MonoBehaviour {
             rigid.velocity = new Vector3(bounceX, normal.y * .55f, bounceZ);
         }
     }
+    
 }

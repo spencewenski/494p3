@@ -16,9 +16,12 @@ public class Shoot : MonoBehaviour {
     public Camera mainCamera;
 	public int projectileIndex;
 
+    private Transform caneTip;
+
     void Awake() {
         mainCamera = Camera.main;
         projectileIndex = 0;
+        caneTip = mainCamera.transform.GetChild(0).GetChild(0);
     }
 
     // Use this for initialization
@@ -63,12 +66,38 @@ public class Shoot : MonoBehaviour {
             projectileIndex = validProjectileIndex(4);
         }
     }
-
+    private void setCaneColor(Color color)
+    {
+        Renderer rend = caneTip.gameObject.GetComponent<Renderer>();
+        rend.material.SetColor("_Color", color);
+    }
     private int validProjectileIndex(int index) {
         if (prefabProjectiles.Count == 0) {
             return 0;
         }
-        return Mathf.Min(index, prefabProjectiles.Count - 1);
+        int selected = Mathf.Min(index, prefabProjectiles.Count - 1);
+        switch(selected)
+        {
+            case 0:
+                setCaneColor(Color.white);
+                break;
+            case 1:
+                setCaneColor(Color.red);
+                break;
+            case 2:
+                setCaneColor(Color.green);
+                break;
+            case 3:
+                setCaneColor(Color.blue);
+                break;
+            case 4:
+                setCaneColor(Color.yellow);
+                break;
+            default:
+                setCaneColor(Color.white);
+                break;
+        }   
+        return selected;
     }
 
     private void startCharging() {
