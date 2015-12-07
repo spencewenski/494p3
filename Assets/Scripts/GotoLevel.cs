@@ -8,6 +8,10 @@ public class GotoLevel : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            loadLevel(5);
+        }
         if (!Input.GetKey(KeyCode.RightShift)) {
             return;
         }

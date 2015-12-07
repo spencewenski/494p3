@@ -347,6 +347,7 @@ MonoBehaviour:
   - _SceneTrampoline
   - _SceneSpeedLevel
   - _SceneAntiGravityGun
+  - _SceneStart
 --- !u!114 &11481820
 MonoBehaviour:
   m_ObjectHideFlags: 1
