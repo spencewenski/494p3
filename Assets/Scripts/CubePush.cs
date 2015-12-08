@@ -59,11 +59,13 @@ public class CubePush : Cube {
         if (projectile == null) {
             return;
         }
-        //outline.OutlinePulseOn = true;
-        push(collision.transform.position, projectile.getVelocity());
+        push(collision.transform.position, projectile.getVelocity(), projectile.reverse);
     }
 
-    private void push(Vector3 collisionPosition, Vector3 velocity) {
+    private void push(Vector3 collisionPosition, Vector3 velocity, bool reverse) {
+        if (reverse) {
+            velocity = -velocity;
+        }
         switch (pushType) {
             case PushType_e.NONE:
                 return;

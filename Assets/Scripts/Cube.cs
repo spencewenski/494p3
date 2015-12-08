@@ -5,6 +5,7 @@ using System.Collections;
 public class EffectDefinition {
     public Cube.CubeEffect_e effect;
     public string text;
+    public string reverseText;
     public Color outlineColor;
     public Color accentColor;
 }
@@ -36,7 +37,6 @@ public class Cube : MonoBehaviour {
         if (!active) {
             return;
         }
-		Projectile projectile = other.GetComponent<Projectile>();
         doEffectChild(other);
     }
 

@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour {
     // effect that this projectile applies
     public Cube.CubeEffect_e effect;
     public float speed = 50f;
+    public bool reverse; // do the reverse of the effect
 	
     public bool ___________________;
 
@@ -21,8 +22,9 @@ public class Projectile : MonoBehaviour {
         Destroy(gameObject, 5f);
     }
 
-    public void setEffect(Cube.CubeEffect_e effect_) {
+    public void setEffect(Cube.CubeEffect_e effect_, bool reverse_) {
         effect = effect_;
+        reverse = reverse_;
         EffectDefinition def = Shoot.getCubeEffectDefinition(effect);
         outlineColor = def.outlineColor;
         accentColor = def.accentColor;

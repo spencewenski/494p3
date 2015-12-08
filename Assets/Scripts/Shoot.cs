@@ -52,7 +52,7 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
             shoot();
@@ -142,7 +142,7 @@ public class Shoot : MonoBehaviour {
         // projectile velocity
         float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
         Projectile projectile = projectileGO.GetComponent<Projectile>();
-        projectile.setEffect(currentEffect());
+        projectile.setEffect(currentEffect(), reverseEffect());
         projectile.setVelocity(mainCamera.transform.forward, speedFactor);
     }
 
@@ -151,5 +151,9 @@ public class Shoot : MonoBehaviour {
             return Cube.CubeEffect_e.NONE;
         }
         return effects[projectileIndex];
+    }
+
+    public bool reverseEffect() {
+        return Input.GetMouseButton(1);
     }
 }

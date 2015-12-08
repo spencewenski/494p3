@@ -373,22 +373,27 @@ MonoBehaviour:
   cubeEffectDefinitions:
   - effect: 1
     text: Outline
+    reverseText: Outline
     outlineColor: {r: 1, g: 1, b: 1, a: 1}
     accentColor: {r: 1, g: 1, b: 1, a: 1}
   - effect: 2
     text: Push
+    reverseText: Pull
     outlineColor: {r: 1, g: 0, b: 0, a: 1}
     accentColor: {r: .658620715, g: 0, b: 0, a: 1}
   - effect: 3
     text: Trampoline
+    reverseText: Trampoline
     outlineColor: {r: 0, g: 1, b: 0, a: 1}
     accentColor: {r: 0, g: .603448272, b: 0, a: 1}
   - effect: 4
     text: Speed
+    reverseText: Speed
     outlineColor: {r: 0, g: .615999997, b: 1, a: 1}
     accentColor: {r: 0, g: 0, b: 1, a: 1}
   - effect: 5
     text: Anti-Gravity
+    reverseText: Anti-Gravity
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
@@ -687,6 +692,26 @@ Prefab:
       propertyPath: prefabProjectile
       value: 
       objectReference: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[0].reverseText
+      value: Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[1].reverseText
+      value: Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[2].reverseText
+      value: Trampoline
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[3].reverseText
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cubeEffectDefinitions.Array.data[4].reverseText
+      value: Anti-Gravity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145440}
