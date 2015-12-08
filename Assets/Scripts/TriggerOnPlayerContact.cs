@@ -9,7 +9,7 @@ public class TriggerOnPlayerContact : MonoBehaviour {
     public GameObject triggerTextRoot;
 
     public List<GameObject> outlineOnTrigger = new List<GameObject>();
-    public string displayOnTrigger = null;
+    public List<string> displayOnTrigger = new List<string>();
 
 	// Use this for initialization
 	void Start () {
@@ -48,12 +48,23 @@ public class TriggerOnPlayerContact : MonoBehaviour {
             }
         }
 
-        if (displayOnTrigger != null)
+        string displayString = "";
+        int lineNum = 0;
+        foreach (string line in displayOnTrigger)
+        {
+            if (lineNum++ > 0)
+            {
+                displayString += "\n";
+            }
+            displayString += line;
+        }
+
+        if (displayString.Length > 0)
         {
             GameObject textGO = Instantiate(effectTextPrefab);
             textGO.transform.SetParent(triggerTextRoot.transform, false);
             Text text = textGO.GetComponent<Text>();
-            text.text = displayOnTrigger;
+            text.text = displayString;
             text.color = Color.white;
         }
 

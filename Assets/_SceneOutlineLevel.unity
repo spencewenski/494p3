@@ -1181,6 +1181,10 @@ Prefab:
       propertyPath: outlineOnTrigger.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayOnTrigger.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1239,6 +1243,10 @@ Prefab:
       objectReference: {fileID: 1195891366}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayOnTrigger.Array.data[0]
       value: Press Space to jump!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1827,6 +1835,10 @@ Prefab:
       propertyPath: outlineOnTrigger.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayOnTrigger.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1877,7 +1889,7 @@ Prefab:
       objectReference: {fileID: 1195891366}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger
-      value: Click to shoot! Head to the purple goal!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.data[0]
@@ -1886,6 +1898,14 @@ Prefab:
     - target: {fileID: 134470, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_Name
       value: on projectile collection
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayOnTrigger.Array.data[0]
+      value: Click to shoot!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayOnTrigger.Array.data[1]
+      value: Use outline to make objects pulse to the music!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
@@ -2731,7 +2751,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22471452, guid: 2fd1e921de901834ba50f51981fba99e, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -258
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22471452, guid: 2fd1e921de901834ba50f51981fba99e, type: 2}
       propertyPath: m_AnchoredPosition.y
