@@ -297,7 +297,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145440}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1.00000001e-07
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -397,7 +397,7 @@ MonoBehaviour:
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
-  effects: 
+  effects: 0100000002000000030000000400000005000000
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25

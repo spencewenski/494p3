@@ -1870,9 +1870,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2130706847}
-  - {fileID: 1055531778}
   - {fileID: 183853596}
+  - {fileID: 1055531778}
+  - {fileID: 2130706847}
   m_Father: {fileID: 1252131813}
   m_RootOrder: 3
 --- !u!4 &1304822140 stripped
@@ -2223,6 +2223,10 @@ Prefab:
     - target: {fileID: 11486404, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
       propertyPath: effects.Array.data[4]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497134, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
+      propertyPath: m_Mass
+      value: 1.00000001e-07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
