@@ -160,7 +160,8 @@ public class Shoot : MonoBehaviour {
 		}
 
 		for (int i = 0; i < numScatterShots; ++i) {
-			Vector3 spreadNoise = new Vector3(Random.Range(-horSpread, horSpread), Random.Range(-verSpread, verSpread), 0f);
+			Vector3 spreadNoise = new Vector3(Random.Range(-horSpread, horSpread),
+			                                  Random.Range(-verSpread, verSpread), Random.Range(-horSpread, horSpread));
 			GameObject projectileGO = Instantiate (prefabProjectile) as GameObject;
 			Physics.IgnoreCollision (projectileGO.GetComponent<Collider> (), GetComponent<Collider> ());
 			Vector3 projectilePosition = mainCamera.transform.position;

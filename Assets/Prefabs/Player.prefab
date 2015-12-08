@@ -401,10 +401,10 @@ MonoBehaviour:
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
-  verSpread: .5
-  horSpread: .699999988
+  verSpread: .300000012
+  horSpread: .400000006
   scatterChargeTime: 1.5
-  numScatterShots: 25
+  numScatterShots: 30
   ______________________: 0
   charging: 0
   chargeTime: 0
@@ -750,15 +750,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: numScatterShots
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: horSpread
-      value: .699999988
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: verSpread
-      value: .5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxChargeTime
