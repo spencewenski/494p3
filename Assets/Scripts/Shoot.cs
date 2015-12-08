@@ -59,7 +59,7 @@ public class Shoot : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
-			if (chargeTime > scatterChargeTime)
+			if (chargeTime > scatterChargeTime && projectileIndex == 0)
 				scatterShoot ();
 			else 
 				shoot();
