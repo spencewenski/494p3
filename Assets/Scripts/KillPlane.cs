@@ -14,10 +14,16 @@ public class KillPlane : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag != "Player") {
+		if (other.tag == "Player") {
+			other.transform.position = Checkpoint.lastCheckpoint.spawnPoint.position;
+			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			return;
+		}
+		if (other.tag == "LevelCube") {
+			other.transform.position = other.gameObject.GetComponent<CubeController>().startPosition;
+			other.GetComponent<Rigidbody>().velocity = Vector3.zero;
             return;
         }
-        other.transform.position = Checkpoint.lastCheckpoint.spawnPoint.position;
-        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
     }
 }

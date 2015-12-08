@@ -10,6 +10,7 @@ TagManager:
   - trampoline
   - CheckpointSystem
   - speed
+  - LevelCube
   layers:
   - Default
   - TransparentFX

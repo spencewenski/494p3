@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CubeController : MonoBehaviour {
 
+	public Vector3 startPosition;
     public List<Cube.CubeEffect_e> invalidEffects;
 
     public bool ____________________;
@@ -28,7 +29,7 @@ public class CubeController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
+		startPosition = transform.position;
 	}
 	
 	// Update is called once per frame
