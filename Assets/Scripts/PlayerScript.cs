@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour {
     private bool hasTramp = false;
     private LayerMask caneMask;
     private Renderer tipRenderer;
-
+    private Vector3 camRot = Vector3.zero;
 
     // Use this for initialization
     void Start () {
@@ -104,14 +104,13 @@ public class PlayerScript : MonoBehaviour {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(0, mouseX, 0);
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-        camTrans.Rotate(-mouseY, 0, 0);
-        Vector3 camRot = camTrans.localRotation.eulerAngles;
-        if (camRot.x > 60  && camRot.x < 200)
-            camRot.x = 60;
-        else if (camRot.x < 300 && camRot.x > 90)
-            camRot.x = 300;
+
+        //clamp rotation
+        camRot.x -= mouseY;
+        camRot.x = Mathf.Clamp(camRot.x, -60, 60);
         camRot.z = 0;
-        camTrans.localRotation = Quaternion.Euler(camRot);
+        camTrans.localEulerAngles = camRot;
+        
     }
 
 
