@@ -19,7 +19,9 @@ public class OutlinePulser : MonoBehaviour {
 	public float minFrequency = 0f; // Minimum frequency to pulse to on scale from [0, 1]
 	public float maxFrequency = 1f; // Maximum frequency to pulse to on scale from [0, 1]
 	public float minRms = 0.001f;	// Minimum rms amplitude to pulse to
-	
+
+	public float displacementFactor = 0.5f;
+	public float maxDisplacement = 0.001f;
 	public float accentThreshold = 0.15f; 		// If rms > threshold then accent color appears
 	public float removeAccentThreshold = 0.05f; // If rms < threshold then accent goes away
 	public Color outlineColor = Color.white;
@@ -94,17 +96,11 @@ public class OutlinePulser : MonoBehaviour {
 		}
 		GetVolume();
 		if (isInRange ()) {
-			rend.material.SetFloat ("_Outline", rmsValue*volume);
+			rend.material.SetFloat ("_Outline", Mathf.Min(rmsValue*volume*0.5f, maxDisplacement));
 			Color curColor = rend.material.GetColor("_OutlineColor");
-			if (rmsValue > accentThreshold && curColor == outlineColor)
+			if (rmsValue > accentThreshold && curColor == outlineColor) {
 				rend.material.SetColor ("_OutlineColor", accentColor);
-
-			/*if (curColor != Color.white) {
-				Color saturate = curColor;
-				saturate.b += 0.005f;
-				rend.material.SetColor ("_OutlineColor", saturate);
 			}
-			*/
 			if (rmsValue < removeAccentThreshold) {
 				rend.material.SetColor ("_OutlineColor", outlineColor);
 			}

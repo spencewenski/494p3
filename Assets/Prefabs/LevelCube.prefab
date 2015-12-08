@@ -245,6 +245,8 @@ MonoBehaviour:
   minFrequency: 0
   maxFrequency: 1
   minRms: .00100000005
+  displacementFactor: .400000006
+  maxDisplacement: .25
   accentThreshold: .150000006
   removeAccentThreshold: .0500000007
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
@@ -451,6 +453,14 @@ Prefab:
       propertyPath: shader
       value: 
       objectReference: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
+    - target: {fileID: 0}
+      propertyPath: maxDisplacement
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: displacementFactor
+      value: .400000006
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169710}

@@ -214,6 +214,10 @@ Prefab:
       propertyPath: invalidEffects.Array.data[0]
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+      propertyPath: maxDisplacement
+      value: .300000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_IsPrefabParent: 0
