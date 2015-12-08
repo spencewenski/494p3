@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "CheckpointSystem") {
+        if (other.tag == "CheckpointSystem" || other.tag == "Projectile") {
             return;
         }
         OnTriggerEnterChild(other);

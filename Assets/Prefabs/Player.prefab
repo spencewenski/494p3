@@ -401,6 +401,7 @@ MonoBehaviour:
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
+  spread: .5
   ______________________: 0
   charging: 0
   chargeTime: 0
@@ -735,6 +736,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: effects.Array.data[4]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spread
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

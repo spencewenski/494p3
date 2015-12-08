@@ -14,6 +14,7 @@ public class Shoot : MonoBehaviour {
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
     public float projectileHeight = 0.5f;
+	public float spread;
 
     public bool ______________________;
 
@@ -55,7 +56,8 @@ public class Shoot : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
-            shoot();
+			//scatterShoot();
+			shoot();
             stopCharging();
         }
         if (charging) {
@@ -145,6 +147,27 @@ public class Shoot : MonoBehaviour {
         projectile.setEffect(currentEffect(), reverseEffect());
         projectile.setVelocity(mainCamera.transform.forward, speedFactor);
     }
+
+	private void scatterShoot() {
+		if (projectileIndex >= effects.Count) {
+			print("Shoot.shoot(): invalid index");
+			return;
+		}
+
+		for (int i = 0; i < 20; ++i) {
+			//Vector3 spread = Vector3.up*i*0.1f;
+			Vector3 spreadNoise = new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), 0f);
+			GameObject projectileGO = Instantiate (prefabProjectile) as GameObject;
+			Physics.IgnoreCollision (projectileGO.GetComponent<Collider> (), GetComponent<Collider> ());
+			Vector3 projectilePosition = mainCamera.transform.position;
+			projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
+			projectileGO.transform.position = projectilePosition;
+			float speedFactor = 1 + Mathf.Clamp (chargeTime / maxChargeTime, 0, 1) * chargeFactor;
+			Projectile projectile = projectileGO.GetComponent<Projectile> ();
+			projectile.setEffect (currentEffect (), reverseEffect ());
+			projectile.setVelocity (mainCamera.transform.forward+spreadNoise, speedFactor);
+		}
+	}
 
     public Cube.CubeEffect_e currentEffect() {
         if (effects.Count == 0) {
