@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OutlinePulser : MonoBehaviour {
+public class NonFadeOutlinePulser : MonoBehaviour {
 
     public Shader shader;
     public float volume = 1f;
 	public bool OutlinePulseOn = false;
-	public bool outlineFades = true;
-	public float maxVisibleDistance = 100f;
 	
 	// Choose default range
 	public bool setToBass = false;
@@ -22,7 +20,7 @@ public class OutlinePulser : MonoBehaviour {
 	public float maxFrequency = 1f; // Maximum frequency to pulse to on scale from [0, 1]
 	public float minRms = 0.001f;	// Minimum rms amplitude to pulse to
 
-	public float displacementFactor = 0.8f;
+	public float displacementFactor = 0.5f;
 	public float maxDisplacement = 0.25f;
 	public float accentThreshold = 0.15f; 		// If rms > threshold then accent color appears
 	public float removeAccentThreshold = 0.05f; // If rms < threshold then accent goes away
@@ -40,11 +38,8 @@ public class OutlinePulser : MonoBehaviour {
 	
 	private float[] samples; 	// audio samples
 	private float[] spectrum; 	// audio samples
-	private Transform playerTransform;
-	private bool accented = false;
-
+	
 	void Start () {
-		 playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
 		//aud = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
 		GameObject audioSource = GameObject.FindGameObjectWithTag("Audio");
 		if (audioSource != null) {
@@ -100,41 +95,18 @@ public class OutlinePulser : MonoBehaviour {
 			return;
 		}
 		GetVolume();
-		// Far away objects have lower alpha and lower brightness
-		float fadeFactor = 1f;
-		if (outlineFades) {
-			float playerDist = Vector3.Distance (gameObject.transform.position, playerTransform.position);
-			fadeFactor = (Mathf.Max(maxVisibleDistance - playerDist, 0)) / maxVisibleDistance;
-		}
 		if (isInRange ()) {
 			rend.material.SetFloat ("_Outline", Mathf.Min(rmsValue*volume*0.5f, maxDisplacement));
-			if (rmsValue > accentThreshold && accented) {
-				accented = true;
-				Color fadedAccent = accentColor;
-				fadedAccent.r *= fadeFactor;
-				fadedAccent.g *= fadeFactor;
-				fadedAccent.b *= fadeFactor;
-				fadedAccent.a *= fadeFactor;
-				rend.material.SetColor ("_OutlineColor", fadedAccent);
+			Color curColor = rend.material.GetColor("_OutlineColor");
+			if (rmsValue > accentThreshold && curColor == outlineColor) {
+				rend.material.SetColor ("_OutlineColor", accentColor);
 			}
 			if (rmsValue < removeAccentThreshold) {
-				accented = false;
-				Color fadedOutline = outlineColor;
-				fadedOutline.r *= fadeFactor;
-				fadedOutline.g *= fadeFactor;
-				fadedOutline.b *= fadeFactor;
-				fadedOutline.a *= fadeFactor;
-				rend.material.SetColor ("_OutlineColor", fadedOutline);
+				rend.material.SetColor ("_OutlineColor", outlineColor);
 			}
 		} else {
-			accented = false;
 			rend.material.SetFloat ("_Outline", Mathf.Max (rend.material.GetFloat("_Outline")/1.5f, 0));
-			Color fadedOutline = outlineColor;
-			fadedOutline.r *= fadeFactor;
-			fadedOutline.g *= fadeFactor;
-			fadedOutline.b *= fadeFactor;
-			fadedOutline.a *= fadeFactor;
-			rend.material.SetColor ("_OutlineColor", fadedOutline);
+			rend.material.SetColor ("_OutlineColor", outlineColor);
 		}
 	}
 

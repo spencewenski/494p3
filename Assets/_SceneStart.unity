@@ -243,9 +243,40 @@ Prefab:
       propertyPath: setToHigh
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11422072, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &189171008 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 103504, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+  m_PrefabInternal: {fileID: 189171007}
+--- !u!114 &189171009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189171008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e739620974c6494eb7355c873c8a1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
+  volume: 1
+  OutlinePulseOn: 1
+  setToBass: 0
+  setToMid: 0
+  setToHigh: 1
+  minFrequency: 0
+  maxFrequency: 1
+  minRms: .00100000005
+  displacementFactor: .5
+  maxDisplacement: .25
+  accentThreshold: .150000006
+  removeAccentThreshold: .0500000007
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  accentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &359965940
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,9 +646,40 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11422072, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1312114224 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 103504, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+  m_PrefabInternal: {fileID: 1312114223}
+--- !u!114 &1312114225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312114224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e739620974c6494eb7355c873c8a1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
+  volume: 1
+  OutlinePulseOn: 1
+  setToBass: 0
+  setToMid: 1
+  setToHigh: 0
+  minFrequency: 0
+  maxFrequency: 1
+  minRms: .00100000005
+  displacementFactor: .5
+  maxDisplacement: .25
+  accentThreshold: .150000006
+  removeAccentThreshold: .0500000007
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  accentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1330096802
 GameObject:
   m_ObjectHideFlags: 0

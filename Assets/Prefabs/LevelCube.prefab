@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3325810}
   - 65: {fileID: 6505634}
   - 23: {fileID: 2384958}
-  - 114: {fileID: 11431600}
+  - 114: {fileID: 11422072}
   m_Layer: 0
   m_Name: OutlinePulser
   m_TagString: Untagged
@@ -225,7 +225,7 @@ MonoBehaviour:
   outlinePulser: {fileID: 0}
   lightRipple: {fileID: 0}
   active: 0
---- !u!114 &11431600
+--- !u!114 &11422072
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -233,19 +233,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 103504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e739620974c6494eb7355c873c8a1e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 750d97c2dfbfddf4785e30c808d0443d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
   volume: 1
   OutlinePulseOn: 0
+  outlineFades: 1
+  maxVisibleDistance: 100
   setToBass: 0
   setToMid: 1
   setToHigh: 0
   minFrequency: 0
   maxFrequency: 1
   minRms: .00100000005
-  displacementFactor: .400000006
+  displacementFactor: .5
   maxDisplacement: .25
   accentThreshold: .150000006
   removeAccentThreshold: .0500000007
@@ -460,6 +462,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: displacementFactor
       value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: outlineFades
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

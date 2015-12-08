@@ -148,7 +148,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -218,10 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -521,7 +521,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -719,7 +719,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
@@ -789,7 +789,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
@@ -1181,7 +1181,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
@@ -1379,7 +1379,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -1449,7 +1449,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
@@ -1585,7 +1585,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -1721,7 +1721,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
@@ -1857,7 +1857,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -2183,7 +2183,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -2245,7 +2245,7 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
@@ -2735,9 +2735,13 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11422072, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+      propertyPath: maxVisibleDistance
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
@@ -3330,7 +3334,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
@@ -3857,7 +3861,7 @@ Prefab:
       propertyPath: OutlinePulseOn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11431600, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+    - target: {fileID: 0}
       propertyPath: OutlinePulseOn
       value: 0
       objectReference: {fileID: 0}
