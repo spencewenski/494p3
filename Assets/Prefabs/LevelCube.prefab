@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6157cfb24e22a9f4da7a2aaa36d2b0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 0}
   invalidEffects: 0200000005000000
   ____________________: 0
   currentEffect: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   volume: 1
   OutlinePulseOn: 0
   outlineFades: 1
-  maxVisibleDistance: 50
+  maxVisibleDistance: 70
   setToBass: 0
   setToMid: 1
   setToHigh: 0
@@ -470,7 +471,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxVisibleDistance
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
