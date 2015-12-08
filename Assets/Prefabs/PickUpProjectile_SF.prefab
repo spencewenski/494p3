@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdfcf691b1c747d19a6d45f1f5b783c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabProjectile: {fileID: 133214, guid: 192641b7aeb791a42836d7d517914bc1, type: 2}
+  effect: 0
   _________________: 0
   colliding: 0
 --- !u!135 &13576164
