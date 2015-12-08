@@ -397,7 +397,7 @@ MonoBehaviour:
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
-  effects: 0100000002000000030000000400000005000000
+  effects: 
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
@@ -462,6 +462,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: levels.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: prefabProjectiles.Array.size
@@ -711,6 +715,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[4].reverseText
       value: Anti-Gravity
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effects.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effects.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effects.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effects.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: effects.Array.data[4]
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

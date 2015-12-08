@@ -2170,7 +2170,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11486404, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
       propertyPath: effects.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 443780, guid: 8fea55fa20d89b844948532ea66b1a9a, type: 2}
       propertyPath: m_LocalPosition.x
