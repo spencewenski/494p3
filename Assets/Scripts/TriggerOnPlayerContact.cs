@@ -11,6 +11,9 @@ public class TriggerOnPlayerContact : MonoBehaviour {
     public List<GameObject> outlineOnTrigger = new List<GameObject>();
     public List<string> displayOnTrigger = new List<string>();
 
+	public bool destoryOnEnter;
+	public float displayTime;
+
 	// Use this for initialization
 	void Start () {
 
@@ -66,8 +69,12 @@ public class TriggerOnPlayerContact : MonoBehaviour {
             Text text = textGO.GetComponent<Text>();
             text.text = displayString;
             text.color = Color.white;
+			TriggerText triggerText = textGO.GetComponent<TriggerText>();
+			triggerText.displaySec = displayTime;
         }
 
-        Destroy(gameObject);
+		if (destoryOnEnter) {
+			Destroy(gameObject);
+		}
     }
 }

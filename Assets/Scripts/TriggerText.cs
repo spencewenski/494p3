@@ -24,7 +24,7 @@ public class TriggerText : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         ++fadeInFrames;
 
         if (fadeInFrames <= fadeTotalFrames)
