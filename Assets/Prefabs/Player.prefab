@@ -401,7 +401,10 @@ MonoBehaviour:
   chargeFactor: 1
   maxChargeTime: 2
   projectileHeight: .25
-  spread: .5
+  verSpread: .5
+  horSpread: .699999988
+  scatterChargeTime: 1.5
+  numScatterShots: 25
   ______________________: 0
   charging: 0
   chargeTime: 0
@@ -739,7 +742,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spread
+      value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scatterChargeTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: numScatterShots
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: horSpread
+      value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: verSpread
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxChargeTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: chargeFactor
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

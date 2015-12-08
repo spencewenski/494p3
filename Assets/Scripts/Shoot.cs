@@ -14,7 +14,10 @@ public class Shoot : MonoBehaviour {
     public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
     public float projectileHeight = 0.5f;
-	public float spread;
+	public float verSpread;
+	public float horSpread;
+	public float scatterChargeTime;
+	public int numScatterShots;
 
     public bool ______________________;
 
@@ -56,9 +59,11 @@ public class Shoot : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
-			//scatterShoot();
-			shoot();
-            stopCharging();
+			if (chargeTime > scatterChargeTime)
+				scatterShoot ();
+			else 
+				shoot();
+			stopCharging();
         }
         if (charging) {
             chargeTime += Time.deltaTime;
@@ -150,13 +155,12 @@ public class Shoot : MonoBehaviour {
 
 	private void scatterShoot() {
 		if (projectileIndex >= effects.Count) {
-			print("Shoot.shoot(): invalid index");
+			print("scatterShoot.shoot(): invalid index");
 			return;
 		}
 
-		for (int i = 0; i < 20; ++i) {
-			//Vector3 spread = Vector3.up*i*0.1f;
-			Vector3 spreadNoise = new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), 0f);
+		for (int i = 0; i < numScatterShots; ++i) {
+			Vector3 spreadNoise = new Vector3(Random.Range(-horSpread, horSpread), Random.Range(-verSpread, verSpread), 0f);
 			GameObject projectileGO = Instantiate (prefabProjectile) as GameObject;
 			Physics.IgnoreCollision (projectileGO.GetComponent<Collider> (), GetComponent<Collider> ());
 			Vector3 projectilePosition = mainCamera.transform.position;
