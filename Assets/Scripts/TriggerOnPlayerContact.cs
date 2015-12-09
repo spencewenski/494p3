@@ -16,7 +16,12 @@ public class TriggerOnPlayerContact : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		if (triggerTextRoot == null) {
+			triggerTextRoot = GameObject.Find("TriggerTextParent");
+			if (triggerTextRoot == null) {
+				print("Add TriggerTextParent to canvas");
+			}
+		}
 	}
 	
 	// Update is called once per frame
