@@ -1911,7 +1911,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[1]
-      value: Use outline to make objects pulse to the music!
+      value: Use outline to make objects pulse to the music! Hold the mouse to charge
+        up a scattered shot!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
