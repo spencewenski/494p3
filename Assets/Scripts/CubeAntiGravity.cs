@@ -16,7 +16,6 @@ public class CubeAntiGravity : Cube {
 
     public override void setActiveChild(bool active_) {
         rigidBody.isKinematic = !active_;
-        //gravityReversed = !active_;
     }
 
     void FixedUpdate() {
@@ -26,7 +25,8 @@ public class CubeAntiGravity : Cube {
     }
 
     public override void doEffectChild(Collider other) {
-        gravityReversed = !gravityReversed;
+		Projectile projectile = other.GetComponent<Projectile>();
+		gravityReversed = !projectile.reverse;
         rigidBody.useGravity = !gravityReversed;
 		
     }

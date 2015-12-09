@@ -393,7 +393,7 @@ MonoBehaviour:
     accentColor: {r: 0, g: 0, b: 1, a: 1}
   - effect: 5
     text: Anti-Gravity
-    reverseText: Anti-Gravity
+    reverseText: Gravity
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
@@ -718,7 +718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[4].reverseText
-      value: Anti-Gravity
+      value: Gravity
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: effects.Array.data[0]
