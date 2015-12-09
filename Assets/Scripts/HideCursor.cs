@@ -6,7 +6,7 @@ public class HideCursor : MonoBehaviour
     public static HideCursor S;
     void Awake()
     {
-    Utility.Hide(true);
+    Utility.hideCursor(true);
         S = this;
     }
 }

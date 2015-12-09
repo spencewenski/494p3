@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour {
         {
             Time.timeScale = 1;
         }
-        Utility.Hide(!toggle);
+        Utility.hideCursor(!toggle);
         menu.GetChild(0).gameObject.SetActive(toggle);
     }
     public void GotoMain()
