@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -25,6 +26,7 @@ public class Shoot : MonoBehaviour {
     public float chargeTime;
     public Camera mainCamera;
 	public int projectileIndex;
+	public GameObject chargingOutline;
 
     void Awake() {
         S = this;
@@ -34,6 +36,7 @@ public class Shoot : MonoBehaviour {
         }
         mainCamera = Camera.main;
         projectileIndex = 0;
+		chargingOutline = GameObject.Find ("ChargingOutline");
     }
 
     public static EffectDefinition getCubeEffectDefinition(Cube.CubeEffect_e effect) {
@@ -57,6 +60,10 @@ public class Shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
+			if (effects.Count == 0) {
+				print("Update: can't shoot without gun");
+				return;
+			}
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
 			// TODO(Jordan): See if there's a better way to check if the current gun is OutlineGun
@@ -68,6 +75,9 @@ public class Shoot : MonoBehaviour {
         }
         if (charging) {
             chargeTime += Time.deltaTime;
+			Color col = chargingOutline.GetComponent<Image> ().color;
+			col.a += 0.008f;
+			chargingOutline.GetComponent<Image> ().color = col;
         }
         switchGun();
     }
@@ -131,6 +141,9 @@ public class Shoot : MonoBehaviour {
     private void stopCharging() {
         charging = false;
         chargeTime = 0f;
+		Color col = chargingOutline.GetComponent<Image> ().color;
+		col.a = 0;
+		chargingOutline.GetComponent<Image> ().color = col;
     }
 
     private void shoot() {
