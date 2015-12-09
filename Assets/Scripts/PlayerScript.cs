@@ -109,7 +109,7 @@ public class PlayerScript : MonoBehaviour {
 
         //clamp rotation
         camRot.x -= mouseY;
-        camRot.x = Mathf.Clamp(camRot.x, -70, 70);
+        camRot.x = Mathf.Clamp(camRot.x, -80, 80);
         camRot.z = 0;
         camTrans.localEulerAngles = camRot;
         
