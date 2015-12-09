@@ -55,7 +55,9 @@ MonoBehaviour:
   effectTextPrefab: {fileID: 178868, guid: d5b41cd17c96ca24fb766b34c0dd1f46, type: 2}
   triggerTextRoot: {fileID: 0}
   outlineOnTrigger: []
-  displayOnTrigger: 
+  displayOnTrigger: []
+  destoryOnEnter: 1
+  displayTime: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -74,6 +76,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: displayOnTrigger
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: displayTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: destoryOnEnter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
