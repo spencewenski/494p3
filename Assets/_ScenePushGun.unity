@@ -1137,7 +1137,7 @@ Prefab:
       objectReference: {fileID: 1267565103}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Hold right-click and tap left click to pull!
+      value: Hold right-mouse and tap left-mouse to pull.
       objectReference: {fileID: 0}
     - target: {fileID: 134470, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_Name
@@ -1795,6 +1795,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6612ed73db8aa964b911ce50c2223e53, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1074906292 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 169710, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+  m_PrefabInternal: {fileID: 515445087}
 --- !u!1001 &1137394634
 Prefab:
   m_ObjectHideFlags: 0
@@ -2977,7 +2981,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.size
@@ -3047,6 +3051,10 @@ Prefab:
       propertyPath: displayOnTrigger.Array.data[1]
       value: Objects that can be pushed turn red when hit.
       objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: outlineOnTrigger.Array.data[2]
+      value: 
+      objectReference: {fileID: 1074906292}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
   m_IsPrefabParent: 0

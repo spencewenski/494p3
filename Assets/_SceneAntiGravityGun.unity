@@ -929,6 +929,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &524990123 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 169710, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
+  m_PrefabInternal: {fileID: 1927732352}
 --- !u!1001 &538446279
 Prefab:
   m_ObjectHideFlags: 0
@@ -2056,7 +2060,7 @@ Prefab:
       objectReference: {fileID: 1598231186}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Hold right-click and tap left-click to return objects to normal gravity.
+      value: Hold right-mouse and tap left-mouse to return objects to normal gravity.
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[1]
@@ -2372,7 +2376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2442,6 +2446,10 @@ Prefab:
       propertyPath: outlineOnTrigger.Array.data[2]
       value: 
       objectReference: {fileID: 650129272}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: outlineOnTrigger.Array.data[3]
+      value: 
+      objectReference: {fileID: 524990123}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
   m_IsPrefabParent: 0
