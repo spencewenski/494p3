@@ -18,28 +18,34 @@ public class PauseMenu : MonoBehaviour {
             paused = !paused;
             if (paused)
             {
-                Time.timeScale = 0;
                 ToggleMenu(true);
             }
             else
             {
-                Time.timeScale = 1;
                 ToggleMenu(false);
             }
         }
     }
     void ToggleMenu(bool toggle)
     {
+        if(toggle)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        HideCursor.S.Hide(!toggle);
         menu.GetChild(0).gameObject.SetActive(toggle);
     }
     public void GotoMain()
     {
-        Time.timeScale = 1;
+        ToggleMenu(false);
         Application.LoadLevel("_SceneStart");
     }
     public void Restart()
     {
-        Time.timeScale = 1;
         paused = false;
         ToggleMenu(false);
         Application.LoadLevel(Application.loadedLevel);
