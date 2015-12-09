@@ -1313,7 +1313,8 @@ Prefab:
       objectReference: {fileID: 782011635}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Jumping onto a trampoline from a speed surface makes you move faster!
+      value: Jumping onto a trampoline from a speed surface makes you move faster
+        in mid-air!
       objectReference: {fileID: 0}
     - target: {fileID: 134470, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_Name
