@@ -64,8 +64,7 @@ public class Shoot : MonoBehaviour {
 			}
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
-			// TODO(Jordan): See if there's a better way to check if the current gun is OutlineGun
-			if (chargeTime > maxChargeTime && projectileIndex == 0)
+			if (chargeTime > maxChargeTime)
 				scatterShoot ();
 			else 
 				shoot();
