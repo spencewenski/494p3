@@ -2442,10 +2442,6 @@ Prefab:
       propertyPath: outlineOnTrigger.Array.data[2]
       value: 
       objectReference: {fileID: 650129272}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: displayTime
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
   m_IsPrefabParent: 0

@@ -57,7 +57,7 @@ MonoBehaviour:
   outlineOnTrigger: []
   displayOnTrigger: []
   destoryOnEnter: 1
-  displayTime: 5
+  displayTime: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -79,7 +79,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: displayTime
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: destoryOnEnter
