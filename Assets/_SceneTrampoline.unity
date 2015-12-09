@@ -1936,6 +1936,93 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 442272, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_PrefabInternal: {fileID: 1919981061}
+--- !u!1001 &1561442376
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1631921923}
+    m_Modifications:
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_Pivot.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+      propertyPath: m_Pivot.y
+      value: .5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!224 &1561442377 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1561442376}
 --- !u!4 &1609309000 stripped
 Transform:
   m_PrefabParentObject: {fileID: 442272, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
@@ -1971,6 +2058,7 @@ RectTransform:
   - {fileID: 87690126}
   - {fileID: 716529667}
   - {fileID: 798522060}
+  - {fileID: 1561442377}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
@@ -2008,7 +2096,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1300, y: 900}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
