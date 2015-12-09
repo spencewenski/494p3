@@ -399,17 +399,17 @@ MonoBehaviour:
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
   effects: 
   chargeFactor: 1
-  maxChargeTime: 2
+  maxChargeTime: 1
   projectileHeight: .25
   verSpread: .300000012
   horSpread: .400000006
-  scatterChargeTime: 1.5
   numScatterShots: 30
   ______________________: 0
   charging: 0
   chargeTime: 0
   mainCamera: {fileID: 2085982}
   projectileIndex: 0
+  chargingOutline: {fileID: 0}
 --- !u!124 &12425028
 Behaviour:
   m_ObjectHideFlags: 1
@@ -762,7 +762,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxChargeTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: chargeFactor

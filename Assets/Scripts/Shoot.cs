@@ -12,12 +12,10 @@ public class Shoot : MonoBehaviour {
     //public List<GameObject> prefabProjectiles = new List<GameObject>();
     public GameObject prefabProjectile;
     public List<Cube.CubeEffect_e> effects = new List<Cube.CubeEffect_e>();
-    public float chargeFactor = 1f;
     public float maxChargeTime = 2f;
     public float projectileHeight = 0.5f;
 	public float verSpread;
 	public float horSpread;
-	public float scatterChargeTime;
 	public int numScatterShots;
 
     public bool ______________________;
@@ -67,7 +65,7 @@ public class Shoot : MonoBehaviour {
             startCharging();
         } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
 			// TODO(Jordan): See if there's a better way to check if the current gun is OutlineGun
-			if (chargeTime > scatterChargeTime && projectileIndex == 0)
+			if (chargeTime > maxChargeTime && projectileIndex == 0)
 				scatterShoot ();
 			else 
 				shoot();
@@ -76,7 +74,8 @@ public class Shoot : MonoBehaviour {
         if (charging) {
             chargeTime += Time.deltaTime;
 			Color col = chargingOutline.GetComponent<Image> ().color;
-			col.a += 0.008f;
+			col = Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor;
+			col.a = chargeTime / maxChargeTime;
 			chargingOutline.GetComponent<Image> ().color = col;
         }
         switchGun();
@@ -161,10 +160,9 @@ public class Shoot : MonoBehaviour {
         projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
         projectileGO.transform.position = projectilePosition;
         // projectile velocity
-        float speedFactor = 1 + Mathf.Clamp(chargeTime / maxChargeTime, 0, 1) * chargeFactor;
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.setEffect(currentEffect(), reverseEffect());
-        projectile.setVelocity(mainCamera.transform.forward, speedFactor);
+        projectile.setVelocity(mainCamera.transform.forward, 1f);
     }
 
 	private void scatterShoot() {
@@ -181,10 +179,9 @@ public class Shoot : MonoBehaviour {
 			Vector3 projectilePosition = mainCamera.transform.position;
 			projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
 			projectileGO.transform.position = projectilePosition;
-			float speedFactor = 1 + Mathf.Clamp (chargeTime / maxChargeTime, 0, 1) * chargeFactor;
 			Projectile projectile = projectileGO.GetComponent<Projectile> ();
 			projectile.setEffect (currentEffect (), reverseEffect ());
-			projectile.setVelocity (mainCamera.transform.forward+spreadNoise, speedFactor);
+			projectile.setVelocity (mainCamera.transform.forward+spreadNoise, 1f);
 		}
 	}
 
