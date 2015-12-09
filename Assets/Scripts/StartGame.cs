@@ -20,7 +20,8 @@ public class StartGame : MonoBehaviour {
 				Destroy (GameObject.Find ("Instructions"));
 				selectingLevel = true;
 				levelSelectionMenu.SetActive(true);
-			}
+                Utility.Hide(false);
+            }
 		} else {
 			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.KeypadEnter)) {
 				Destroy (GameObject.Find ("Canvas"));
