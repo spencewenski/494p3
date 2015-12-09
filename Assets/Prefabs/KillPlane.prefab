@@ -73,7 +73,7 @@ MonoBehaviour:
   outlineOnTrigger: []
   displayOnTrigger:
   - Respawning
-  destoryOnEnter: 0
+  destroyOnEnter: 0
   displayTime: 2
 --- !u!1001 &100100000
 Prefab:
@@ -137,6 +137,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: displayOnTrigger.Array.data[0]
       value: Respawning
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: destroyOnEnter
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
