@@ -744,8 +744,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 54240684}
-  - {fileID: 1972324356}
   - {fileID: 1006325714}
+  - {fileID: 1972324356}
   m_Father: {fileID: 1252131813}
   m_RootOrder: 2
 --- !u!1001 &365392333
@@ -1839,10 +1839,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2115938714}
-  - {fileID: 2130706847}
   - {fileID: 183853596}
+  - {fileID: 2115938714}
   - {fileID: 1190498451}
+  - {fileID: 2130706847}
   m_Father: {fileID: 1252131813}
   m_RootOrder: 3
 --- !u!1001 &1322381949
@@ -1913,7 +1913,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.size
@@ -1969,7 +1969,7 @@ Prefab:
       objectReference: {fileID: 1598231186}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Use Anti-Gravity to change the gravity of objects!
+      value: Hold right-click and tap left-click to return objects to normal gravity.
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[1]
@@ -2109,15 +2109,15 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1181959875}
-  - {fileID: 2036079827}
-  - {fileID: 761422167}
-  - {fileID: 281048661}
   - {fileID: 131486916}
-  - {fileID: 1833773305}
   - {fileID: 2047751964}
+  - {fileID: 2036079827}
+  - {fileID: 1833773305}
   - {fileID: 1729487078}
   - {fileID: 1460181862}
+  - {fileID: 1181959875}
+  - {fileID: 761422167}
+  - {fileID: 281048661}
   m_Father: {fileID: 1252131813}
   m_RootOrder: 0
 --- !u!1 &1578470480 stripped
@@ -2337,7 +2337,7 @@ Prefab:
       objectReference: {fileID: 1598231186}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Use Anti-Gravity to change the gravity of objects!
+      value: Use Anti-Gravity to reverse the gravity of objects!
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[1]
