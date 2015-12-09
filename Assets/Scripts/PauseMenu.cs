@@ -5,9 +5,9 @@ public class PauseMenu : MonoBehaviour {
     public Transform menu;
     bool paused = false;
     // Use this for initialization
-    void Start() {
+    void Awake() {
         menu = this.gameObject.transform;
-        ToggleMenu(false);
+        //ToggleMenu(false);
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour {
         {
             Time.timeScale = 1;
         }
-        HideCursor.S.Hide(!toggle);
+        Utility.Hide(!toggle);
         menu.GetChild(0).gameObject.SetActive(toggle);
     }
     public void GotoMain()
@@ -49,5 +49,10 @@ public class PauseMenu : MonoBehaviour {
         paused = false;
         ToggleMenu(false);
         Application.LoadLevel(Application.loadedLevel);
+    }
+    public void Resume()
+    {
+        paused = false;
+        ToggleMenu(false);
     }
 }

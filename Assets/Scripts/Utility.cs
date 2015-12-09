@@ -9,4 +9,18 @@ public class Utility : MonoBehaviour {
         }
         return currentTimeRemaining - Time.deltaTime;
     }
+
+    public static void Hide(bool hidden)
+    {
+        Cursor.visible = !hidden;
+        if (hidden)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }
+
