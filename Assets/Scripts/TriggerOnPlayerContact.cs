@@ -11,7 +11,7 @@ public class TriggerOnPlayerContact : MonoBehaviour {
     public List<GameObject> outlineOnTrigger = new List<GameObject>();
     public List<string> displayOnTrigger = new List<string>();
 
-	public bool destroyOnEnter;
+	public bool destroyOnEnter = true;
 	public float displayTime;
 
 	// Use this for initialization
