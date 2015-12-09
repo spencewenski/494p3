@@ -933,7 +933,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22446248, guid: 421d9c8d99cc6474897738fe88605aca, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22446248, guid: 421d9c8d99cc6474897738fe88605aca, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1973,7 +1973,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -2057,8 +2057,8 @@ RectTransform:
   m_Children:
   - {fileID: 87690126}
   - {fileID: 716529667}
-  - {fileID: 798522060}
   - {fileID: 1561442377}
+  - {fileID: 798522060}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
