@@ -9,8 +9,6 @@
 - outline shader:
   - http://wiki.unity3d.com/index.php?title=Silhouette-Outlined_Diffuse
 
-- player controller:
-  - Unity standard FPS controller
-
 - fonts
   - http://www.dafont.com/vermin-vision.font
+  - https://www.theleagueofmoveabletype.com/league-gothic
