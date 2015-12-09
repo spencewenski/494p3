@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
     private float mouseSensitivity = 5.0f;
     private float speed = 7f;
     private float jumpSpeed = 7f;
-    private Collider collider;
+    private Collider playerCollider;
     private float distToGround;
     private Transform cane;
     private Transform caneTip;
@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour {
     private float bounceDecreaseRate = .97f;
     private bool hasSpeed = false;
     private bool hasTramp = false;
+    private int speedCount = 0;
+    private int trampCount = 0;
     private LayerMask caneMask;
     private Renderer tipRenderer;
     private Vector3 camRot = Vector3.zero;
@@ -25,8 +27,8 @@ public class PlayerScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rigid = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
-        distToGround = collider.bounds.extents.y;
+        playerCollider = GetComponent<Collider>();
+        distToGround = playerCollider.bounds.extents.y;
         camTrans = Camera.main.transform;
         cane = camTrans.transform.GetChild(0);
         caneTip = cane.GetChild(0);
@@ -133,12 +135,18 @@ public class PlayerScript : MonoBehaviour {
 
         if (isGrounded)
         {
+            speedCount = 0;
+            trampCount = 0;
+
             setWasLastSpeededWithRayHit(rayHit1);
             setWasLastSpeededWithRayHit(rayHit2);
             setWasLastSpeededWithRayHit(rayHit3);
             setWasLastSpeededWithRayHit(rayHit4);
             setWasLastSpeededWithRayHit(rayHit5);
             setWasLastSpeededWithRayHit(rayHit6);
+
+            hasTramp = trampCount > 0;
+            hasSpeed = speedCount > 0 || hasSpeed && hasTramp;
         }
 
         //(Physics.CapsuleCast(collider..position, transform.position, .5f, -Vector3.up, out bouncehit, distToGround + 0.1f));
@@ -150,16 +158,13 @@ public class PlayerScript : MonoBehaviour {
     {
         if (rayHit.collider != null)
         {
+            if (rayHit.collider.gameObject.tag == "CheckpointSystem") return;
             if (rayHit.collider.gameObject.tag == "speed")
             {
-                hasSpeed = true;
+                speedCount++;
             } else if (rayHit.collider.gameObject.tag == "trampoline")
             {
-                hasTramp = true;
-            } else
-            {
-                hasSpeed = false;
-                hasTramp = false;
+                trampCount++;
             }
         }
     }

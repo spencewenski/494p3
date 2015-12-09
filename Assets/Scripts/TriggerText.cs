@@ -11,16 +11,16 @@ public class TriggerText : MonoBehaviour {
 
     private float fadeTotalFrames;
 
-    private CanvasRenderer renderer;
+    private CanvasRenderer textRenderer;
 
 	// Use this for initialization
 	void Start () {
         displayFrames = displaySec / Time.fixedDeltaTime;
         fadeOutFrames = fadeSec / Time.fixedDeltaTime;
         fadeTotalFrames = fadeSec / Time.fixedDeltaTime;
-        renderer = GetComponent<CanvasRenderer>();
+        textRenderer = GetComponent<CanvasRenderer>();
 
-        renderer.SetAlpha(0);
+        textRenderer.SetAlpha(0);
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class TriggerText : MonoBehaviour {
 
         if (fadeInFrames <= fadeTotalFrames)
         {
-            renderer.SetAlpha(fadeInFrames / fadeTotalFrames);
+            textRenderer.SetAlpha(fadeInFrames / fadeTotalFrames);
         }
 
         --displayFrames;
@@ -37,7 +37,7 @@ public class TriggerText : MonoBehaviour {
         if (displayFrames <= 0)
         {
             --fadeOutFrames;
-            renderer.SetAlpha(fadeOutFrames / fadeTotalFrames);
+            textRenderer.SetAlpha(fadeOutFrames / fadeTotalFrames);
             
             if (fadeOutFrames <= 0)
             {
