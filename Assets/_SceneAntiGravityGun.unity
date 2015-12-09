@@ -299,7 +299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -311,27 +311,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 1600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 900
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_AnchorMin.x
-      value: .5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_AnchorMin.y
-      value: .5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_AnchorMax.y
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22488656, guid: 9ff1cbc19978708459ff1423d64f960e, type: 2}
       propertyPath: m_Pivot.x
@@ -1443,7 +1443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22495554, guid: 6612ed73db8aa964b911ce50c2223e53, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22495554, guid: 6612ed73db8aa964b911ce50c2223e53, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -2962,8 +2962,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1357555063}
   - {fileID: 157455859}
+  - {fileID: 1357555063}
   - {fileID: 1041788295}
   - {fileID: 538446280}
   m_Father: {fileID: 0}
