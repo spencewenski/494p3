@@ -17,13 +17,15 @@ public class Shoot : MonoBehaviour {
 	public float verSpread;
 	public float horSpread;
 	public int numScatterShots;
+    
 
     public bool ______________________;
 
     public bool charging = false;
     public float chargeTime;
     public Camera mainCamera;
-	public int projectileIndex;
+    public Transform caneEnd;
+    public int projectileIndex;
 	public GameObject chargingOutline;
 
     void Awake() {
@@ -33,6 +35,7 @@ public class Shoot : MonoBehaviour {
             EFFECT_DEFS[def.effect] = def;
         }
         mainCamera = Camera.main;
+        caneEnd = mainCamera.transform.GetChild(0).GetChild(1);
         projectileIndex = 0;
 		chargingOutline = GameObject.Find ("ChargingOutline");
     }
@@ -153,7 +156,7 @@ public class Shoot : MonoBehaviour {
         GameObject projectileGO = Instantiate(prefabProjectile) as GameObject;
         Physics.IgnoreCollision(projectileGO.GetComponent<Collider>(), GetComponent<Collider>());
         //Vector3 projectilePosition = transform.position;
-        Vector3 projectilePosition = mainCamera.transform.position;
+        Vector3 projectilePosition = caneEnd.transform.position;
         // projectile position
         //projectilePosition += mainCamera.transform.forward.normalized;
         projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
@@ -175,7 +178,7 @@ public class Shoot : MonoBehaviour {
 			                                  Random.Range(-verSpread, verSpread), Random.Range(-horSpread, horSpread));
 			GameObject projectileGO = Instantiate (prefabProjectile) as GameObject;
 			Physics.IgnoreCollision (projectileGO.GetComponent<Collider> (), GetComponent<Collider> ());
-			Vector3 projectilePosition = mainCamera.transform.position;
+			Vector3 projectilePosition = caneEnd.transform.position;
 			projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
 			projectileGO.transform.position = projectilePosition;
 			Projectile projectile = projectileGO.GetComponent<Projectile> ();

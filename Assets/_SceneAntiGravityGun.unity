@@ -2012,15 +2012,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 47.25
+      value: -.189999998
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 44.2200012
+      value: 5.69999981
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 46.2599983
+      value: 34.9000015
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2044,15 +2044,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 10.5473385
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 11.2599249
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 8.11716747
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: triggerTextRoot
@@ -2081,6 +2081,10 @@ Prefab:
     - target: {fileID: 134470, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_Name
       value: TriggerOnPlayerContact (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayTime
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
@@ -2450,6 +2454,10 @@ Prefab:
       propertyPath: outlineOnTrigger.Array.data[3]
       value: 
       objectReference: {fileID: 524990123}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayTime
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
   m_IsPrefabParent: 0
