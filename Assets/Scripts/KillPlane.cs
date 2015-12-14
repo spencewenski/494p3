@@ -10,14 +10,28 @@ public class KillPlane : MonoBehaviour {
 	public bool _______________;
 
 	public GameObject playerGO;
+	public GameObject screenOutline;
+	public bool flashingOutline;
+	public float flashingOutlineRate;
 
 	// Use this for initialization
 	void Start () {
+		screenOutline = GameObject.Find ("ChargingOutline");
+		flashingOutline = false;
+		flashingOutlineRate = 2f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (flashingOutline) {
+			Color col = screenOutline.GetComponent<Image> ().color;
+			col.a /= flashingOutlineRate;
+			if (col.a < 0.001f){
+				col.a = 0f;
+				flashingOutline = false;
+			}
+			screenOutline.GetComponent<Image> ().color = col;
+		}
 	}
 
     void OnTriggerEnter(Collider other) {
@@ -37,6 +51,11 @@ public class KillPlane : MonoBehaviour {
 	private void playerRespawn() {
 		playerGO.transform.position = Checkpoint.lastCheckpoint.spawnPoint.position;
 		playerGO.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		// flash the outline of the screen
+		flashingOutline = true;
+		Color col = screenOutline.GetComponent<Image> ().color;
+		col.a = 1f;
+		screenOutline.GetComponent<Image> ().color = col;
 	}
 
 }
