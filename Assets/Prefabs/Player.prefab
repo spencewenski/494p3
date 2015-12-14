@@ -201,7 +201,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 539d781a25595004394099bb17799d68, type: 2}
+  - {fileID: 2100000, guid: f3b4ecf7289ea69488c97b512290a811, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -397,7 +397,7 @@ MonoBehaviour:
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
-  effects: 
+  effects: 01000000020000000300000004000000
   maxChargeTime: .5
   projectileHeight: .25
   verSpread: .300000012

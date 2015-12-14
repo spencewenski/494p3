@@ -18,6 +18,9 @@ public class PickUpProjectile : MonoBehaviour {
         }
         Renderer rend = GetComponent<Renderer>();
         rend.material.color = def.outlineColor;
+		// set outline color in shader
+		if (rend.material.shader.name.Equals("Outlined/Silhouette Only"))
+			rend.material.SetColor ("_OutlineColor", def.outlineColor);
     }
 
 	void OnTriggerEnter(Collider other) {

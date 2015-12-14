@@ -31,6 +31,10 @@ public class Projectile : MonoBehaviour {
         // set color
         Material mat = GetComponent<Renderer>().material;
         mat.color = def.outlineColor;
+		// set outline color in shader
+		Renderer rend = GetComponent<Renderer> ();
+		if (rend.material.shader.name.Equals("Outlined/Silhouette Only"))
+			rend.material.SetColor ("_OutlineColor", def.outlineColor);
     }
 
     // overwrite if you require special behavior
