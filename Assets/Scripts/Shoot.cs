@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour {
 	public float verSpread;
 	public float horSpread;
 	public int numScatterShots;
+	public float maxChargingEffectFactor;
     
 
     public bool ______________________;
@@ -77,7 +78,7 @@ public class Shoot : MonoBehaviour {
             chargeTime += Time.deltaTime;
 			Color col = chargingOutline.GetComponent<Image> ().color;
 			col = Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor;
-			col.a = chargeTime / maxChargeTime;
+			col.a = maxChargingEffectFactor * chargeTime / maxChargeTime;
 			chargingOutline.GetComponent<Image> ().color = col;
         }
         switchGun();

@@ -403,10 +403,12 @@ MonoBehaviour:
   verSpread: .300000012
   horSpread: .400000006
   numScatterShots: 30
+  maxChargingEffectFactor: .100000001
   ______________________: 0
   charging: 0
   chargeTime: 0
   mainCamera: {fileID: 2085982}
+  caneEnd: {fileID: 0}
   projectileIndex: 0
   chargingOutline: {fileID: 0}
 --- !u!124 &12425028
@@ -766,6 +768,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: chargeFactor
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxChargingEffectFactor
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
