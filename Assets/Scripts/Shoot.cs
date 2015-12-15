@@ -18,6 +18,8 @@ public class Shoot : MonoBehaviour {
 	public float horSpread;
 	public int numScatterShots;
 	public float maxChargingEffectFactor;
+    public float caneScaleFactor;
+    public float chargeLerpExponent;
     
 
     public bool ______________________;
@@ -28,6 +30,7 @@ public class Shoot : MonoBehaviour {
     public Transform caneEnd;
     public int projectileIndex;
 	public GameObject chargingOutline;
+    public PlayerScript player;
 
     void Awake() {
         S = this;
@@ -39,6 +42,7 @@ public class Shoot : MonoBehaviour {
         caneEnd = mainCamera.transform.GetChild(0).GetChild(1);
         projectileIndex = 0;
 		chargingOutline = GameObject.Find ("ChargingOutline");
+        player = GetComponent<PlayerScript>();
     }
 
     public static EffectDefinition getCubeEffectDefinition(Cube.CubeEffect_e effect) {
@@ -76,10 +80,15 @@ public class Shoot : MonoBehaviour {
         }
         if (charging) {
             chargeTime += Time.deltaTime;
-			Color col = chargingOutline.GetComponent<Image> ().color;
-			col = Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor;
-			col.a = maxChargingEffectFactor * chargeTime / maxChargeTime;
+            EffectDefinition def = getCubeEffectDefinition(currentEffect());
+            Color col = chargingOutline.GetComponent<Image> ().color;
+			col = def.outlineColor;
+            float chargePercentage = chargeTime / maxChargeTime;
+            col.a = maxChargingEffectFactor * chargePercentage;
 			chargingOutline.GetComponent<Image> ().color = col;
+            float lerpValue = Mathf.Pow(chargePercentage, chargeLerpExponent);
+            player.caneColor = Color.Lerp(Color.white, def.outlineColor, lerpValue);
+            player.caneScale = Mathf.Lerp(1, caneScaleFactor, lerpValue);
         }
         switchGun();
     }
@@ -110,7 +119,13 @@ public class Shoot : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Alpha5)) {
 			projectileIndex = validProjectileIndex(4);
 		}
+        switchCaneTipColor();
 	}
+
+    private void switchCaneTipColor() {
+        EffectDefinition def = getCubeEffectDefinition(currentEffect());
+        player.caneTipColor = def.outlineColor;
+    }
 
     private void switchToNextGun() {
         projectileIndex = (projectileIndex + 1) % effects.Count;
@@ -146,6 +161,8 @@ public class Shoot : MonoBehaviour {
 		Color col = chargingOutline.GetComponent<Image> ().color;
 		col.a = 0;
 		chargingOutline.GetComponent<Image> ().color = col;
+        player.caneColor = Color.white;
+        player.caneScale = 1f;
     }
 
     private void shoot() {

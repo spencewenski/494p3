@@ -21,8 +21,11 @@ public class PlayerScript : MonoBehaviour {
     private int speedCount = 0;
     private int trampCount = 0;
     private LayerMask caneMask;
+    private Renderer caneRenderer;
     private Renderer tipRenderer;
     private Vector3 camRot = Vector3.zero;
+    private Vector3 caneLocalScale;
+    private Vector3 tipLocalScale;
 
     // Use this for initialization
     void Start () {
@@ -34,7 +37,10 @@ public class PlayerScript : MonoBehaviour {
         caneTip = cane.GetChild(0);
         caneEnd = cane.GetChild(1);
         caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
+        caneRenderer = cane.GetComponent<Renderer>();
         tipRenderer = caneTip.GetComponent<Renderer>();
+        caneLocalScale = cane.localScale;
+        tipLocalScale = caneTip.localScale;
     }
 	
 	void FixedUpdate () {
@@ -113,6 +119,31 @@ public class PlayerScript : MonoBehaviour {
         camRot.z = 0;
         camTrans.localEulerAngles = camRot;
         
+    }
+
+    public Color caneColor {
+        set {
+            caneRenderer.material.color = value;
+        }
+        get {
+            return caneRenderer.material.color;
+        }
+    }
+
+    public Color caneTipColor {
+        set {
+            tipRenderer.material.color = value;
+        }
+        get {
+            return tipRenderer.material.color;
+        }
+    }
+
+    public float caneScale {
+        set {
+            cane.localScale = caneLocalScale * value;
+            caneTip.localScale = tipLocalScale * value;
+        }
     }
 
 
