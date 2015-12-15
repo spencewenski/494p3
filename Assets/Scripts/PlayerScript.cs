@@ -146,12 +146,6 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
-
-    void Update() {
-        // update color
-        tipRenderer.material.color = Shoot.getCubeEffectDefinition(Shoot.S.currentEffect()).outlineColor;
-    }
-
     bool IsGrounded()
     {
         RaycastHit rayHit1 = new RaycastHit(), rayHit2 = new RaycastHit(), rayHit3 = new RaycastHit(), rayHit4 = new RaycastHit(),

@@ -25,11 +25,6 @@ public class HUDGuns : MonoBehaviour {
         }
 
         foreach (KeyValuePair<Cube.CubeEffect_e, Text> entry in cubeEffectText) {
-            if (Shoot.S.reverseEffect()) {
-                entry.Value.text = Shoot.getCubeEffectDefinition(entry.Key).reverseText;
-            } else {
-                entry.Value.text = Shoot.getCubeEffectDefinition(entry.Key).text;
-            }
             if (entry.Key == Shoot.S.currentEffect()) {
                 entry.Value.color = Shoot.getCubeEffectDefinition(entry.Key).outlineColor;
             } else {
@@ -45,6 +40,9 @@ public class HUDGuns : MonoBehaviour {
         Text text = textGO.GetComponent<Text>();
         if (text != null) {
             text.text = def.text;
+            if (!string.IsNullOrEmpty(def.reverseText)) {
+                text.text += "|" + def.reverseText;
+            }
             cubeEffectText[effect] = text;
         }
     }

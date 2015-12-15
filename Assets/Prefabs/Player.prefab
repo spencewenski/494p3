@@ -373,7 +373,7 @@ MonoBehaviour:
   cubeEffectDefinitions:
   - effect: 1
     text: Outline
-    reverseText: Outline
+    reverseText: 
     outlineColor: {r: 1, g: 1, b: 1, a: 1}
     accentColor: {r: 1, g: 1, b: 1, a: 1}
   - effect: 2
@@ -383,12 +383,12 @@ MonoBehaviour:
     accentColor: {r: .658620715, g: 0, b: 0, a: 1}
   - effect: 3
     text: Trampoline
-    reverseText: Trampoline
+    reverseText: 
     outlineColor: {r: 0, g: 1, b: 0, a: 1}
     accentColor: {r: 0, g: .603448272, b: 0, a: 1}
   - effect: 4
     text: Speed
-    reverseText: Speed
+    reverseText: 
     outlineColor: {r: 0, g: .615999997, b: 1, a: 1}
     accentColor: {r: 0, g: 0, b: 1, a: 1}
   - effect: 5
@@ -706,7 +706,7 @@ Prefab:
       objectReference: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[0].reverseText
-      value: Outline
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[1].reverseText
@@ -714,11 +714,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[2].reverseText
-      value: Trampoline
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[3].reverseText
-      value: Speed
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cubeEffectDefinitions.Array.data[4].reverseText

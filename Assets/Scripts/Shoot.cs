@@ -19,7 +19,7 @@ public class Shoot : MonoBehaviour {
 	public int numScatterShots;
 	public float maxChargingEffectFactor;
     public float caneScaleFactor;
-    public float chargeLerpExponent;
+    public float chargePercentageExponent;
     
 
     public bool ______________________;
@@ -31,6 +31,7 @@ public class Shoot : MonoBehaviour {
     public int projectileIndex;
 	public GameObject chargingOutline;
     public PlayerScript player;
+    private bool reverseEffect_;
 
     void Awake() {
         S = this;
@@ -65,13 +66,13 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)) {
+        if (shootKeyDown()) {
 			if (effects.Count == 0) {
 				print("Update: can't shoot without gun");
 				return;
 			}
             startCharging();
-        } else if (charging && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.LeftControl) || chargeTime > maxChargeTime)) {
+        } else if (charging && (shootKeyUp() || chargeTime > maxChargeTime)) {
 			if (chargeTime > maxChargeTime)
 				scatterShoot ();
 			else 
@@ -84,13 +85,34 @@ public class Shoot : MonoBehaviour {
             Color col = chargingOutline.GetComponent<Image> ().color;
 			col = def.outlineColor;
             float chargePercentage = chargeTime / maxChargeTime;
-            col.a = maxChargingEffectFactor * chargePercentage;
-			chargingOutline.GetComponent<Image> ().color = col;
-            float lerpValue = Mathf.Pow(chargePercentage, chargeLerpExponent);
+            float lerpValue = Mathf.Pow(chargePercentage, chargePercentageExponent);
+            col.a = maxChargingEffectFactor * lerpValue;
+			chargingOutline.GetComponent<Image>().color = col;
             player.caneColor = Color.Lerp(Color.white, def.outlineColor, lerpValue);
             player.caneScale = Mathf.Lerp(1, caneScaleFactor, lerpValue);
         }
         switchGun();
+    }
+
+    private bool shootKeyDown() {
+        if (charging) {
+            return false;
+        }
+        reverseEffect = Input.GetMouseButtonDown(1);
+        return Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1);
+    }
+
+    public bool reverseEffect {
+        get {
+            return reverseEffect_;
+        }
+        set {
+            reverseEffect_ = value;
+        }
+    }
+
+    private bool shootKeyUp() {
+        return Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1);
     }
 
 	private void switchGun() {
@@ -181,7 +203,7 @@ public class Shoot : MonoBehaviour {
         projectileGO.transform.position = projectilePosition;
         // projectile velocity
         Projectile projectile = projectileGO.GetComponent<Projectile>();
-        projectile.setEffect(currentEffect(), reverseEffect());
+        projectile.setEffect(currentEffect(), reverseEffect);
         projectile.setVelocity(mainCamera.transform.forward, 1f);
     }
 
@@ -200,8 +222,8 @@ public class Shoot : MonoBehaviour {
 			projectilePosition += projectileHeight * mainCamera.transform.up.normalized;
 			projectileGO.transform.position = projectilePosition;
 			Projectile projectile = projectileGO.GetComponent<Projectile> ();
-			projectile.setEffect (currentEffect (), reverseEffect ());
-			projectile.setVelocity (mainCamera.transform.forward+spreadNoise, 1f);
+			projectile.setEffect(currentEffect(), reverseEffect);
+			projectile.setVelocity(mainCamera.transform.forward+spreadNoise, 1f);
 		}
 	}
 
@@ -212,7 +234,5 @@ public class Shoot : MonoBehaviour {
         return effects[projectileIndex];
     }
 
-    public bool reverseEffect() {
-        return Input.GetMouseButton(1);
-    }
+   
 }
