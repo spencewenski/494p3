@@ -4,7 +4,7 @@ using System.Collections;
 public class SwitchLevel : MonoBehaviour {
 
 	public string nextLevel;
-    public float level;
+    public int level;
     public float timeTaken;
     public Times timeScript;
     public bool bestTime;
