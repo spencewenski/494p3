@@ -5,7 +5,10 @@ using System.Collections;
 public class StartGame : MonoBehaviour {
 	
 	public string firstLevel;
-	GameObject levelSelectionMenu;
+    public GameObject visionFrame;
+    public GameObject instructionFrame;
+    public GameObject timeFrame;
+    GameObject levelSelectionMenu;
 	bool selectingLevel = false;
     Transform bestTimes;
 	// Use this for initialization
@@ -27,7 +30,11 @@ public class StartGame : MonoBehaviour {
         }
         if (selectingLevel == false) {
 			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.KeypadEnter)) {
-				Destroy (GameObject.Find ("Instructions"));
+				Destroy(GameObject.Find ("Instructions"));
+                Destroy(instructionFrame);
+                Vector3 timeFramePos = timeFrame.transform.position;
+                timeFramePos.x = 0;
+                timeFrame.transform.position = timeFramePos;
 				selectingLevel = true;
 				levelSelectionMenu.SetActive(true);
                 Utility.hideCursor(false);
