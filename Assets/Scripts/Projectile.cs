@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
     public Cube.CubeEffect_e effect;
     public float speed = 50f;
     public bool reverse; // do the reverse of the effect
+    public float minDestroyTime;
+    public float maxDestroyTime;
 	
     public bool ___________________;
 
@@ -19,7 +21,7 @@ public class Projectile : MonoBehaviour {
     }
 
     void Start() {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, Random.Range(minDestroyTime, maxDestroyTime));
     }
 
     public void setEffect(Cube.CubeEffect_e effect_, bool reverse_) {
