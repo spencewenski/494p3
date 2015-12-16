@@ -3301,11 +3301,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 8.69999981
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3329,15 +3329,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: triggerTextRoot

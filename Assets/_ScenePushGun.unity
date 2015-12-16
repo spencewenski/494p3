@@ -1138,7 +1138,7 @@ Prefab:
       objectReference: {fileID: 1267565103}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Hold right-mouse and tap left-mouse to pull.
+      value: Tap right-mouse to Pull blocks!
       objectReference: {fileID: 0}
     - target: {fileID: 134470, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_Name
@@ -2998,7 +2998,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3026,15 +3026,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.data[0]
@@ -3050,11 +3050,11 @@ Prefab:
       objectReference: {fileID: 1267565103}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[0]
-      value: Use push to push blocks!
+      value: Use Push to push blocks!
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[1]
-      value: Objects that can be pushed turn red when hit.
+      value: Objects that can be Pushed turn red when hit.
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.data[2]
@@ -3063,6 +3063,10 @@ Prefab:
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayTime
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
+      propertyPath: displayOnTrigger.Array.data[2]
+      value: Objects that can be pushed turn red when hit.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}

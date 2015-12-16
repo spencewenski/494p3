@@ -1113,7 +1113,6 @@ Transform:
   m_Children:
   - {fileID: 1648737277}
   - {fileID: 218200421}
-  - {fileID: 1438231644}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!1001 &747000472
@@ -1290,10 +1289,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 169710, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
   m_PrefabInternal: {fileID: 2115938713}
---- !u!1 &944685352 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 169710, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
-  m_PrefabInternal: {fileID: 1460181861}
 --- !u!1 &945014006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,104 +1990,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22495554, guid: 6612ed73db8aa964b911ce50c2223e53,
     type: 2}
   m_PrefabInternal: {fileID: 1001409850}
---- !u!1001 &1438231643
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 671197627}
-    m_Modifications:
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: displayOnTrigger.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: outlineOnTrigger.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -.189999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 5.69999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 34.9000015
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 10.5473385
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 11.2599249
-      objectReference: {fileID: 0}
-    - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 8.11716747
-      objectReference: {fileID: 0}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: triggerTextRoot
-      value: 
-      objectReference: {fileID: 1598231186}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: displayOnTrigger.Array.data[0]
-      value: Hold right-mouse and tap left-mouse to return objects to normal gravity.
-      objectReference: {fileID: 0}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: displayOnTrigger.Array.data[1]
-      value: Objects that can have their gravity reversed turn yellow when hit.
-      objectReference: {fileID: 0}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: outlineOnTrigger.Array.data[0]
-      value: 
-      objectReference: {fileID: 944685352}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: outlineOnTrigger.Array.data[1]
-      value: 
-      objectReference: {fileID: 1578470480}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: outlineOnTrigger.Array.data[2]
-      value: 
-      objectReference: {fileID: 650129272}
-    - target: {fileID: 134470, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: m_Name
-      value: TriggerOnPlayerContact (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-      propertyPath: displayTime
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &1438231644 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
-  m_PrefabInternal: {fileID: 1438231643}
 --- !u!1001 &1460181861
 Prefab:
   m_ObjectHideFlags: 0
@@ -2215,10 +2112,6 @@ Transform:
   - {fileID: 281048661}
   m_Father: {fileID: 1252131813}
   m_RootOrder: 0
---- !u!1 &1578470480 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 169710, guid: 79ab21f118e094345b7a31e0974d07b9, type: 2}
-  m_PrefabInternal: {fileID: 54240683}
 --- !u!1 &1598231186 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 197092, guid: 2fd1e921de901834ba50f51981fba99e, type: 2}
@@ -2388,11 +2281,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 14.8999996
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2416,15 +2309,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464352, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: triggerTextRoot
@@ -2436,7 +2329,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: displayOnTrigger.Array.data[1]
-      value: Objects turn yellow when affected.
+      value: Tap right-mouse to return objects to normal gravity.
       objectReference: {fileID: 0}
     - target: {fileID: 11451890, guid: 7939b7c504ce1bb44b6acd02d3970c7e, type: 2}
       propertyPath: outlineOnTrigger.Array.data[0]
