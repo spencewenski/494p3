@@ -8,6 +8,7 @@ public class Times : MonoBehaviour {
     public string currTime;
     public int level;
     public string bestTime;
+
     // Use this for initialization
     void Start () {
         text = GetComponent<Text>();

@@ -405,7 +405,7 @@ MonoBehaviour:
   numScatterShots: 30
   maxChargingEffectFactor: .100000001
   caneScaleFactor: 1.10000002
-  chargeLerpExponent: 2
+  chargePercentageExponent: 2
   ______________________: 0
   charging: 0
   chargeTime: 0
@@ -782,6 +782,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: chargeLerpExponent
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: chargePercentageExponent
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -11,12 +11,13 @@ public class SwitchLevel : MonoBehaviour {
     public bool pause = false;
     public GameObject bestText;
 	public bool ___________________;
+
     void Start()
     {
-        GameObject go = GameObject.Find("Timer");
-        timeScript = go.GetComponent<Times>();
+        GameObject go = GameObject.Find("TimerHUD");
+        timeScript = go.transform.FindChild("Timer").GetComponent<Times>();
         level = timeScript.level;
-        bestText = go.transform.GetChild(0).gameObject;
+        bestText = go.transform.FindChild("BestTimePopup").gameObject;
     }
 
 	void OnCollisionEnter(Collision other) {
