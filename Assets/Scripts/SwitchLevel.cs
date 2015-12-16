@@ -30,7 +30,7 @@ public class SwitchLevel : MonoBehaviour {
         {
             bestText.SetActive(true);
             pause = true;
-            PlayerPrefs.SetFloat("Time" + level, timeScript.time);
+            PlayerPrefs.SetFloat("Time" + level, timeTaken);
 
         }
         else if(!pause)
