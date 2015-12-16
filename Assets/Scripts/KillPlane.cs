@@ -50,7 +50,10 @@ public class KillPlane : MonoBehaviour {
 
 	private void playerRespawn() {
 		playerGO.transform.position = Checkpoint.lastCheckpoint.spawnPoint.position;
-		playerGO.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //Camera.main.transform.rotation = Checkpoint.lastCheckpoint.spawnPoint.transform.rotation;
+        playerGO.transform.rotation = Checkpoint.lastCheckpoint.spawnPoint.rotation;
+        playerGO.GetComponent<PlayerScript>().refreshCameraRotation();
+        playerGO.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		// flash the outline of the screen
 		flashingOutline = true;
 		Color col = screenOutline.GetComponent<Image> ().color;

@@ -121,6 +121,12 @@ public class PlayerScript : MonoBehaviour {
         
     }
 
+    public void refreshCameraRotation()
+    {
+        camRot.x = 0;
+        camRot.z = 0;
+    }
+
     public Color caneColor {
         set {
             caneRenderer.material.color = value;
