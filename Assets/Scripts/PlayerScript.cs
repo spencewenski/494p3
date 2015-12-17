@@ -36,7 +36,8 @@ public class PlayerScript : MonoBehaviour {
         cane = camTrans.transform.GetChild(0);
         caneTip = cane.GetChild(0);
         caneEnd = cane.GetChild(1);
-        caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
+        caneMask = ~(1 << LayerMask.NameToLayer("cane") | 
+            1 << LayerMask.NameToLayer("kill") | 1 << LayerMask.NameToLayer("projectile"));
         caneRenderer = cane.GetComponent<Renderer>();
         tipRenderer = caneTip.GetComponent<Renderer>();
         caneLocalScale = cane.localScale;
