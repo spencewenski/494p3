@@ -252,8 +252,7 @@ MonoBehaviour:
   minFrequency: 0
   maxFrequency: 1
   minRms: .00100000005
-  displacementFactor: .5
-  maxDisplacement: .25
+  maxDisplacement: .100000001
   accentThreshold: .150000006
   removeAccentThreshold: .0500000007
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
@@ -476,7 +475,7 @@ Prefab:
       objectReference: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
     - target: {fileID: 0}
       propertyPath: maxDisplacement
-      value: .25
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: displacementFactor
