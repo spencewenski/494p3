@@ -20,7 +20,10 @@ public class Shoot : MonoBehaviour {
 	public float maxChargingEffectFactor;
     public float caneScaleFactor;
     public float chargePercentageExponent;
-    
+    public AudioClip shootSFX;
+    public AudioClip scatterSFX;
+    public List<AudioClip> projectileSfx;
+
 
     public bool ______________________;
 
@@ -32,6 +35,7 @@ public class Shoot : MonoBehaviour {
 	public GameObject chargingOutline;
     public PlayerScript player;
     private bool reverseEffect_;
+    private AudioSource audioSource;
 
     void Awake() {
         S = this;
@@ -44,6 +48,7 @@ public class Shoot : MonoBehaviour {
         projectileIndex = 0;
 		chargingOutline = GameObject.Find ("ChargingOutline");
         player = GetComponent<PlayerScript>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public static EffectDefinition getCubeEffectDefinition(Cube.CubeEffect_e effect) {
@@ -192,6 +197,7 @@ public class Shoot : MonoBehaviour {
             print("Shoot.shoot(): invalid index");
             return;
         }
+        audioSource.PlayOneShot(shootSFX);
         //GameObject projectileGO = Instantiate(prefabProjectiles[projectileIndex]) as GameObject;
         GameObject projectileGO = Instantiate(prefabProjectile) as GameObject;
         Physics.IgnoreCollision(projectileGO.GetComponent<Collider>(), GetComponent<Collider>());
@@ -205,6 +211,7 @@ public class Shoot : MonoBehaviour {
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.setEffect(currentEffect(), reverseEffect);
         projectile.setVelocity(mainCamera.transform.forward, 1f);
+        projectile.setSfx(projectileSfx[projectileIndex]);
     }
 
 	private void scatterShoot() {
@@ -213,7 +220,8 @@ public class Shoot : MonoBehaviour {
 			return;
 		}
 
-		for (int i = 0; i < numScatterShots; ++i) {
+        audioSource.PlayOneShot(scatterSFX);
+        for (int i = 0; i < numScatterShots; ++i) {
 			Vector3 spreadNoise = new Vector3(Random.Range(-horSpread, horSpread),
 			                                  Random.Range(-verSpread, verSpread), Random.Range(-horSpread, horSpread));
 			GameObject projectileGO = Instantiate (prefabProjectile) as GameObject;
@@ -224,7 +232,8 @@ public class Shoot : MonoBehaviour {
 			Projectile projectile = projectileGO.GetComponent<Projectile> ();
 			projectile.setEffect(currentEffect(), reverseEffect);
 			projectile.setVelocity(mainCamera.transform.forward+spreadNoise, 1f);
-		}
+            projectile.setSfx(projectileSfx[projectileIndex]);
+        }
 	}
 
     public Cube.CubeEffect_e currentEffect() {

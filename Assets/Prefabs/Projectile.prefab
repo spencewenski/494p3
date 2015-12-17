@@ -50,9 +50,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -92,10 +90,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: 1
+  sfx: {fileID: 8300000, guid: db6e7f7aac0fed241b485e348d0949d0, type: 3}
   speed: 50
   reverse: 0
   minDestroyTime: 4
   maxDestroyTime: 6
+  emptyAudioPrefab: {fileID: 146460, guid: d3a55f81803d68544be63dba1224bcc6, type: 2}
   ___________________: 0
   outlineColor: {r: 0, g: 0, b: 0, a: 0}
   accentColor: {r: 0, g: 0, b: 0, a: 0}
@@ -139,6 +139,14 @@ Prefab:
       propertyPath: maxDestroyTime
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: db6e7f7aac0fed241b485e348d0949d0, type: 3}
+    - target: {fileID: 0}
+      propertyPath: emptyAudioPrefab
+      value: 
+      objectReference: {fileID: 146460, guid: d3a55f81803d68544be63dba1224bcc6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133214}

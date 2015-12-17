@@ -5,10 +5,12 @@ public class Projectile : MonoBehaviour {
 
     // effect that this projectile applies
     public Cube.CubeEffect_e effect;
+    public AudioClip sfx;
     public float speed = 50f;
     public bool reverse; // do the reverse of the effect
     public float minDestroyTime;
     public float maxDestroyTime;
+    public GameObject emptyAudioPrefab;
 	
     public bool ___________________;
 
@@ -39,6 +41,11 @@ public class Projectile : MonoBehaviour {
 			rend.material.SetColor ("_OutlineColor", def.outlineColor);
     }
 
+    public void setSfx(AudioClip sfx_)
+    {
+        sfx = sfx_;
+    }
+
     // overwrite if you require special behavior
     public virtual void setVelocity(Vector3 direction, float speedFactor) {
         if (rigidBody == null) {
@@ -58,6 +65,12 @@ public class Projectile : MonoBehaviour {
         if (other.tag == "CheckpointSystem" || other.tag == "Projectile") {
             return;
         }
+
+        GameObject emptyAudio = Instantiate(emptyAudioPrefab) as GameObject;
+        emptyAudio.transform.position = transform.position;
+        AudioSource audioSource = emptyAudio.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(sfx);
+
         OnTriggerEnterChild(other);
         Destroy(gameObject);
     }
