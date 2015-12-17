@@ -21,7 +21,7 @@ public class Times : MonoBehaviour {
 	void Update () {
         time += Time.deltaTime;
         currTime = format(time);
-        text.text = "Best: " + bestTime + "\n\t\t   " + currTime;
+        text.text = bestTime + " - Best" + "\n" + currTime;
 	}
     public string format(float time)
     {

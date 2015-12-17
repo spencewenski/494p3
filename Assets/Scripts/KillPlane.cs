@@ -17,9 +17,12 @@ public class KillPlane : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		screenOutline = GameObject.Find ("ChargingOutline");
-		flashingOutline = false;
+		flashingOutline = true;
 		flashingOutlineRate = 1.05f;
-	}
+        Color col = screenOutline.GetComponent<Image>().color;
+        col.a = 1f;
+        screenOutline.GetComponent<Image>().color = col;
+    }
 	
 	// Update is called once per frame
 	void Update () {

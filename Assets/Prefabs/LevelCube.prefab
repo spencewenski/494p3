@@ -38,6 +38,7 @@ GameObject:
   - 114: {fileID: 11459642}
   - 114: {fileID: 11411870}
   - 114: {fileID: 11402018}
+  - 114: {fileID: 11441188}
   m_Layer: 0
   m_Name: LevelCube
   m_TagString: LevelCube
@@ -191,9 +192,11 @@ MonoBehaviour:
   outlinePulser: {fileID: 0}
   lightRipple: {fileID: 0}
   active: 0
-  gravityReversed: 0
+  drag: 0
   _______________: 0
+  gravityReversed: 0
   rigidBody: {fileID: 0}
+  originalDrag: 0
 --- !u!114 &11402574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,12 +252,25 @@ MonoBehaviour:
   minFrequency: 0
   maxFrequency: 1
   minRms: .00100000005
-  displacementFactor: .5
-  maxDisplacement: .25
+  maxDisplacement: .100000001
   accentThreshold: .150000006
   removeAccentThreshold: .0500000007
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   accentColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &11441188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c81519fbaa24bd38bc15e0eed967be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMinMaxHeight: 0
+  minHeight: 0
+  maxHeight: 0
 --- !u!114 &11445808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -459,7 +475,7 @@ Prefab:
       objectReference: {fileID: 4800000, guid: 7a739c8998754c745b06976a7f0ac2f9, type: 3}
     - target: {fileID: 0}
       propertyPath: maxDisplacement
-      value: .25
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: displacementFactor

@@ -36,7 +36,8 @@ public class PlayerScript : MonoBehaviour {
         cane = camTrans.transform.GetChild(0);
         caneTip = cane.GetChild(0);
         caneEnd = cane.GetChild(1);
-        caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("kill"));
+        caneMask = ~(1 << LayerMask.NameToLayer("cane") | 1 << LayerMask.NameToLayer("pickup") |
+            1 << LayerMask.NameToLayer("kill") | 1 << LayerMask.NameToLayer("projectile"));
         caneRenderer = cane.GetComponent<Renderer>();
         tipRenderer = caneTip.GetComponent<Renderer>();
         caneLocalScale = cane.localScale;
@@ -147,8 +148,15 @@ public class PlayerScript : MonoBehaviour {
 
     public float caneScale {
         set {
-            cane.localScale = caneLocalScale * value;
-            caneTip.localScale = tipLocalScale * value;
+            // don't scale the y axis
+            Vector3 caneLocalScale_ = caneLocalScale;
+            caneLocalScale_.x *= value;
+            caneLocalScale_.z *= value;
+            cane.localScale = caneLocalScale_;
+            Vector3 tipLocalScale_ = tipLocalScale;
+            tipLocalScale_.x *= value;
+            tipLocalScale_.z *= value;
+            caneTip.localScale = tipLocalScale_;
         }
     }
 

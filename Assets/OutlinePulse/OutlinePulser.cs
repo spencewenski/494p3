@@ -24,7 +24,6 @@ public class OutlinePulser : MonoBehaviour {
 	public float maxFrequency = 1f; // Maximum frequency to pulse to on scale from [0, 1]
 	public float minRms = 0.001f;	// Minimum rms amplitude to pulse to
 
-	public float displacementFactor = 0.8f;
 	public float maxDisplacement = 0.25f;
 	public float accentThreshold = 0.15f; 		// If rms > threshold then accent color appears
 	public float removeAccentThreshold = 0.05f; // If rms < threshold then accent goes away
@@ -44,6 +43,7 @@ public class OutlinePulser : MonoBehaviour {
 	private float[] spectrum; 	// audio samples
 	private Transform playerTransform;
 	private bool accented = false;
+    private float maxVolumeSoFar = 0f; // max volume seen so far
 
 	void Start () {
 		 playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -109,7 +109,7 @@ public class OutlinePulser : MonoBehaviour {
 			fadeFactor = (Mathf.Max(maxVisibleDistance - playerDist, 0)) / maxVisibleDistance;
 		}
 		if (isInRange ()) {
-			rend.material.SetFloat ("_Outline", Mathf.Min(rmsValue*volume*0.5f, maxDisplacement));
+			rend.material.SetFloat ("_Outline", calcDisplacement(rmsValue * volume * 0.5f));
 			if (accented) {
 				if (rmsValue < removeAccentThreshold) {
 					accented = false;
@@ -131,6 +131,14 @@ public class OutlinePulser : MonoBehaviour {
 			rend.material.SetColor ("_OutlineColor", getFadedColor(outlineColor, fadeFactor));
 		}
 	}
+
+    public float calcDisplacement(float val) {
+        if (val > maxVolumeSoFar) {
+            maxVolumeSoFar = val;
+        }
+        return (val / maxVolumeSoFar) * maxDisplacement;
+
+    }
 
 	public void setOutlineAccentColor(Color outl, Color acc){
 		outlineColor = outl;
