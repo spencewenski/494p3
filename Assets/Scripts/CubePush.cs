@@ -41,11 +41,6 @@ public class CubePush : Cube {
     // Use this for initialization
     void Start () {
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     // OVERWRITE THE Cube.doEffectChild METHOD
     //
