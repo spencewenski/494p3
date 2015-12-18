@@ -6,7 +6,10 @@
   - RichaadEB - Bonetrousle - Cover of Toby Fox
   - Laurie Anderson - O Superman
 
-- outline shader:
+- sound effects:
+  - shoot sound is an altered version of: https://youtu.be/Pkuu30mJz6k
+
+- outline shader (based on):
   - http://wiki.unity3d.com/index.php?title=Silhouette-Outlined_Diffuse
 
 - fonts
