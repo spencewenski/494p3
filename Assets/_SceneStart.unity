@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!114 &100415797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,13 +808,13 @@ MonoBehaviour:
     m_LineSpacing: .800000012
   m_Text: 'WASD
 
-    Space
-
-    12345
-
     Mouse
 
     Left/Right Click
+
+    Space
+
+    12345
 
     ESC/P'
 --- !u!222 &601387046
@@ -907,13 +907,13 @@ MonoBehaviour:
     m_LineSpacing: .800000012
   m_Text: 'Move
 
-    Jump
-
-    Switch Gun
-
     Look
 
     Shoot
+
+    Jump
+
+    Switch Gun
 
     Pause'
 --- !u!222 &624643236
@@ -1103,7 +1103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1141587499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1660,7 @@ RectTransform:
   - {fileID: 585538400}
   - {fileID: 1499005769}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
