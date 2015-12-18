@@ -796,7 +796,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 30a65bc359b0d954c8cdafee35ed0b1c, type: 3}
-    m_FontSize: 8
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -814,7 +814,9 @@ MonoBehaviour:
 
     Mouse
 
-    Left/Right Click'
+    Left/Right Click
+
+    ESC/P'
 --- !u!222 &601387046
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -835,7 +837,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -2.29999995, y: -25.7999992}
+  m_AnchoredPosition: {x: -2.29999995, y: -25}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &624643233
@@ -869,7 +871,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 5.30000019, y: -25.7999992}
+  m_AnchoredPosition: {x: 5.30000019, y: -25}
   m_SizeDelta: {x: 45, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &624643235
@@ -893,7 +895,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 30a65bc359b0d954c8cdafee35ed0b1c, type: 3}
-    m_FontSize: 8
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -911,7 +913,9 @@ MonoBehaviour:
 
     Look
 
-    Shoot'
+    Shoot
+
+    Pause'
 --- !u!222 &624643236
 CanvasRenderer:
   m_ObjectHideFlags: 0
