@@ -51,7 +51,6 @@ public class CubeController : MonoBehaviour {
         if (cubeEffect == null) {
             return;
         }
-        print(other.gameObject);
         cubeEffect.doEffect(other.gameObject);
     }
 
