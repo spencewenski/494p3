@@ -5,44 +5,67 @@ public class TriggerText : MonoBehaviour {
     public float displaySec = 5f;
     public float fadeSec = 1f;
 
-    private float displayFrames;
-    private float fadeInFrames = 0;
-    private float fadeOutFrames;
+    public bool _______________;
 
-    private float fadeTotalFrames;
+    public enum DisplayState_e { FADE_IN, VISIBLE, FADE_OUT };
+    public DisplayState_e state;
 
-    private CanvasRenderer textRenderer;
+    public float displayTimeRemaining;
+    public float fadeTimeRemaining;
+
+    public CanvasRenderer textRenderer;
 
 	// Use this for initialization
 	void Start () {
-        displayFrames = displaySec / Time.fixedDeltaTime;
-        fadeOutFrames = fadeSec / Time.fixedDeltaTime;
-        fadeTotalFrames = fadeSec / Time.fixedDeltaTime;
         textRenderer = GetComponent<CanvasRenderer>();
-
+        fadeTimeRemaining = fadeSec;
+        state = DisplayState_e.FADE_IN;
         textRenderer.SetAlpha(0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ++fadeInFrames;
-
-        if (fadeInFrames <= fadeTotalFrames)
-        {
-            textRenderer.SetAlpha(fadeInFrames / fadeTotalFrames);
+        switch (state) {
+            case DisplayState_e.FADE_IN:
+                fadeIn();
+                return;
+            case DisplayState_e.VISIBLE:
+                visible();
+                return;
+            case DisplayState_e.FADE_OUT:
+                fadeOut();
+                return;
+            default:
+                print("TriggerText.Update(): invalid state");
+                return;
         }
+    }
 
-        --displayFrames;
-        
-        if (displayFrames <= 0)
-        {
-            --fadeOutFrames;
-            textRenderer.SetAlpha(fadeOutFrames / fadeTotalFrames);
-            
-            if (fadeOutFrames <= 0)
-            {
-                Destroy(gameObject);
-            }
+    private void fadeIn() {
+        fadeTimeRemaining = Utility.updateTimeRemaining(fadeTimeRemaining);
+        if (fadeTimeRemaining <= 0) {
+            displayTimeRemaining = displaySec;
+            state = DisplayState_e.VISIBLE;
+            textRenderer.SetAlpha(1);
+            return;
         }
-	}
+        textRenderer.SetAlpha((fadeSec - fadeTimeRemaining) / fadeSec);
+    }
+
+    private void visible() {
+        displayTimeRemaining = Utility.updateTimeRemaining(displayTimeRemaining);
+        if (displayTimeRemaining <= 0) {
+            fadeTimeRemaining = fadeSec;
+            state = DisplayState_e.FADE_OUT;
+            return;
+        }
+    }
+
+    private void fadeOut() {
+        fadeTimeRemaining = Utility.updateTimeRemaining(fadeTimeRemaining);
+        if (fadeTimeRemaining <= 0) {
+            Destroy(gameObject);
+        }
+        textRenderer.SetAlpha(fadeTimeRemaining / fadeSec);
+    }
 }
