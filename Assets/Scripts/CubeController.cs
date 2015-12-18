@@ -11,8 +11,6 @@ public class CubeController : MonoBehaviour {
 
     public Dictionary<Cube.CubeEffect_e, Cube> cubeEffects;
     public Cube.CubeEffect_e currentEffect;
-    // prevent multiple collisions from one projectile
-    public bool isColliding = false;
 
     void Awake() {
         if (invalidEffects == null) {
@@ -34,20 +32,15 @@ public class CubeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        isColliding = false;
+
 	}
 
-    // detect a trigger enter event
+    // detect a collision enter event
     // 
     // updates currentEffect and applies the effect
     //
     // only care about projectiles
     void OnCollisionEnter(Collision other) {
-        // prevent multiple collisions from one projectile
-        if (isColliding) {
-            return;
-        }
-        isColliding = true;
         if (other.gameObject.tag != "Projectile") {
             return;
         }
@@ -58,6 +51,7 @@ public class CubeController : MonoBehaviour {
         if (cubeEffect == null) {
             return;
         }
+        print(other.gameObject);
         cubeEffect.doEffect(other.gameObject);
     }
 
