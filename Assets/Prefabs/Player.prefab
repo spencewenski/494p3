@@ -478,7 +478,7 @@ MonoBehaviour:
   caneScaleFactor: 1.10000002
   chargePercentageExponent: .5
   shootSFX: {fileID: 8300000, guid: d16c726d292c1564493e2195e2797fd6, type: 3}
-  scatterSFX: {fileID: 8300000, guid: d16c726d292c1564493e2195e2797fd6, type: 3}
+  scatterSFX: {fileID: 8300000, guid: 1d0f6b5f3c6b48b4d8f9790b10440057, type: 3}
   projectileSfx:
   - {fileID: 8300000, guid: db6e7f7aac0fed241b485e348d0949d0, type: 3}
   - {fileID: 8300000, guid: 7cf9387e14ac3d34d884a9e824eaa7c3, type: 3}
