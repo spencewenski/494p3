@@ -109,9 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f8f54c867dc86428ecc108dc78e15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 2
-  frequency: .5
+  height: .5
+  period: 3
   ______________: 0
+  originalHeight: 0
 --- !u!114 &11445884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,11 +176,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: frequency
-      value: .5
+      value: .25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: height
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: period
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
