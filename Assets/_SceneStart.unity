@@ -341,8 +341,8 @@ MonoBehaviour:
   volume: 1
   OutlinePulseOn: 1
   setToBass: 0
-  setToMid: 1
-  setToHigh: 0
+  setToMid: 0
+  setToHigh: 1
   minFrequency: 0
   maxFrequency: 1
   minRms: .00100000005
