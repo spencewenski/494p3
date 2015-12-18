@@ -814,7 +814,7 @@ MonoBehaviour:
 
     Mouse
 
-    Left Mouse'
+    Left/Right Click'
 --- !u!222 &601387046
 CanvasRenderer:
   m_ObjectHideFlags: 0
