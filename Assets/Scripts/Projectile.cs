@@ -69,7 +69,7 @@ public class Projectile : MonoBehaviour {
         GameObject emptyAudio = Instantiate(emptyAudioPrefab) as GameObject;
         emptyAudio.transform.position = transform.position;
         AudioSource audioSource = emptyAudio.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(sfx);
+        //audioSource.PlayOneShot(sfx);
 
         OnTriggerEnterChild(other);
         Destroy(gameObject);
