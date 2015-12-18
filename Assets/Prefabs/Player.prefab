@@ -210,7 +210,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -234,7 +236,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -258,7 +262,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -462,7 +468,7 @@ MonoBehaviour:
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
-  effects: 01000000020000000300000004000000
+  effects: 01000000
   maxChargeTime: .5
   projectileHeight: .25
   verSpread: .300000012
@@ -471,8 +477,8 @@ MonoBehaviour:
   maxChargingEffectFactor: .100000001
   caneScaleFactor: 1.10000002
   chargePercentageExponent: .5
-  shootSFX: {fileID: 8300000, guid: b6e1792480de6be469923761094c7dc8, type: 3}
-  scatterSFX: {fileID: 8300000, guid: 639b78b427d295f4392e196379b7bfc8, type: 3}
+  shootSFX: {fileID: 8300000, guid: d16c726d292c1564493e2195e2797fd6, type: 3}
+  scatterSFX: {fileID: 8300000, guid: d16c726d292c1564493e2195e2797fd6, type: 3}
   projectileSfx:
   - {fileID: 8300000, guid: db6e7f7aac0fed241b485e348d0949d0, type: 3}
   - {fileID: 8300000, guid: 7cf9387e14ac3d34d884a9e824eaa7c3, type: 3}
