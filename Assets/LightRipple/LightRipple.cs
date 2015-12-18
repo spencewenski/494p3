@@ -38,7 +38,7 @@ public class LightRipple : MonoBehaviour {
                 return false;
             }
             rippleCenter = rippleCenter_;
-            currentMaxRadius = 1f;
+            currentMaxRadius = 0f;
             rippling = true;
             return true;
         }
@@ -144,22 +144,13 @@ public class LightRipple : MonoBehaviour {
     }
 
 	void OnCollisionEnter(Collision other) {
-		if (other.gameObject.tag == "CheckpointSystem")
-			return;
-		collisionHandler(other.contacts[0].point);
-	}
-
-	void OnTriggerEnter(Collider other) {	
-		if (other.gameObject.tag == "CheckpointSystem")
-			return;
-		collisionHandler(other.transform.position);
-    }
-
-	private void collisionHandler(Vector3 collisionPosition) {
-		if (rippleTimeoutRemaining > 0f) {
-			return;
-		}
+        if (other.gameObject.tag == "CheckpointSystem") {
+            return;
+        }
+        if (rippleTimeoutRemaining > 0f) {
+            return;
+        }
         rippleTimeoutRemaining = rippleTimeout;
-        startRipple(collisionPosition);
-	}
+        startRipple(other.contacts[0].point);
+    }
 }

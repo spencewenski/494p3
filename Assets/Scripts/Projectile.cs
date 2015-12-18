@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour {
     public Color outlineColor;
     public Color accentColor;
     public Rigidbody rigidBody;
+    public Vector3 velocity;
 
     void Awake() {
         rigidBody = GetComponent<Rigidbody>();
@@ -51,32 +52,19 @@ public class Projectile : MonoBehaviour {
         if (rigidBody == null) {
             rigidBody = GetComponent<Rigidbody>();
         }
-        rigidBody.velocity = direction.normalized * speed * speedFactor;
+        velocity = direction.normalized * speed * speedFactor;
+        rigidBody.velocity = velocity;
     }
 
     public Vector3 getVelocity() {
-        if (rigidBody == null) {
-            rigidBody = GetComponent<Rigidbody>();
-        }
-        return rigidBody.velocity;
+        return velocity;
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.tag == "CheckpointSystem" || other.tag == "Projectile") {
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "CheckpointSystem" || other.gameObject.tag == "Projectile") {
             return;
         }
-
-        GameObject emptyAudio = Instantiate(emptyAudioPrefab) as GameObject;
-        emptyAudio.transform.position = transform.position;
-        AudioSource audioSource = emptyAudio.GetComponent<AudioSource>();
-        //audioSource.PlayOneShot(sfx);
-
-        OnTriggerEnterChild(other);
         Destroy(gameObject);
-    }
-
-    public virtual void OnTriggerEnterChild(Collider other) {
-        // overridden by child
     }
 
 }

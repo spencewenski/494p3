@@ -42,23 +42,23 @@ public class CubeController : MonoBehaviour {
     // updates currentEffect and applies the effect
     //
     // only care about projectiles
-    void OnTriggerEnter(Collider other) {
+    void OnCollisionEnter(Collision other) {
         // prevent multiple collisions from one projectile
         if (isColliding) {
             return;
         }
         isColliding = true;
-        if (other.tag != "Projectile") {
+        if (other.gameObject.tag != "Projectile") {
             return;
         }
 
         // update active effect
-        Cube cubeEffect = updateCurrentEffect(other.GetComponent<Projectile>());
+        Cube cubeEffect = updateCurrentEffect(other.gameObject.GetComponent<Projectile>());
         // do effect
         if (cubeEffect == null) {
             return;
         }
-        cubeEffect.doEffect(other);
+        cubeEffect.doEffect(other.gameObject);
     }
 
     private Cube updateCurrentEffect(Projectile projectile)

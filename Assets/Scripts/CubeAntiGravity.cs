@@ -31,7 +31,7 @@ public class CubeAntiGravity : Cube {
 		}
     }
 
-    public override void doEffectChild(Collider other) {
+    public override void doEffectChild(GameObject other) {
 		Projectile projectile = other.GetComponent<Projectile>();
 		gravityReversed = !projectile.reverse;
         rigidBody.useGravity = !gravityReversed;

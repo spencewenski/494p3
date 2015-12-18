@@ -45,16 +45,16 @@ public class CubePush : Cube {
     // OVERWRITE THE Cube.doEffectChild METHOD
     //
     // actually do the effect
-    public override void doEffectChild(Collider collision) {
+    public override void doEffectChild(GameObject other) {
 
-        if (collision.tag != "Projectile") {
+        if (other.tag != "Projectile") {
             return;
         }
-        Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+        Projectile projectile = other.gameObject.GetComponent<Projectile>();
         if (projectile == null) {
             return;
         }
-        push(collision.transform.position, projectile.getVelocity(), projectile.reverse);
+        push(other.transform.position, projectile.getVelocity(), projectile.reverse);
     }
 
     private void push(Vector3 collisionPosition, Vector3 velocity, bool reverse) {

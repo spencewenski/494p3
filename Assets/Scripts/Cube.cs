@@ -33,7 +33,7 @@ public class Cube : MonoBehaviour {
 	}
 
     // template method for applying the effect to the cube
-    public void doEffect(Collider other) {
+    public void doEffect(GameObject other) {
         if (!active) {
             return;
         }
@@ -43,7 +43,7 @@ public class Cube : MonoBehaviour {
     // OVERWRITE THIS FUNCTION IN YOUR CUBE EFFECT CLASS
     //
     // actually does the effect
-    public virtual void doEffectChild(Collider other) {
+    public virtual void doEffectChild(GameObject other) {
         // overwritten by children
     }
 
