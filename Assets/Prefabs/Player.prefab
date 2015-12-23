@@ -324,7 +324,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
     outlineColor: {r: 1, g: 1, b: 0, a: 1}
     accentColor: {r: 1, g: .703000009, b: 0, a: 1}
   prefabProjectile: {fileID: 133214, guid: c520ea38475f7a14383d993c2e315193, type: 2}
-  effects: 01000000
+  effects: 
   maxChargeTime: .5
   projectileHeight: .25
   verSpread: .300000012
@@ -477,8 +477,8 @@ MonoBehaviour:
   maxChargingEffectFactor: .100000001
   caneScaleFactor: 1.10000002
   chargePercentageExponent: .5
-  shootSFX: {fileID: 8300000, guid: d16c726d292c1564493e2195e2797fd6, type: 3}
-  scatterSFX: {fileID: 8300000, guid: 1d0f6b5f3c6b48b4d8f9790b10440057, type: 3}
+  shootSFX: {fileID: 8300000, guid: 76392fbfcf6314f6489c857459b8cf5f, type: 3}
+  scatterSFX: {fileID: 8300000, guid: 3a29cccc13161453eb866762e7f64fad, type: 3}
   projectileSfx:
   - {fileID: 0}
   - {fileID: 0}

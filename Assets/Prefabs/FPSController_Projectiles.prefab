@@ -321,15 +321,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d0faa51f5a90c4b8c723d21dba84a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabProjectiles: []
-  chargeFactor: 1
+  cubeEffectDefinitions: []
+  prefabProjectile: {fileID: 0}
+  effects: 
   maxChargeTime: 1
   projectileHeight: .25
+  verSpread: 0
+  horSpread: 0
+  numScatterShots: 0
+  maxChargingEffectFactor: 0
+  caneScaleFactor: 0
+  chargePercentageExponent: 0
+  shootSFX: {fileID: 8300000, guid: 76392fbfcf6314f6489c857459b8cf5f, type: 3}
+  scatterSFX: {fileID: 8300000, guid: 3a29cccc13161453eb866762e7f64fad, type: 3}
+  projectileSfx: []
   ______________________: 0
   charging: 0
   chargeTime: 0
   mainCamera: {fileID: 0}
+  caneEnd: {fileID: 0}
   projectileIndex: 0
+  chargingOutline: {fileID: 0}
+  player: {fileID: 0}
 --- !u!143 &14371426
 CharacterController:
   m_ObjectHideFlags: 1
@@ -386,6 +399,14 @@ Prefab:
       propertyPath: projectileHeight
       value: .25
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shootSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 76392fbfcf6314f6489c857459b8cf5f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: scatterSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a29cccc13161453eb866762e7f64fad, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 170618}

@@ -1770,7 +1770,7 @@ Prefab:
     - target: {fileID: 8260604, guid: 9697ed996fd7b4d4297f38cddf52ba8b, type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 88db138a681b5d14198baba50808fbd9, type: 3}
+      objectReference: {fileID: 8300000, guid: 9f8d79011ce7e42189c457c779ffa5f9, type: 3}
     - target: {fileID: 167168, guid: 9697ed996fd7b4d4297f38cddf52ba8b, type: 2}
       propertyPath: m_TagString
       value: Audio
