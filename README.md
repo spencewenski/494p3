@@ -11,3 +11,6 @@ View the trailer for the game [here](https://youtu.be/5lL2Lj9S29w).
 
 ## Credits
 See CREDITS file
+
+## License
+See LICENSE file
