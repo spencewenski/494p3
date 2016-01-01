@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
     public Transform menu;
@@ -42,13 +43,13 @@ public class PauseMenu : MonoBehaviour {
     public void GotoMain()
     {
         ToggleMenu(false);
-        Application.LoadLevel("_SceneStart");
+        SceneManager.LoadScene("_SceneStart");
     }
     public void Restart()
     {
         paused = false;
         ToggleMenu(false);
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void Resume()
     {

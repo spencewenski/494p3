@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GotoLevel : MonoBehaviour {
 
@@ -30,6 +31,6 @@ public class GotoLevel : MonoBehaviour {
     }
 
     public void loadLevel(int index) {
-        Application.LoadLevel(levels[index]);
+        SceneManager.LoadScene(levels[index]);
     }
 }

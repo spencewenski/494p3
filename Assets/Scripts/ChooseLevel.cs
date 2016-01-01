@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class ChooseLevel : MonoBehaviour {
 
@@ -10,6 +11,6 @@ public class ChooseLevel : MonoBehaviour {
 
     public void loadLevel(int index) {
 		print ("loading level" + index.ToString());
-        Application.LoadLevel(levels[index]);
+        SceneManager.LoadScene(levels[index]);
     }
 }

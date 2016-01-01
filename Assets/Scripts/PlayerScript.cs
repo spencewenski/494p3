@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour {
     private Rigidbody rigid;
@@ -46,8 +47,8 @@ public class PlayerScript : MonoBehaviour {
 	
 	void FixedUpdate () {
 		if (Input.GetKeyDown (KeyCode.F12)) {
-			Application.LoadLevel(Application.loadedLevel);
-		}
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         Vector3 vel = rigid.velocity;
         //manual friction for bouncing
         if (Mathf.Abs(bounceX) > 1)

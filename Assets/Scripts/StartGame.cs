@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour {
 	
@@ -42,9 +43,9 @@ public class StartGame : MonoBehaviour {
 		} else {
 			if (Input.GetKeyDown (KeyCode.Return) || Input.GetKeyDown (KeyCode.KeypadEnter)) {
 				Destroy (GameObject.Find ("Canvas"));
-				Application.LoadLevel (firstLevel);
-			}
-		}
+                SceneManager.LoadScene(firstLevel);
+            }
+        }
 	}
 
     public void showTimes()

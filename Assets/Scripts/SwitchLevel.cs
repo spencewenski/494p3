@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SwitchLevel : MonoBehaviour {
 
@@ -35,7 +36,7 @@ public class SwitchLevel : MonoBehaviour {
         }
         else if(!pause)
         {
-            Application.LoadLevel(nextLevel);
+            SceneManager.LoadScene(nextLevel);
         }
 		
 	}
@@ -47,7 +48,7 @@ public class SwitchLevel : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
                 Time.timeScale = 1;
-                Application.LoadLevel(nextLevel);
+                SceneManager.LoadScene(nextLevel);
             }
         }
     }
